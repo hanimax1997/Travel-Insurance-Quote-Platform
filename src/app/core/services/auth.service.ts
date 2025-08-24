@@ -245,7 +245,7 @@ export class AuthService {
 
 
 
-    private apiUrl = 'https://dv-saga:18989/api/authentification/activateUser'; // Base URL
+    private apiUrl = 'https://voyage.axa.dz:8980/api/authentification/activateUser'; // Base URL
 
 
 
