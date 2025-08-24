@@ -1,0 +1,57 @@
+::ng-deep .mat-horizontal-stepper-header {
+
+    //pointer-events: none
+}
+
+.mat-expansion-panel-header {
+    background: #c7c7c733 !important;
+    font-weight: 600;
+    font-size: 16px;
+}
+
+.mat-expansion-panel-header.mat-expanded {
+    height: 48px;
+}
+
+::ng-deep.mat-step-header .mat-step-icon-state-edit {
+    background-color: #d14624;
+}
+
+.mat-expansion-panel-header-title {
+    color: #00008F;
+}
+
+::ng-deep.mat-step-text-label {
+    font-size: 16px;
+}
+
+::ng-deep.mat-step-label-selected .mat-step-text-label {
+    font-size: 16px;
+    font-weight: 700;
+    color: #00008F;
+}
+
+
+.form-list {
+    margin: 2rem;
+}
+
+.form-list .mat-form-field {
+    margin-right: 2rem;
+}
+
+.row-button {
+
+    .btn.btn-action,
+    .btn.btn-secondary {
+        margin-top: 2rem;
+    }
+
+    .btn.btn-action {
+        float: right;
+    }
+
+    .btn.btn-secondary {
+        float: left;
+    }
+}

@@ -1,0 +1,585 @@
+<div class="flex flex-col min-h-screen">
+<app-header ></app-header>
+
+<div
+    class="min-h-[40rem] w-full
+           px-4 sm:px-6 lg:px-8
+           py-12
+           max-w-[77rem] mx-auto">
+
+    <div class="min-h-[35rem] grid">
+      <div
+        class="grid gap-6
+               grid-flow-row md:grid-flow-col
+               p-4 md:p-5
+               bg-white">
+
+      <!-- =============== STEPPER ================================================= -->
+      <div class="w-full" id="stepper">
+          <div
+            class="stepper-navbar flex items-stretch relative
+                   overflow-x-auto md:overflow-visible
+                   scrollbar-thin scrollbar-thumb-gray-300">
+
+            <div class="stepper-progress-bar bg-gray-200"></div>
+            <div class="stepper-progress-bar-active"
+                 [style.width.%]="progressWidth"></div>
+
+          @for (step of steps; let i = $index; track step) {
+            <div class="stepper-step flex flex-col items-center relative z-10">
+              <div class="stepper-circle"
+                   [class.stepper-circle-active]="i === currentStep"
+                   [class.stepper-circle-complete]="i < currentStep"
+                   (click)="goToStep(i)"
+                   [style.cursor]="i <= maxStepReached ? 'pointer' : 'not-allowed'"
+                   [style.opacity]="i <= maxStepReached ? 1 : 0.6"
+                   [attr.aria-disabled]="i > maxStepReached">
+                <img [src]="step.icon" class="w-20 h-auto" [alt]="step.label" />
+              </div>
+            </div>
+            @if (i < steps.length - 1) {
+              <div class="stepper-divider w-px bg-gray-300 mx-6 self-stretch"></div>
+            }
+          }
+        </div>
+
+        <!-- ================= CONTENU DES ÉTAPES ================================== -->
+        <div class="mt-5 sm:mt-8">
+          @switch (currentStep) {
+
+            <!-- ------------------------------------------------------------------ -->
+            @case (0) {
+              <!-- ÉTAPE 0 : informations assuré -->
+              <form [formGroup]="formInfoAssure" novalidate>
+                <h1 class="text-l font-semibold text-center uppercase text-primary-400 mb-3">
+                  Mes informations
+                </h1>
+
+                <div class="grid grid-cols-2 max-sm:grid-cols-1 gap-6 p-4">
+                <!-- Nom -->
+                <div>
+                  <label for="nom" class="block text-sm font-semibold text-gray-800 mb-1">
+                    Nom *
+                  </label>
+
+                  <input
+                    id="nom"
+                    type="text"
+                    placeholder="Nom"
+                    formControlName="nom"
+                    (change)="changeInput('nom')"
+                    class="shadow-inner py-3 px-4 w-full text-sm
+                          focus:outline-none
+                          focus:ring-0"
+                  />
+
+                  @if (formInfoAssure.get('nom')?.touched &&
+                      formInfoAssure.get('nom')?.invalid) {
+                    <p class="text-sm text-danger mt-1">Nom invalide ou requis.</p>
+                  }
+                </div>
+
+                  <!-- Prénom -->
+                  <div>
+                    <label for="prenom" class="block text-sm font-semibold text-gray-800 mb-1">Prénom *</label>
+                    <input id="prenom"
+                        type="text"
+                        placeholder="Prenom"
+                        formControlName="prenom"
+                        (input)="changeInput('prenom')"
+                        class="shadow-inner py-3 px-4 w-full text-sm
+                                border focus:ring-0" 
+                        />
+                    @if (formInfoAssure.get('prenom')?.invalid && formInfoAssure.get('prenom')?.touched) {
+                      <p class="text-sm text-danger mt-1">Prénom invalide ou requis.</p>
+                    }
+                  </div>
+
+                  <!-- Email -->
+                  <div>
+                    <label for="email" class="block text-sm font-semibold text-gray-800 mb-1">Email *</label>
+                    <input id="email" type="email" placeholder="E-mail"
+                          formControlName="email" (input)="changeInput('email')"
+                          class="shadow-inner py-3 px-4 w-full text-sm
+                                border focus:ring-0"   />
+                    @if (formInfoAssure.get('email')?.invalid && formInfoAssure.get('email')?.touched) {
+                      <p class="text-sm text-danger mt-1">Email invalide ou requis.</p>
+                    }
+                  </div>
+
+                  <!-- Date de naissance -->
+                  <div>
+                    <label for="dateNaissance"
+                          class="block text-sm font-semibold text-gray-800 mb-1">
+                      Date de naissance *
+                    </label>
+
+                    <input  id="dateNaissance"
+                            type="date"
+                            formControlName="dateNaissance"
+                            (input)="changeInput('dateNaissance')"
+                            [min]="minDateNaissance"
+                            [max]="maxDateNaissance"
+                            (input)="changeInput('dateNaissance')"
+                          class="shadow-inner py-3 px-4 w-full text-sm
+                                border focus:ring-0" 
+                           />
+
+                    @if (formInfoAssure.get('dateNaissance'); as ctrlDate) {
+                      @if (ctrlDate.touched && ctrlDate.errors) {
+                        @if (ctrlDate.errors['required']) {
+                          <p class="text-sm text-danger mt-1">Date de naissance requise.</p>
+                        }
+
+                        @if (!ctrlDate.errors['required'] && ctrlDate.errors['notInFuture']) {
+                          <p class="text-sm text-danger mt-1">
+                            Veuillez saisir une date valide.
+                          </p>
+                        }
+
+                        @if (!ctrlDate.errors['notInFuture'] && !ctrlDate.errors['required'] && ctrlDate.errors['ageTooYoung']) {
+                          <p class="text-sm text-danger mt-1">
+                            La souscription n’est pas autorisée pour les moins de 18 ans, veuillez saisir une date valide.
+                          </p>
+                        }
+
+                        @if (!ctrlDate.errors['notInFuture'] && !ctrlDate.errors['required'] && ctrlDate.errors['ageTooOld']) {
+                          <p class="text-sm text-danger mt-1">
+                            Veuillez saisir une date valide.
+                          </p>
+                        }
+                      }
+                    }
+                  </div>
+
+                  <!-- Téléphone -->
+                  <div>
+                    <label for="tel" class="block text-sm font-semibold text-gray-800 mb-1">Téléphone *</label>
+                    <input id="tel" type="text" placeholder="0XXXXXXXXX"
+                          formControlName="tel" (input)="changeInput('tel')"
+                          class="shadow-inner py-3 px-4 w-full text-sm
+                                border focus:ring-0"  />
+                    @if (formInfoAssure.get('tel')?.invalid && formInfoAssure.get('tel')?.touched) {
+                      <p class="text-sm text-danger mt-1">Numéro invalide ou requis.</p>
+                    }
+                  </div>
+
+                  <!-- Agence -->
+                  <div>
+                    <label for="agence" class="block text-sm font-semibold text-gray-800 mb-1">Agence *</label>
+                    <select id="agence" formControlName="agence" (change)="changeAgence($event)" (change)="changeInput('agence')"
+                        class="shadow-inner py-3 px-4 w-full text-sm
+                                border focus:ring-0"
+                                >
+                      <option value="" disabled>Sélectionner</option>
+                      @for (agenc of agences; track agenc) {
+                        @if (agenc?.codeAgence !== '01601') {
+                          <option [value]="agenc.idAgence">{{ agenc.nomVoyagiste }}</option>
+                        }
+                      }
+                    </select>
+                    @if (formInfoAssure.get('agence')?.invalid && formInfoAssure.get('agence')?.touched) {
+                      <p class="text-sm text-danger mt-1">Veuillez sélectionner une agence.</p>
+                    }
+                  </div>
+                </div>
+              </form>
+
+              <!-- Paramètres risque partiels -->
+             <form [formGroup]="formParamRisqueDevis" novalidate>
+              <div class="grid grid-cols-2 max-sm:grid-cols-1 gap-6 p-4">
+
+                @if (formParamRisqueDevis.get('P125'); as ctrlP125) {
+                  <div>
+                    <label for="P125" class="block text-sm font-semibold text-gray-800 mb-1">Wilaya de l'habitation assurée *</label>
+                    <select id="P125" formControlName="P125"
+                            (change)="onWilayaChange($any($event.target).value)"
+                            (change)="changeInputParam('P125')"
+                                    class="shadow-inner py-3 px-4 w-full text-sm
+                                border focus:ring-0"
+                                >
+                      <option value="" disabled>Wilaya</option>
+                      @for (w of wilayas; track w.idWilaya) {
+                        <option [value]="w.idWilaya">{{ w.description }}</option>
+                      }
+                    </select>
+                    @if (ctrlP125.invalid && ctrlP125.touched) {
+                      <p class="text-sm text-danger mt-1">Champ requis.</p>
+                    }
+                  </div>
+                }
+
+                @if (formParamRisqueDevis.get('P126'); as ctrlP126) {
+                  <div>
+                    <label for="P126" class="block text-sm font-semibold text-gray-800 mb-1">Commune de l'habitation assurée *</label>
+                    <select id="P126" formControlName="P126" (change)="changeInputParam('P126')"
+                            [disabled]="!formParamRisqueDevis.get('P125')?.value"
+                            class="shadow-inner py-3 px-4 w-full text-sm
+                                                            border focus:ring-0"
+                                >
+                      <option value="" disabled>Commune</option>
+                      @for (c of communes; track c.idCommune) {
+                        <option [value]="c.idCommune">{{ c.description }}</option>
+                      }
+                    </select>
+                    @if (ctrlP126.invalid && ctrlP126.touched) {
+                      <p class="text-sm text-danger mt-1">Champ requis.</p>
+                    }
+                  </div>
+                }
+
+                @if (formParamRisqueDevis.get('P118'); as ctrlP118) {
+                  <div>
+                    <label for="P116" class="block text-sm font-semibold text-gray-800 mb-1">J'habite au dernier étage ? *</label>
+                    <div class="flex gap-8 py-2">
+                      <!-- Oui -->
+                      <label class="inline-flex items-center text-sm cursor-pointer">
+                        <input type="radio"
+                              class="sr-only peer"
+                              value="Oui"
+                              formControlName="P118" />
+                        <div class="w-4 h-4 rounded-full border border-black
+                                    peer-checked:bg-[#00008f]
+                                    peer-checked:border-[#00008f]
+                                    peer-checked:w-4 peer-checked:h-4
+                                    peer-focus:ring-2 peer-focus:ring-[#00008f]
+                                    peer-focus:ring-offset-2
+                                    transition-all duration-200 ease-in-out"></div>
+                        <span class="ml-2">Oui</span>
+                      </label>
+
+                      <!-- Non -->
+                      <label class="inline-flex items-center text-sm cursor-pointer">
+                        <input type="radio"
+                              class="sr-only peer"
+                              value="Non"
+                              formControlName="P118" />
+                        <div class="w-4 h-4 rounded-full border border-black
+                                    peer-checked:bg-[#00008f]
+                                    peer-checked:border-[#00008f]
+                                    peer-checked:w-4 peer-checked:h-4
+                                    peer-focus:ring-2 peer-focus:ring-[#00008f]
+                                    peer-focus:ring-offset-2
+                                    transition-all duration-200 ease-in-out"></div>
+                        <span class="ml-2">Non</span>
+                      </label>
+                    </div>
+                    @if (ctrlP118.invalid && ctrlP118.touched) {
+                      <p class="text-sm text-danger mt-1">Champ requis.
+                      </p>
+                      }
+                  </div>
+                }
+
+                @if (formParamRisqueDevis.get('P116'); as ctrlP116) {
+                  <div>
+                    <label for="P116" class="block text-sm font-semibold text-gray-800 mb-1">Montant du contenu *</label>
+                    <div class="relative">
+                      <input
+                        id="P116"
+                        type="number"
+                        min="0"
+                        placeholder="Montant en DA"
+                        formControlName="P116"
+                        (input)="changeInputParam('P116')"
+                        class="shadow-inner py-3 px-4 w-full text-sm
+                                border focus:ring-0"
+                      />
+                      <span
+                        tabindex="0"
+                        class="group absolute top-1/2 -translate-y-1/2 right-5
+                              inline-flex items-center justify-center
+                              w-3 h-3 rounded-full text-white text-[0.65rem] leading-none cursor-help
+                              focus:outline-none focus:ring-2 focus:ring-[#00008F]"
+                        style="background:#00008F; box-shadow:0 0 0 2px #00008F;">
+                        i
+
+                        <!-- Tooltip qui s’ouvre à gauche -->
+                        <span
+                          class="pointer-events-none absolute z-20 top-1/2 -translate-y-1/2
+                                right-full
+                                mr-3
+                                w-60 text-white text-xs p-3 opacity-0
+                                group-hover:opacity-100 group-focus:opacity-100 transition-opacity duration-200"
+                          style="background:#403cdc;">
+                          Veuillez évaluer le montant du contenu de votre habitation
+
+                          <!-- Flèche à droite du tooltip -->
+                          <span
+                            class="absolute top-1/2 -translate-y-1/2
+                                  -right-1.5
+                                  rotate-45 w-3 h-3"
+                            style="background:#403cdc;"></span>
+                        </span>
+                      </span>
+                    </div>
+                      @if (ctrlP116.touched && ctrlP116.errors) {
+                        @if (ctrlP116.errors['required']) {
+                          <p class="text-sm text-danger mt-1">Champ requis.</p>
+                        }
+                        @if (!ctrlP116.errors['required'] && ctrlP116.errors['minValue']) {
+                          <p class="text-sm text-danger mt-1">
+                            Le montant doit être supérieur ou égal à&nbsp;1&nbsp;DA.
+                          </p>
+                        }
+                        @if (ctrlP116.errors['max']) {
+                          <p class="text-sm text-danger mt-1">
+                            Ce montant est soumis à condition, nous vous invitons à vous rendre en agence pour établir un devis.
+                          </p>
+                        }
+                      }
+                  </div>
+                }
+
+                <div class="relative">
+                  <re-captcha
+                    formControlName="captcha"
+                    (resolved)="formParamRisqueDevis.get('captcha')?.setValue($event)">
+                  </re-captcha>
+
+                  @if (formParamRisqueDevis.get('captcha')?.touched &&
+                      formParamRisqueDevis.get('captcha')?.invalid) {
+                    <p class="text-sm text-danger mt-1">
+                      Veuillez valider le captcha.
+                    </p>
+                  }
+                </div>
+
+              </div>
+
+            </form>
+
+              <p style="color: gray; ">*Toutes les informations sont obligatoires</p>
+              <br>
+              <div class="flex justify-end">
+                <button class="py-2 px-3 inline-flex items-center gap-x-1 text-sm font-semibold border border-transparent bg-primary-400 text-white hover:bg-primary-100 focus:outline-none focus:bg-primary-100 disabled:opacity-50 disabled:pointer-events-none" (click)="submitInfos()">Suivant</button>
+              </div>
+            }
+
+            <!-- ------------------------------------------------------------------ -->
+            @case (1) {
+              <section>
+                <h1 class="text-l font-semibold text-center uppercase text-primary-400 mb-10">
+                  MA COUVERTURE
+                </h1>
+                <div class="w-[55%] mx-auto mt-5 sm:mt-8 border border-gray-300  p-4">
+                <img src="/images/mrh.png" />
+                <br>
+                <div class="space-y-4" *ngIf="loadTable">
+                  <div *ngFor="let row of dataSource.data; let i = index">
+                    <ng-container *ngIf="i === dataSource.data.length - 2">
+                      <h1 class="text-l font-semibold text-center uppercase text-primary-400 mb-10">
+                        JE&nbsp;COMPLETE&nbsp;MON&nbsp;OFFRE
+                      </h1>
+                    </ng-container>
+
+                    <!-- ligne Garantie ------------------------------------------------------>
+                    <div class="relative flex items-center gap-3 pl-6 pr-6 overflow-visible">
+
+                      <!-- checkbox -->
+                        <input
+                          type="checkbox"
+                          id="garantie-{{ i }}"
+                          [formControl]="getControl(i,'checked')"
+                          (change)="checkGarantie(row, $event)"
+                        class="
+                          h-4 w-4 rounded-none
+                          border-gray-300
+                          text-primary-400
+                          focus:outline-none
+                          focus:ring-0
+                        ">
+
+                      <!-- libellé + bordure -->
+                      <span
+                        class="relative block w-full
+                              shadow-inner border border-gray-300 rounded-sm
+                              py-3 px-4 pr-11
+                              text-sm font-medium
+                              peer-focus:border-primary-400 peer-focus:ring-1 peer-focus:ring-primary-400
+                              transition"         
+                        [class.opacity-60]="!getControl(i,'checked').value"
+                      >
+                        {{ row.description }}
+
+                        <!-- bulle d’info -->
+                        <ng-container *ngIf="infoBubbles[i] as txt">
+                          <span
+                            tabindex="0"
+                            class="group absolute top-1/2 -translate-y-1/2 right-5
+                                  flex items-center justify-center
+                                  w-3 h-3 rounded-full text-white text-[0.65rem] leading-none
+                                  cursor-help focus:outline-none focus:ring-2 focus:ring-[#00008F]
+                                  pointer-events-auto"
+                            style="background:#00008F; box-shadow:0 0 0 2px #00008F;"
+                          >
+                            i
+                            <span
+                              class="pointer-events-none absolute z-50
+                                    top-1/2 left-full -translate-y-1/2 ml-3
+                                    w-60  text-white text-xs p-4 opacity-0
+                                    group-hover:opacity-100 group-focus:opacity-100
+                                    transition-opacity duration-200"
+                              style="background:#403cdc;"
+                            >
+                              {{ txt }}
+                              <span
+                                class="absolute -left-1 top-1/2 -translate-y-1/2 rotate-45 w-3 h-3"
+                                style="background:#403cdc;"
+                              ></span>
+                            </span>
+                          </span>
+                        </ng-container>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                </div>
+              </section>
+              <br>
+
+              <!-- ╭────────────────────  ACTIONS  ────────────────────╮ -->
+              <!-- ╭────────── ACTIONS ──────────╮ -->
+              <div class="flex w-full justify-between mt-6">
+        <button
+          (click)="prevStep()"
+          class="py-2 px-3 inline-flex items-center gap-x-1 text-sm font-semibold
+                border-2 border-gray-400 bg-white text-gray-700
+                hover:bg-gray-50 hover:border-gray-500
+
+                focus-visible:outline-none
+                focus-visible:ring-2 focus-visible:ring-gray-400
+                focus-visible:ring-offset-2 focus-visible:ring-offset-white
+                focus-visible:border-gray-600
+                transition-colors duration-150">
+          Précédent
+        </button>
+
+
+                <button
+                  class="py-2 px-3 inline-flex items-center gap-x-1 text-sm font-semibold
+                        border border-transparent bg-primary-400 text-white hover:bg-primary-100
+                        focus:outline-none focus:bg-primary-100 disabled:opacity-50 disabled:pointer-events-none"
+                  (click)="nextStep()">
+                  Suivant
+                </button>
+              </div>
+            }
+
+            <!-- ------------------------------------------------------------------ -->
+            @case (2) {
+
+              <!-- ───── Titre ───── -->
+              <!-- ───── Bloc image + prime nette ───── -->
+              <div
+                class="relative bg-cover bg-center  h-80 md:h-96 flex items-center justify-center"
+                style="background-image: url('/images/home.jpg');"
+              >
+                <!-- Cadre blanc centré -->
+                <div
+                  class="bg-white bg-opacity-90 backdrop-blur-sm px-8Afrit py-6 shadow-lg
+                        text-center w-fit max-w-[90%]"
+                >
+                  <!-- On ne parcourt la liste qu’une fois ; on n’affiche que l’idPrime 186 -->
+                  <ng-container *ngFor="let p of returnedTarif.primeList">
+                    <ng-container *ngIf="p.idPrime === 186">
+                      <div class="px-4">
+                        <p class="text-base font-semibold text-center text-primary-400 mb-5" >   
+                          Votre couverture habitation s’élève à :
+                        </p>
+                        <p class="text-5xl font-semibold text-primary-500" style="color:#00008f;">
+                          {{ p.prime | number : '1.0-0'| money }}<sup>&nbsp;DA</sup>
+                        </p>
+                      </div>
+                    </ng-container>
+                  </ng-container>
+                </div>
+              </div>
+              <br>
+
+              <!-- ───── Tableau des garanties cochées ───── -->
+              <div class="overflow-x-auto mb-8" *ngIf="loadTable">
+                <table class="min-w-full text-sm border-collapse">
+                  <thead>
+                    <tr>
+                      <th class="p-4 text-left font-semibold" >
+                        Garantie
+                      </th>
+                      <th class="p-4 text-left font-semibold" >
+                        Plafond
+                      </th>
+                      <th class="p-4 text-left font-semibold" >
+                        Franchise
+                      </th>
+                    </tr>
+                  </thead>
+
+                  <tbody>
+                    <!-- on filtre directement dans le *ngIf du <tr> -->
+                    <ng-container *ngFor="let row of dataSource.data; let i = index">
+                      <tr
+                        *ngIf="getControl(i,'checked').value || row.obligatoire"
+                        class="odd:bg-white even:bg-gray-100"
+                      >
+                        <!-- Garantie -->
+                        <td class="p-4 font-medium">{{ row.description }}</td>
+
+                        <!-- Plafond -->
+                        <td class="p-4">
+                          <ng-container
+                            *ngIf="
+                              row.plafond?.length &&
+                              +row.plafond[0]?.valeur > 0;
+                              else noPlafond"
+                          >
+                            {{ +row.plafond[0].valeur | number:'1.0-0' | money }} DA
+                          </ng-container>
+                          <ng-template #noPlafond>-</ng-template>
+                        </td>
+
+                        <!-- Franchise -->
+                        <td class="p-4">
+                          <ng-container *ngIf="row.franchise?.length; else noFranchise">
+                            {{ row.franchise[0]?.valeur | number:'1.0-0' | money }} DA
+                          </ng-container>
+                          <ng-template #noFranchise>-</ng-template>
+                        </td>
+                      </tr>
+                    </ng-container>
+                  </tbody>
+                </table>
+              </div>
+
+              <!-- ───── Boutons ───── -->
+              <div class="flex w-full justify-between mt-8">
+        <button
+          (click)="prevStep()"
+          class="py-2 px-3 inline-flex items-center gap-x-1 text-sm font-semibold
+                 border-2 border-gray-400 bg-white text-gray-700
+                hover:bg-gray-50 hover:border-gray-500
+
+                focus-visible:outline-none
+                focus-visible:ring-2 focus-visible:ring-gray-400
+                focus-visible:ring-offset-2 focus-visible:ring-offset-white
+                focus-visible:border-gray-600
+                transition-colors duration-150">
+          Précédent
+        </button>
+
+                <button
+                  class="py-2 px-3 inline-flex items-center gap-x-1 text-sm font-semibold
+                        border border-transparent bg-primary-400 text-white hover:bg-primary-100"
+                  (click)="newDevis()">
+                  CRÉER&nbsp;UN&nbsp;NOUVEAU&nbsp;DEVIS
+                </button>
+              </div>
+            }
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<app-footer></app-footer>
+</div>

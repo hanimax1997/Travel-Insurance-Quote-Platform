@@ -1,0 +1,1104 @@
+<img height="1" width="1" style="border-style:none;" alt="" src="https://insight.adsrvr.org/track/pxl/?adv=y8fv869&ct=0:egh2o0t&fmt=3"/>
+<app-header></app-header>
+<div>
+    @if(messageErreur != "") {
+         <!-- Toast -->
+        <div class="max-w-xs bg-danger text-sm text-white shadow-lg float-right mt-8" role="alert" tabindex="-1" aria-labelledby="hs-toast-solid-color-red-label">
+            <div id="hs-toast-solid-color-red-label" class="flex p-4">
+            {{ messageErreur }}
+    
+            <div class="ms-auto">
+                <button (click)="messageErreur = ''" class="inline-flex shrink-0 justify-center items-center size-5 text-white hover:text-white opacity-50 hover:opacity-100 focus:outline-hidden focus:opacity-100" aria-label="Close">
+                <span class="sr-only">Close</span>
+                <svg class="shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M18 6 6 18"></path>
+                    <path d="m6 6 12 12"></path>
+                </svg>
+                </button>
+            </div>
+            </div>
+        </div>
+        <!-- End Toast -->
+    }
+    <div class="min-h-[40rem] mx-auto py-12 px-4 sm:px-6 lg:px-8 max-w-[77rem]">
+        <div class="min-h-[35rem] grid">
+            <div class="grid grid-flow-col p-4 md:p-5 bg-white">
+                <!-- Stepper -->
+                <div data-hs-stepper="" id="stepper">
+                    <!-- Stepper Nav -->
+                    <ul class="relative flex flex-row sm:w-[80%] px-[75px] py-[15px] justify-self-center gap-x-2">
+                        <!-- Item -->
+                        <li class="flex items-center gap-x-2 shrink basis-0 hidden" data-hs-stepper-nav-item='{
+                            "index": 1,
+                            "isOptional": true
+                        }'>
+                            <div class="min-w-7 min-h-7 inline-flex justify-center items-center text-xs align-middle">
+                                <!-- <span class="hs-stepper-success:bg-blue-600 hs-stepper-success:text-white hs-stepper-completed:bg-teal-500 hs-stepper-completed:group-focus:bg-teal-600 size-7 flex justify-center items-center shrink-0 bg-white border border-gray-200 font-extrabold rounded-full">
+                                    <span class="hs-stepper-success:hidden hs-stepper-completed:hidden"> 1 </span>
+                                    <svg class="hidden shrink-0 size-3 hs-stepper-success:block" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                                        <polyline points="20 6 9 17 4 12"></polyline>
+                                    </svg>
+                                </span> -->
+                                <!-- <span class="ms-2 block text-sm font-medium text-gray-800">
+                                </span> -->
+                            </div>
+                            <!-- <div class="w-full h-px flex-1 bg-gray-200 group-last:hidden"></div> -->
+                        </li>
+                        <!-- End Item -->
+
+                        <!-- Item -->
+                        <li class="flex items-center gap-x-2 shrink basis-0 flex-1" data-hs-stepper-nav-item='{
+                            "index": 2,
+                            "isOptional": true
+                        }'>
+                            <div class="min-w-7 min-h-7 inline-flex justify-center items-center text-xs align-middle">
+                                <img class="w-20 h-auto" src="/icon1.png" alt="Logo" srcset="">
+                                <!-- <img class="w-20 h-auto" src="/icon2.png" alt="Logo" srcset="">
+                                <span class="hs-stepper-success:bg-blue-600 hs-stepper-success:text-white hs-stepper-completed:bg-teal-500 hs-stepper-completed:group-focus:bg-teal-600 size-7 flex justify-center items-center shrink-0 bg-white border border-gray-200 font-extrabold rounded-full">
+                                    <span class="hs-stepper-success:hidden hs-stepper-completed:hidden"> 2 </span>
+                                        <svg class="hidden shrink-0 size-3 hs-stepper-success:block" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                                            <polyline points="20 6 9 17 4 12"></polyline>
+                                        </svg>
+                                </span> -->
+                                <!-- <span class="ms-2 block text-sm font-medium text-gray-800">
+                                </span> -->
+                            </div>
+                            <div class="vertical-line group-last:hidden"></div>
+                        </li>
+                        <!-- End Item -->
+
+                        <!-- Item -->
+                        <li class="flex items-center gap-x-2 shrink basis-0 flex-1" data-hs-stepper-nav-item='{
+                            "index": 3,
+                            "isOptional": true
+                        }'>
+                        
+                        <div class="min-w-7 min-h-7 inline-flex justify-center items-center text-xs align-middle">
+                            <img class="w-20 h-auto" src="/icon2.png" alt="Logo" srcset="">
+                            <!-- <span class="hs-stepper-success:bg-blue-600 hs-stepper-success:text-white hs-stepper-completed:bg-teal-500 hs-stepper-completed:group-focus:bg-teal-600 size-7 flex justify-center items-center shrink-0 bg-white border border-gray-200 font-extrabold rounded-full">
+                                <span class="hs-stepper-success:hidden hs-stepper-completed:hidden"> 3 </span>
+                                <svg class="hidden shrink-0 size-3 hs-stepper-success:block" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="20 6 9 17 4 12"></polyline>
+                                </svg>
+                            </span> -->
+                            <!-- <span class="ms-2 block text-sm font-medium text-gray-800">
+                            </span> -->
+                        </div>
+                        <div class="vertical-line group-last:hidden"></div>
+                        <!-- <div class="w-full h-px flex-1 bg-gray-200 group-last:hidden"></div> -->
+                        </li>
+                        <!-- End Item -->
+
+                        <!-- Item -->
+                        <li class="flex items-center gap-x-2 shrink basis-0 flex-1" data-hs-stepper-nav-item='{
+                            "index": 4,
+                            "isOptional": true
+                        }'>
+                        
+                        <div class="min-w-7 min-h-7 inline-flex justify-center items-center text-xs align-middle">
+                            <img class="w-20 h-auto" src="/icon3.png" alt="Logo" srcset="">
+                            <!-- <span class="hs-stepper-success:bg-blue-600 hs-stepper-success:text-white hs-stepper-completed:bg-teal-500 hs-stepper-completed:group-focus:bg-teal-600 size-7 flex justify-center items-center shrink-0 bg-white border border-gray-200 font-extrabold rounded-full">
+                                <span class="hs-stepper-success:hidden hs-stepper-completed:hidden"> 4 </span>
+                                <svg class="hidden shrink-0 size-3 hs-stepper-success:block" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="20 6 9 17 4 12"></polyline>
+                                </svg>
+                            </span> -->
+                            <!-- <span class="ms-2 block text-sm font-medium text-gray-800">
+                            </span> -->
+                        </div>
+                        <div class="vertical-line group-last:hidden"></div>
+                        <!-- <div class="w-full h-px flex-1 bg-gray-200 group-last:hidden"></div> -->
+                        </li>
+                        <!-- End Item -->
+
+                        <!-- Item -->
+                        <li class="flex max-sm:flex-1" data-hs-stepper-nav-item='{
+                            "index": 5
+                        }'>
+                            <div class="min-w-7 min-h-7 inline-flex justify-center items-center text-xs align-middle">
+                                <img class="w-20 h-auto" src="/icon4.png" alt="Logo" srcset="">
+                                <!-- <span class="hs-stepper-success:bg-blue-600 hs-stepper-success:text-white hs-stepper-completed:bg-teal-500 hs-stepper-completed:group-focus:bg-teal-600 size-7 flex justify-center items-center shrink-0 bg-white border border-gray-200 font-extrabold rounded-full">
+                                    <span class="hs-stepper-success:hidden hs-stepper-completed:hidden"> 5 </span>
+                                            <svg class="hidden shrink-0 size-3 hs-stepper-success:block" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                                                <polyline points="20 6 9 17 4 12"></polyline>
+                                            </svg>
+                                </span> -->
+                                <!-- <span class="ms-2 block text-sm font-medium text-gray-800">
+                                </span> -->
+                            </div>
+                        </li>
+                        <!-- End Item -->
+                        
+                    </ul>
+                    <!-- End Stepper Nav -->
+                    <div class="flex w-[75%] justify-self-center mt-4 h-2.5 bg-gray-200 rounded-full overflow-hidden" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
+                        <div class="flex flex-col justify-center rounded-full overflow-hidden bg-primary-400 text-xs text-white text-center whitespace-nowrap transition duration-500" [style]="'width: ' + widthStep + '%'"></div>
+                    </div>
+                    <!-- Stepper Content -->
+                    <div class="mt-5 sm:mt-8">
+                        <!-- First Content -->
+                        <div data-hs-stepper-content-item='{
+                            "index": 1
+                        }' style="display: none;">
+                            <form [formGroup]="formInfoAssure" #formDirective="ngForm" (ngSubmit)="submitInfosAssure(formDirective)">
+                                <div class="min-h-[25rem] p-4">
+                                    <h1 class="text-l font-semibold text-center uppercase text-primary-400">
+                                        Informations Assuré (s)
+                                    </h1>
+                                        <div class="flex justify-center gap-x-6 py-8">
+                                            <div class="flex flex-col items-center">
+                                            <label for="hs-radio-group-1" class="flex flex-col items-center text-sm text-gray-800 ms-2">
+                                                <img class="w-10 h-auto" src="/icon_indiv.png" alt="Logo" srcset="">
+                                                Individuelle
+                                            </label>
+                                            <input (change)="changeFormule($event)" formControlName="formule" value="F01" type="radio" class="shrink-0 mt-0.5 border-gray-500 rounded-full text-primary-400 focus:ring-primary-400 disabled:opacity-50 disabled:pointer-events-none" id="hs-radio-group-1">
+                                            </div>
+                                        
+                                            
+                                                <div class="flex flex-col items-center">
+                                                <label for="hs-radio-group-2" class="flex flex-col items-center text-sm text-gray-800 ms-2">
+                                                    <img class="w-10 h-auto" src="/icon_famille.png" alt="Logo" srcset="">
+                                                    Famille
+                                                </label>
+                                                <input (change)="changeFormule($event)" formControlName="formule" value="F02" type="radio" class="shrink-0 mt-0.5 border-gray-500 rounded-full text-primary-400 focus:ring-primary-400 disabled:opacity-50 disabled:pointer-events-none" id="hs-radio-group-2">
+                                                </div>
+                                            @if (userId != null) {
+                                                <div class="flex flex-col items-center">
+                                                <label for="hs-radio-group-3" class="flex flex-col items-center text-sm text-gray-800 ms-2">
+                                                    <img class="w-10 h-auto" src="/icon_famille.png" alt="Logo" srcset="">
+                                                    Groupe
+                                                </label>
+                                                <input (change)="changeFormule($event)" formControlName="formule" value="F03" type="radio" class="shrink-0 mt-0.5 border-gray-500 rounded-full text-primary-400 focus:ring-primary-400 disabled:opacity-50 disabled:pointer-events-none" id="hs-radio-group-3">
+                                                </div>
+                                            }
+                                        
+                
+                                        </div>
+                                        <div class="flex py-6 justify-around grid grid-cols-2 max-sm:grid-cols-1 gap-4">
+                                            <div>
+                                                <label for="nom" class="block text-sm text-gray-800 font-semibold mb-2">Nom *</label>
+                                                <div class="relative">
+                                                <input id="nom" (input)="changeInput('nom')" formControlName="nom" type="text" class="shadow-[inset_0_1px 2px rgba(0, 0, 0, 0.075)] peer py-3 px-4 ps-11 block w-full border border-gray-300 text-sm focus:border-primary-400 focus:ring-primary-400 disabled:opacity-50 disabled:pointer-events-none" placeholder="Nom">
+                                                <div class="absolute inset-y-0 start-0 flex items-center pointer-events-none ps-4 peer-disabled:opacity-50 peer-disabled:pointer-events-none">
+                                                    <svg class="shrink-0 size-4 text-gray-500" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                    <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path>
+                                                    <circle cx="12" cy="7" r="4"></circle>
+                                                    </svg>
+                                                </div>
+                                                </div>
+                                                @if (formInfoAssure.get('nom').errors != null && (formInfoAssure.get('nom').dirty || pageOne)) {
+                                                    <p class="text-sm text-danger mt-2"> {{ formInfoAssure.get('nom').errors?.required ? "Veuillez renseigner tous les champs requis." : "Nom invalide" }}</p>
+                                                }
+                                            </div>
+                
+                                            <div>
+                                                <label for="prenom" class="block text-sm text-gray-800 font-semibold mb-2">Prénom *</label>
+                                                <div class="relative">
+                                                <input id="prenom" (input)="changeInput('prenom')" (click)="click()" formControlName="prenom" type="text" class="shadow-[inset_0_1px 2px rgba(0, 0, 0, 0.075)] peer py-3 px-4 ps-11 block w-full border border-gray-300 focus:border-primary-400 focus:ring-primary-400 text-sm disabled:opacity-50 disabled:pointer-events-none" placeholder="Prénom">
+                                                <div class="absolute inset-y-0 start-0 flex items-center pointer-events-none ps-4 peer-disabled:opacity-50 peer-disabled:pointer-events-none">
+                                                    <svg class="shrink-0 size-4 text-gray-500" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                    <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path>
+                                                    <circle cx="12" cy="7" r="4"></circle>
+                                                    </svg>
+                                                </div>
+                                                </div>
+                                                @if (formInfoAssure.get('prenom').errors != null && (formInfoAssure.get('prenom').dirty || pageOne)) {
+                                                    <p class="text-sm text-danger mt-2">{{ formInfoAssure.get('prenom').errors?.required ? "Veuillez renseigner tous les champs requis." : "Prénom invalide" }}</p>
+                                                }
+                                            </div>
+                
+                                            <div>
+                                                <label for="email" class="block text-sm text-gray-800 font-semibold mb-2">Email *</label>
+                                                <div class="relative">
+                                                <input id="email" (input)="changeInput('email')" formControlName="email" type="email" class="shadow-[inset_0_1px 2px rgba(0, 0, 0, 0.075)] peer py-3 px-4 ps-11 block w-full border border-gray-300 focus:border-primary-400 focus:ring-primary-400 text-sm disabled:opacity-50 disabled:pointer-events-none" placeholder="E-mail">
+                                                <div class="absolute inset-y-0 start-0 flex items-center pointer-events-none ps-4 peer-disabled:opacity-50 peer-disabled:pointer-events-none">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="shrink-0 size-4 text-gray-500">
+                                                        <rect width="20" height="16" x="2" y="4" rx="2"/>
+                                                        <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+                                                    </svg>
+                                                </div>
+                                                </div>
+                                                @if (formInfoAssure.get('email').errors != null && (formInfoAssure.get('email').dirty || pageOne)) {
+                                                    <p class="text-sm text-danger mt-2">{{ formInfoAssure.get('email').errors?.required ? "Veuillez renseigner tous les champs requis." : "Email invalide" }}</p>
+                                                }
+                                            </div>
+                
+                                            <div>
+                                                <label for="dateNaissance" class="block text-sm text-gray-800 font-semibold mb-2">Date de naissance *</label>
+                                                <div class="relative">
+                                                <input [max]="maxDateNaissance" [min]="minDateNaissance"
+                                                id="dateNaissance" (input)="changeInput('dateNaissance')" formControlName="dateNaissance" type="date" class="shadow-[inset_0_1px 2px rgba(0, 0, 0, 0.075)] peer py-3 px-4 ps-11 block w-full border border-gray-300 focus:border-primary-400 focus:ring-primary-400 text-sm disabled:opacity-50 disabled:pointer-events-none" placeholder="Date de naissance">
+                                                <div class="absolute inset-y-0 start-0 flex items-center pointer-events-none ps-4 peer-disabled:opacity-50 peer-disabled:pointer-events-none">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="shrink-0 size-4 text-gray-500"><path d="M8 2v4"/><path d="M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/><path d="M8 14h.01"/><path d="M12 14h.01"/><path d="M16 14h.01"/><path d="M8 18h.01"/><path d="M12 18h.01"/><path d="M16 18h.01"/></svg>
+                                                </div>
+                                                </div>
+                                                @if (formInfoAssure.get('dateNaissance').errors != null && (formInfoAssure.get('dateNaissance').dirty || pageOne)) {
+                                                    <p class="text-sm text-danger mt-2">{{ formInfoAssure.get('dateNaissance').errors?.required ? "Veuillez renseigner tous les champs requis." : formInfoAssure.get('dateNaissance').errors?.ageInf ? "Date de naissance invalide." : "L’âge dépasse la limite autorisée." }}</p>
+                                                }
+                                            </div>
+                
+                                            <div>
+                                                <label for="tel" class="block text-sm text-gray-800 font-semibold mb-2">Téléphone *</label>
+                                                <div class="relative">
+                                                    <input id="tel" (input)="changeInput('tel')" formControlName="tel" type="text" class="shadow-[inset_0_1px 2px rgba(0, 0, 0, 0.075)] peer py-3 px-4 ps-11 block w-full border border-gray-300 focus:border-primary-400 focus:ring-primary-400 text-sm disabled:opacity-50 disabled:pointer-events-none" placeholder="Numero de téléphone">
+                                                    <div class="absolute inset-y-0 start-0 flex items-center pointer-events-none ps-4 peer-disabled:opacity-50 peer-disabled:pointer-events-none">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="shrink-0 size-4 text-gray-500"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                                                    </div>
+                                                </div>
+                                                @if (formInfoAssure.get('tel').errors != null && (formInfoAssure.get('tel').dirty || pageOne)) {
+                                                    <p class="text-sm text-danger mt-2">{{ formInfoAssure.get('tel').errors?.required ? "Veuillez renseigner tous les champs requis." : "Veuillez indiquer un numero de téléphone mobile valide ( exemple: 0xxxxxxxxx )." }}</p>
+                                                }
+                                            </div>
+
+                                            @if (formInfoAssure.get('formule')?.value!='F01') {
+                                                <div>
+                                                    <label for="nbrAssure" class="block text-sm text-gray-800 font-semibold mb-2">Nombre Assuré</label>
+                                                    <div class="relative" >
+                                                        <input id="nbrAssure" (input)="changeInput('nbrAssure')" formControlName="nbrAssure" type="number" class="shadow-[inset_0_1px 2px rgba(0, 0, 0, 0.075)] peer py-3 px-4 ps-11 block w-full border border-gray-300 focus:border-primary-400 focus:ring-primary-400 text-sm disabled:opacity-50 disabled:pointer-events-none" placeholder="Nombre total d'assurés">
+                                                        <div class="absolute inset-y-0 start-0 flex items-center pointer-events-none ps-4 peer-disabled:opacity-50 peer-disabled:pointer-events-none">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" height="28" viewBox="0 -960 960 960" width="28" fill="gray" class="shrink-0 size-4 text-gray-500">
+                                                                <path d="M0-240v-63q0-43 44-70t116-27q13 0 25 .5t23 2.5q-14 21-21 44t-7 48v65H0Zm240 0v-65q0-32 17.5-58.5T307-410q32-20 76.5-30t96.5-10q53 0 97.5 10t76.5 30q32 20 49 46.5t17 58.5v65H240Zm540 0v-65q0-26-6.5-49T754-397q11-2 22.5-2.5t23.5-.5q72 0 116 26.5t44 70.5v63H780Zm-455-80h311q-10-20-55.5-35T480-370q-55 0-100.5 15T325-320ZM160-440q-33 0-56.5-23.5T80-520q0-34 23.5-57t56.5-23q34 0 57 23t23 57q0 33-23 56.5T160-440Zm640 0q-33 0-56.5-23.5T720-520q0-34 23.5-57t56.5-23q34 0 57 23t23 57q0 33-23 56.5T800-440Zm-320-40q-50 0-85-35t-35-85q0-51 35-85.5t85-34.5q51 0 85.5 34.5T600-600q0 50-34.5 85T480-480Zm0-80q17 0 28.5-11.5T520-600q0-17-11.5-28.5T480-640q-17 0-28.5 11.5T440-600q0 17 11.5 28.5T480-560Zm1 240Zm-1-280Z"/>
+                                                            </svg>                                                        
+                                                        </div>
+                                                    </div>
+                                                    @if (formInfoAssure.get('nbrAssure').errors != null && (formInfoAssure.get('nbrAssure').dirty || pageOne)) {
+                                                        @if(formInfoAssure.get("formule").value == 'F02') {
+                                                            <p class="text-sm text-danger mt-2">Le nombre de personnes doit être compris entre 2 et 15.</p>
+                                                        }
+                                                        @else {
+                                                            <p class="text-sm text-danger mt-2">Le nombre de personnes doit être supérieure à 1.</p>
+                                                        }
+                                                    }
+                                                </div>
+                                            }
+                                        </div>
+                                </div>
+                                <div class="mt-5 flex justify-end items-center gap-x-2">
+                                    <!-- <button (click)="back()" class="py-2 px-3 inline-flex items-center gap-x-1 text-sm font-semibold border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 focus:outline-none focus:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none" data-hs-stepper-back-btn="">
+                                        <svg class="shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                            <path d="m15 18-6-6 6-6"></path>
+                                        </svg>
+                                        RETOUR
+                                    </button> -->
+                                    <button type="submit" class="py-2 px-3 inline-flex items-center gap-x-1 text-sm font-semibold border border-transparent bg-primary-400 text-white hover:bg-primary-100 focus:outline-none focus:bg-primary-100 disabled:opacity-50 disabled:pointer-events-none">
+                                        SUIVANT
+                                        <svg class="shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                            <path d="m9 18 6-6-6-6"></path>
+                                        </svg>
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                        <!-- End First Content -->
+                    
+                        <!-- Second Content -->
+                        <div data-hs-stepper-content-item='{
+                            "index": 2
+                        }' style="display: none;">
+                            <div class="min-h-[25rem] p-4">
+                                <div class="min-h-[25rem] p-4">
+                                    @if (userId != null && !step) {
+                                        <h1 class="text-lg font-semibold text-center justify-items-center text-gray-800 mt-2 ">
+                                            Veuillez choisir entre remplir un formulaire ou importer un fichier.
+                                        </h1>
+                                        <div class="mt-5 flex justify-center items-center gap-x-3">
+                                             <button (click)="step=true;" class="py-2 px-3 uppercase inline-flex items-center gap-x-1 text-sm font-semibold border border-primary-400 bg-white text-primary-400 shadow-sm">
+                                                 Formulaire
+                                             </button>
+                                             <button (click)="stepFiles()" class="py-2 px-3 uppercase inline-flex items-center gap-x-1 text-sm font-semibold border border-primary-400 bg-white text-primary-400 shadow-sm">
+                                                 Fichier
+                                             </button>
+                                        </div>
+                                    }
+                                    @else if (step || userId == null) {
+                                        <div class="hs-accordion-group">
+                                            @for (item of formParamRisqueDevis; track item.value; let idx = $index) {
+                                                @if (item.get("category").value == "CP541") {
+                                                    <form [formGroup]="item" #formDirective="ngForm">
+                                                        <div [class]="idx == 1 ? 'hs-accordion active bg-white hs-accordion-active:shadow-lg mt-4' :'hs-accordion bg-white hs-accordion-active:shadow-lg mt-4'" [id]="'hs-active-bordered-heading-'+idx">
+                                                            <button (click)="toggleAcc('hs-active-bordered-heading-'+idx)" class="uppercase hs-accordion-toggle inline-flex justify-between items-center gap-x-3 w-full bg-gray-200 font-semibold text-start text-primary-400 py-4 px-5 hover:text-gray-500" aria-expanded="false" attr.aria-controls="{{ 'hs-basic-active-bordered-collapse-'+idx }}">
+                                                                {{ idx == 1 ? "Informations de l'assuré(e) principal(e)" : "Informations Du " + idx + " assuré" }}
+                                                                <svg class="hs-accordion-active:hidden block size-4.5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                                    <path d="m6 9 6 6 6-6"/>
+                                                                </svg>
+                                                                <svg class="hs-accordion-active:block hidden size-4.5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                                    <path d="m18 15-6-6-6 6"/>
+                                                                </svg>
+                                                            </button>
+                                                            <div [id]="'hs-basic-active-bordered-collapse-'+idx" [class]="'hs-accordion-content w-full overflow-hidden transition-[height] duration-300'" role="region" attr.aria-labelledby="{{ 'hs-active-bordered-heading-'+idx }}">
+                                                                <div class="pb-4 px-5">
+                                                                    <div class="flex py-6 justify-around grid grid-cols-2 max-sm:grid-cols-1 gap-4">
+                                                                            @for (assure of tableauxParCategorieAssure; track assure.libelle) {
+                                                                                <div>
+                                                                                    <label [for]="assure.codeParam+idx" class="block text-sm text-gray-800 font-semibold mb-2">{{ assure.obligatoire ? assure.descriptionChamp + " *" : assure.descriptionChamp }}</label>
+                                                                                    <div class="relative">
+                                                                                    @if (assure.codeParam != "P166") {
+                                                                                            <input [id]="assure.codeParam+idx" (input)="changeInputParam(assure.codeParam+idx, item)" [formControlName]="assure.codeParam+idx" type="text" class="shadow-[inset_0_1px 2px rgba(0, 0, 0, 0.075)] peer py-3 px-4 ps-11 block w-full border border-gray-300 focus:border-primary-400 focus:ring-primary-400 text-sm disabled:opacity-50 disabled:pointer-events-none" [placeholder]="assure.descriptionChamp">
+                                                                                            <div class="absolute inset-y-0 start-0 flex items-center pointer-events-none ps-4 peer-disabled:opacity-50 peer-disabled:pointer-events-none">
+                                                                                                <svg class="shrink-0 size-4 text-gray-500" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                                                                <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path>
+                                                                                                <circle cx="12" cy="7" r="4"></circle>
+                                                                                                </svg>
+                                                                                            </div>
+                                                                                        } @else {
+                                                                                            <input [id]="assure.codeParam+idx" (input)="changeInputParam(assure.codeParam+idx, item)" [formControlName]="assure.codeParam+idx" [max]="maxDateNaissance" [min]="minDateNaissance" type="date" class="shadow-[inset_0_1px 2px rgba(0, 0, 0, 0.075)] peer py-3 px-4 ps-11 block w-full border border-gray-300 focus:border-primary-400 focus:ring-primary-400 text-sm disabled:opacity-50 disabled:pointer-events-none" [placeholder]="assure.descriptionChamp">
+                                                                                            <div class="absolute inset-y-0 start-0 flex items-center pointer-events-none ps-4 peer-disabled:opacity-50 peer-disabled:pointer-events-none">
+                                                                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="shrink-0 size-4 text-gray-500"><path d="M8 2v4"/><path d="M16 2v4"/>
+                                                                                                    <rect width="18" height="18" x="3" y="4" rx="2"/>
+                                                                                                    <path d="M3 10h18"/><path d="M8 14h.01"/><path d="M12 14h.01"/><path d="M16 14h.01"/><path d="M8 18h.01"/><path d="M12 18h.01"/><path d="M16 18h.01"/>
+                                                                                                </svg>
+                                                                                            </div>
+                                                                                        }
+                                                                                    </div>
+                                                                                    @if (assure.codeParam != "P166") {
+                                                                                        @if (item.get(assure.codeParam+idx).errors != null && (item.get(assure.codeParam+idx).dirty || pageTwo)) {
+                                                                                            <p class="text-sm text-danger mt-2">{{ item.get(assure.codeParam+idx).errors?.required ? "Veuillez renseigner tous les champs requis." : assure.codeParam == "P164" ? "Nom invalide." : "Prénom invalide." }}</p>
+                                                                                        }
+                                                                                    } @else {
+                                                                                        @if (item.get(assure.codeParam+idx).errors != null && (item.get(assure.codeParam+idx).dirty || pageTwo)) {
+                                                                                            <p class="text-sm text-danger mt-2">{{ item.get(assure.codeParam+idx).errors?.required ? "Veuillez renseigner tous les champs requis." : item.get(assure.codeParam+idx).errors?.ageInf ? "Date de naissance invalide." : "L’âge dépasse la limite autorisée." }}</p>
+                                                                                        }
+                                                                                    }
+                                                                                </div>
+                                                                            }
+                                                                        </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </form>
+                                                }
+                                            }
+                                        </div>
+                                    }
+                                </div>
+                                @if (step || userId == null) {
+                                    <div class="mt-5 flex justify-between items-center gap-x-2">
+                                        <button (click)="back()" class="py-2 px-3 inline-flex items-center gap-x-1 text-sm font-semibold border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 focus:outline-none focus:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none" data-hs-stepper-back-btn>
+                                            <svg class="shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                <path d="m15 18-6-6 6-6"></path>
+                                            </svg>
+                                            RETOUR
+                                        </button>
+                                        <button id="buttt" (click)="next(formParamRisqueDevis, 1)" class="py-2 px-3 inline-flex items-center gap-x-1 text-sm font-semibold border border-transparent bg-primary-400 text-white hover:bg-primary-100 focus:outline-none focus:bg-primary-100 disabled:opacity-50 disabled:pointer-events-none">
+                                            SUIVANT
+                                            <svg class="shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                <path d="m9 18 6-6-6-6"></path>
+                                            </svg>
+                                        </button>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                        <!-- End Second Content -->
+                    
+                        <!-- Third Content -->
+                        <div data-hs-stepper-content-item='{
+                            "index": 3
+                        }' style="display: none;">
+                            <div class="flex flex-col min-h-[25rem] p-4">
+                                <h1 class="text-l font-semibold text-center uppercase text-primary-400">
+                                    Informations Du Voyage
+                                </h1>
+                                @if (formParamRisqueDevis.length != 0) {
+                                    <form [formGroup]="formParamRisqueDevis[0]" #formDirective="ngForm">
+                                            <div class="flex py-6 justify-around grid grid-cols-2 max-sm:grid-cols-1 gap-4">
+                                                @for (voyage of tableauxParCategorie; track voyage.libelle) {
+                                                    @if (voyage.typeChamp.code == "L02") {
+                                                        <div>
+                                                            <label [for]="voyage.codeParam" class="block text-sm text-gray-800 font-semibold mb-2">{{ voyage.obligatoire ? voyage.descriptionChamp + " *" : voyage.descriptionChamp }}</label>
+                                                            <div class="relative">
+                                                                <!-- String -->
+                                                                <input [id]="voyage.codeParam" (input)="changeInputParam(voyage.codeParam, formParamRisqueDevis[0])" [formControlName]="voyage.codeParam" type="text" class="shadow-[inset_0_1px 2px rgba(0, 0, 0, 0.075)] peer py-3 px-4 ps-11 block w-full border border-gray-300 focus:border-primary-400 focus:ring-primary-400 text-sm disabled:opacity-50 disabled:pointer-events-none" [placeholder]="voyage.descriptionChamp">
+                                                                <div class="absolute inset-y-0 start-0 flex items-center pointer-events-none ps-4 peer-disabled:opacity-50 peer-disabled:pointer-events-none">
+                                                                    <svg class="shrink-0 size-4 text-gray-500" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                                    <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path>
+                                                                    <circle cx="12" cy="7" r="4"></circle>
+                                                                    </svg>
+                                                                </div>
+                                                            </div>
+                                                            @if (formParamRisqueDevis[0].get(voyage.codeParam).errors != null && (formParamRisqueDevis[0].get(voyage.codeParam).dirty || pageThree)) {
+                                                                <p class="text-sm text-danger mt-2">Veuillez renseigner tous les champs requis.</p>
+                                                            }
+                                                        </div>
+                                                    } @else if (voyage.typeChamp.code == "L06"){ 
+                                                        <div>
+                                                            <label [for]="voyage.codeParam" class="block text-sm text-gray-800 font-semibold mb-2">{{ voyage.obligatoire ? voyage.descriptionChamp + " *" : voyage.descriptionChamp }}</label>
+                                                            <div class="relative">
+                                                                <!-- date -->
+                                                                <input [id]="voyage.codeParam" [min]="voyage.codeParam==='P212'?formParamRisqueDevis[0].get('P211').value : minDate" [max]="voyage.codeParam==='P211' ? maxDate : voyage.codeParam==='P212'? maxDateRetour : ''" (change)="changeInputParamDate(voyage, formParamRisqueDevis[0], $event)" [formControlName]="voyage.codeParam" type="date" class="shadow-[inset_0_1px 2px rgba(0, 0, 0, 0.075)] peer py-3 px-4 ps-11 block w-full border border-gray-300 focus:border-primary-400 focus:ring-primary-400 text-sm disabled:opacity-50 disabled:pointer-events-none" [placeholder]="voyage.descriptionChamp">
+                                                                <div class="absolute inset-y-0 start-0 flex items-center pointer-events-none ps-4 peer-disabled:opacity-50 peer-disabled:pointer-events-none">
+                                                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="shrink-0 size-4 text-gray-500"><path d="M8 2v4"/><path d="M16 2v4"/>
+                                                                        <rect width="18" height="18" x="3" y="4" rx="2"/>
+                                                                        <path d="M3 10h18"/><path d="M8 14h.01"/><path d="M12 14h.01"/><path d="M16 14h.01"/><path d="M8 18h.01"/><path d="M12 18h.01"/><path d="M16 18h.01"/>
+                                                                    </svg>
+                                                                </div>
+                                                            </div>
+                                                           
+                                                            @if (formParamRisqueDevis[0].get(voyage.codeParam).errors != null && (formParamRisqueDevis[0].get(voyage.codeParam).dirty || pageThree)) {
+                                                                @if(formParamRisqueDevis[0].get(voyage.codeParam).errors?.required) {
+                                                                    <p class="text-sm text-danger mt-2">Veuillez renseigner tous les champs requis.</p>
+                                                                }
+                                                                @else if(voyage.codeParam == "P211") {
+                                                                    <p class="text-sm text-danger mt-2">Date d'effet invalide : {{ formParamRisqueDevis[0].get(voyage.codeParam).value < today ?  "La date d’effet ne peut pas être inférieur à la date du jour" : "La date d’effet ne peut pas être supérieure de plus de 6 mois à la date du jour"}}</p>
+                                                                } @else {
+                                                                    <p class="text-sm text-danger mt-2">{{ formParamRisqueDevis[0].get(voyage.codeParam).value < formParamRisqueDevis[0].get("P211").value ?  "Date d’échéance invalide : La date d’échéance doit être postérieure à la date d’effet" : packSelected?.codePack == "V04" ? "La durée du voyage ne peut pas dépasser 31 jours." : (packSelected?.codePack == "V05" || packSelected?.codePack == "V06") ? "La durée maximale de couverture est de 60 jours" : "La durée maximale de couverture est de 365 jours"}}</p>
+                                                                }
+                                                            }
+                                                        </div>
+                                                    } @else if (voyage.typeChamp.code == "L01" || voyage.typeChamp.code == "L08"){ 
+                                                        <div>
+                                                            <label [for]="voyage.codeParam" class="block text-sm text-gray-800 font-semibold mb-2">{{ voyage.obligatoire ? voyage.descriptionChamp + " *" : voyage.descriptionChamp }}</label>
+                                                            <!-- Floating Select -->
+                                                            <div class="relative">
+                                                                
+                                                                <select [id]="voyage.codeParam" (change)="changeInputParam(voyage.codeParam, formParamRisqueDevis[0])" [formControlName]="voyage.codeParam" (change)="getRelation(voyage.typeChamp?.code,voyage.isParent,voyage.idParamRisque,$any($event.target).value,voyage.codeParam,45)"
+                                                                class="shadow-[inset_0_1px 2px rgba(0, 0, 0, 0.075)] peer p-3 pe-9 px-4 ps-11 block w-full border border-gray-300 focus:border-primary-400 focus:ring-primary-400 text-sm disabled:opacity-50 disabled:pointer-events-none">
+                                                                    @for (response of voyage.reponses; track response.codeParam) {
+                                                                        @if (response.code !== '12' && voyage.codeParam==='P182' && !response.black_list) {
+                                                                            <option [value]="voyage.typeChamp.code == 'L01' ? response.idParam : response.id">
+                                                                                {{ response.description }}
+                                                                            </option>
+                                                                        }
+                                                                    }
+                                                                </select>
+                                                                @if (voyage.codeParam == 'P182') {
+                                                                    <div class="absolute inset-y-0 start-0 flex items-center pointer-events-none ps-4 peer-disabled:opacity-50 peer-disabled:pointer-events-none">
+                                                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="shrink-0 size-4 text-gray-500">
+                                                                            <path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/>
+                                                                        </svg>                                                      
+                                                                    </div>
+                                                                }
+                                                            </div> 
+                                                            @if (formParamRisqueDevis[0].get(voyage.codeParam).errors != null && (formParamRisqueDevis[0].get(voyage.codeParam).dirty || pageThree)) {
+                                                                <p class="text-sm text-danger mt-2">Veuillez renseigner tous les champs requis.</p>
+                                                            }      
+                                                        </div>                                     
+                                                    } 
+                                                }
+                                                <div>
+                                                    <label for="pack" class="block text-sm text-gray-800 font-semibold mb-2">Formules *</label>
+                                                    <div class="relative">
+                                                        <select id="pack" formControlName="pack" (change)="getPackMulti($event, 'voyage')"
+                                                        class="shadow-[inset_0_1px 2px rgba(0, 0, 0, 0.075)] peer p-3 pe-9 px-4 ps-11 block w-full border border-gray-300 focus:border-primary-400 focus:ring-primary-400 text-sm disabled:opacity-50 disabled:pointer-events-none">
+                                                            @for (pack0 of packs; track pack0.idPack0) {
+                                                                <option [value]="pack0.idPack0">
+                                                                    {{ pack0.codePack == "V02" ? pack0.description+' (Monde Entier)' : (pack0.codePack == "V01" ? pack0.description+" (Schengen)" : pack0.description)}}
+                                                                </option>
+                                                            }
+                                                        </select>
+                                                        <div class="absolute inset-y-0 start-0 flex items-center pointer-events-none ps-4 peer-disabled:opacity-50 peer-disabled:pointer-events-none">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="shrink-0 size-4 text-gray-500">
+                                                                <rect x="3" y="8" width="18" height="4" rx="1"/>
+                                                                <path d="M12 8v13"/>
+                                                                <path d="M19 12v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-7"/>
+                                                                <path d="M7.5 8a2.5 2.5 0 0 1 0-5A4.8 8 0 0 1 12 8a4.8 8 0 0 1 4.5-5 2.5 2.5 0 0 1 0 5"/>
+                                                            </svg>                                                     
+                                                        </div>
+                                                    </div> 
+                                                    @if (formParamRisqueDevis[0].get("pack").errors != null && (formParamRisqueDevis[0].get("pack").dirty || pageThree)) {
+                                                        <p class="text-sm text-danger mt-2">Veuillez renseigner tous les champs requis.</p>
+                                                    }
+                                                </div>
+
+                                                <div>
+                                                    <label for="agence" class="block text-sm text-gray-800 font-semibold mb-2">Agence *</label>
+                                                    <div class="relative">
+                                                        <select id="agence" formControlName="agence" (change)="changeAgence($event)"
+                                                        class="shadow-[inset_0_1px 2px rgba(0, 0, 0, 0.075)] peer p-3 pe-9 px-4 ps-11 block w-full border border-gray-300 focus:border-primary-400 focus:ring-primary-400 text-sm disabled:opacity-50 disabled:pointer-events-none">
+                                                            @for (agenc of agences; track agenc.idPack0) {
+                                                                @if(agenc?.codeAgence != "01601") {
+                                                                    <option [value]="agenc.idAgence">
+                                                                        {{ agenc.nomVoyagiste }}
+                                                                    </option>
+                                                                }
+                                                            }
+                                                        </select>
+                                                        <div class="absolute inset-y-0 start-0 flex items-center pointer-events-none ps-4 peer-disabled:opacity-50 peer-disabled:pointer-events-none">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="shrink-0 size-4 text-gray-500"><path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z"/><path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2"/>
+                                                                <path d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2"/><path d="M10 6h4"/><path d="M10 10h4"/><path d="M10 14h4"/><path d="M10 18h4"/>
+                                                            </svg>                                                   
+                                                        </div>
+                                                    </div>
+                                                    @if (formParamRisqueDevis[0].get("agence").errors != null && (formParamRisqueDevis[0].get("pack").dirty || pageThree)) {
+                                                        <p class="text-sm text-danger mt-2">Veuillez renseigner tous les champs requis.</p>
+                                                    }  
+                                                </div>
+                                                @if(userId != null) {
+                                                    <div>
+                                                        <label for="reduction" class="block text-sm text-gray-800 font-semibold mb-2">Reduction</label>
+                                                        <div class="relative">
+                                                            <select id="reduction" formControlName="reduction"
+                                                            class="shadow-[inset_0_1px 2px rgba(0, 0, 0, 0.075)] peer p-3 pe-9 px-4 ps-11 block w-full border border-gray-300 focus:border-primary-400 focus:ring-primary-400 text-sm disabled:opacity-50 disabled:pointer-events-none">
+                                                                @for (reduc of reductions; track reduc.idReduction) {
+                                                                    <option [value]="reduc.idReduction">
+                                                                        {{ reduc.nomReduction }}
+                                                                    </option>
+                                                                }
+                                                            </select>
+                                                            <div class="absolute inset-y-0 start-0 flex items-center pointer-events-none ps-4 peer-disabled:opacity-50 peer-disabled:pointer-events-none">
+                                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="shrink-0 size-4 text-gray-500"><path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z"/><path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2"/>
+                                                                    <path d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2"/><path d="M10 6h4"/><path d="M10 10h4"/><path d="M10 14h4"/><path d="M10 18h4"/>
+                                                                </svg>                                                   
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                }
+                                            </div>
+                                    </form>
+                                }
+                                @if (agenceSelected != {}) {
+                                    <div class="hs-accordion-group">
+                                        <div class="hs-accordion bg-white hs-accordion-active:shadow-lg" id="hs-active-bordered-heading-one">
+                                            <button class="uppercase hs-accordion-toggle inline-flex gap-x-3 w-full bg-gray-200 font-semibold text-start text-primary-400 py-4 px-5 hover:text-gray-500" aria-expanded="false">
+                                                Agence la plus proche
+                                                <svg class="hs-accordion-active:hidden block size-4.5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                    <path d="m6 9 6 6 6-6"/>
+                                                </svg>
+                                                <svg class="hs-accordion-active:block hidden size-4.5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                    <path d="m18 15-6-6-6 6"/>
+                                                </svg>
+                                            </button>
+                                            <div class="hs-accordion-content hidden w-full overflow-hidden transition-[height] duration-300" role="region">
+                                                <div class="flex pb-4 px-5">
+                                                    <div class="flex py-6 grid grid-cols-1 gap-4">
+                                                        <p>Agence :  {{ userId == null ? agenceSelected?.idPersonneMorale?.raisonSocial : agenceUser?.nomVoyagiste }} </p>
+                                                        <p>Adresse : {{ userId == null ? agenceSelected?.adresse : agenceUser?.adresse }} </p> 
+                                                        <p>Téléphone :  {{ userId == null ? agenceSelected?.tel : agenceUser?.tel }} </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                                @if(stepFile) {
+                                    <div class="hs-accordion-group">
+                                        <div class="hs-accordion bg-white hs-accordion-active:shadow-lg" id="hs-active-bordered-heading-one">
+                                            <h1 class="text-lg font-semibold text-center justify-items-center text-gray-800 mt-2 ">
+                                                Veuillez choisir entre remplir un formulaire ou importer un fichier.
+                                            </h1>
+                                            <div class="mt-5 flex justify-center items-center gap-x-3">
+                                                <input type="file" name="fileInput" (change)="onFileSelected($event)" #fileInput/>
+                                                 <!-- <button (click)="step=true;" class="py-2 px-3 uppercase inline-flex items-center gap-x-1 text-sm font-semibold border border-primary-400 bg-white text-primary-400 shadow-sm">
+                                                     Formulaire
+                                                 </button>
+                                                 <button (click)="stepFile=true;" class="py-2 px-3 uppercase inline-flex items-center gap-x-1 text-sm font-semibold border border-primary-400 bg-white text-primary-400 shadow-sm">
+                                                     Fichier
+                                                 </button> -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                                <form #form="ngForm" class="py-4 px-5">
+                                    @if(userId == null) {
+                                        <div class="relative flex items-start">
+                                            <re-captcha (resolved)="onRecaptchaResponseDevis($event)" id="recaptchaDevis" name="recaptchaDevis" #recaptchaDevis="ngModel" [(ngModel)]="tokenDevis" required [class.is-invalid]="recaptchaDevis.invalid && (recaptchaDevis.dirty || recaptchaDevis.touched)"></re-captcha>
+                                            @if(recaptchaDevis.invalid && (recaptchaDevis.dirty || recaptchaDevis.touched)) {
+                                                <div class="invalid-feedback">
+                                                    @if (recaptchaDevis.errors?.['required']) {
+                                                        <div>This field is required.</div>
+                                                    }
+                                                </div>
+                                            }
+                                        </div>
+                                    }
+                                    <div class="mt-5 flex justify-between items-center gap-x-2">
+                                        <button (click)="back()" class="py-2 px-3 inline-flex items-center gap-x-1 text-sm font-semibold border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 focus:outline-none focus:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none" data-hs-stepper-back-btn>
+                                            <svg class="shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                <path d="m15 18-6-6 6-6"></path>
+                                            </svg>
+                                            RETOUR
+                                        </button>
+                                        <button (click)="submitParamRisque(45, formParamRisqueDevis[0])" class="py-2 px-3 inline-flex items-center gap-x-1 text-sm font-semibold border border-transparent bg-primary-400 text-white hover:bg-primary-100 focus:outline-none focus:bg-primary-100 disabled:opacity-50 disabled:pointer-events-none">
+                                            SUIVANT
+                                            <svg class="shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                <path d="m9 18 6-6-6-6"></path>
+                                            </svg>
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                            <!-- End Third Content -->
+                        </div>
+                        <!-- End Stepper Content -->
+                        
+                    
+                        <!-- 4 Content -->
+                        <div data-hs-stepper-content-item='{
+                            "index": 4
+                        }' style="display: none;">
+                            <div class="flex flex-col min-h-[25rem] p-4">
+                                <div class="hs-accordion-group flex justify-around">
+                                    <div class="hs-accordion w-1/2 m-1 active bg-white hs-accordion-active:shadow-lg" id="hs-active-bordered-heading-one">
+                                        <button class="uppercase hs-accordion-toggle inline-flex gap-x-3 w-full bg-gray-200 font-semibold text-start text-primary-400 py-4 px-5 hover:text-gray-500" aria-expanded="false">
+                                            Informations Assuré(e) principal(e)
+                                            <svg class="hs-accordion-active:hidden block size-4.5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                <path d="m6 9 6 6 6-6"/>
+                                            </svg>
+                                            <svg class="hs-accordion-active:block hidden size-4.5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                <path d="m18 15-6-6-6 6"/>
+                                            </svg>
+                                        </button>
+                                        <div class="hs-accordion-content w-full overflow-hidden transition-[height] duration-300" role="region">
+                                            <div class="flex pb-4 px-5">
+                                                <div class="flex py-6 grid grid-cols-1 gap-4">
+                                                    <p>Nom :  {{ formInfoAssure.get("nom").value }} </p>
+                                                    <p>Prénom : {{ formInfoAssure.get("prenom").value }} </p> 
+                                                    <p>Date de naissance :  {{ formInfoAssure.get("dateNaissance").value }} </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="hs-accordion w-1/2 m-1 active bg-white hs-accordion-active:shadow-lg" id="hs-active-bordered-heading-one">
+                                        <button class="uppercase hs-accordion-toggle inline-flex gap-x-3 w-full bg-gray-200 font-semibold text-start text-primary-400 py-4 px-5 hover:text-gray-500" aria-expanded="false">
+                                            Informations Du Voyage
+                                            <svg class="hs-accordion-active:hidden block size-4.5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                <path d="m6 9 6 6 6-6"/>
+                                            </svg>
+                                            <svg class="hs-accordion-active:block hidden size-4.5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                <path d="m18 15-6-6-6 6"/>
+                                            </svg>
+                                        </button>
+                                        <div class="hs-accordion-content w-full overflow-hidden transition-[height] duration-300" role="region">
+                                            <div class="flex pb-4 px-5">
+                                                <div class="flex py-6 grid grid-cols-1 gap-4">
+                                                    <p>Formule :  {{ packSelected?.description }} </p>
+                                                    <p>Destination : {{ destination?.description  }} </p> 
+                                                    <p>Date de départ :  {{ formParamRisqueDevis[0]?.get("P211")?.value }} </p>
+                                                    <p>Date de retour :  {{ formParamRisqueDevis[0]?.get("P212")?.value }} </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="flex flex-col py-4">
+                                    <div class="-m-1.5 overflow-x-auto">
+                                    <div class="p-1.5 min-w-full inline-block align-middle">
+                                        <div class="border overflow-hidden">
+                                        <table class="min-w-full divide-y divide-gray-200">
+                                            <thead class="bg-primary-400">
+                                            <tr>
+                                                <th scope="col" class="gap-x-3 px-6 py-4 text-start font-semibold font-medium text-white uppercase">Numero de devis</th>
+                                                <th scope="col" class="gap-x-3 px-6 py-4 text-start font-semibold font-medium text-white uppercase">Prime TTC</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody class="divide-y divide-gray-200">
+                                            <tr>
+                                                <td class="gap-x-3 px-6 py-4 whitespace-nowrap font-semibold font-medium text-gray-800">{{ devisJson.idDevis }}</td>
+                                                <td class="gap-x-3 px-6 py-4 whitespace-nowrap font-semibold text-gray-800">{{ primeTTC != undefined ? primeTTC + " DZD" : "" }}</td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                        </div>
+                                    </div>
+                                    </div>
+                                </div>
+
+                                <h1 class="my-4 text-l font-semibold text-center uppercase text-primary-400">
+                                    Garanties/Plafonds - Formule: {{ packSelected?.description }}
+                                </h1>
+
+                                <div class="flex flex-col py-4">
+                                    <div class="-m-1.5 overflow-x-auto">
+                                    <div class="p-1.5 min-w-full inline-block align-middle">
+                                        <div class="border overflow-hidden">
+                                            <div class="hs-accordion-group">
+                                                <div class="hs-accordion active" id="hs-basic-heading-assistance">
+                                                    <table class="min-w-full divide-y divide-gray-200">
+                                                        <thead class="bg-primary-400">
+                                                        <tr>
+                                                            <th scope="col" class="gap-x-3 px-6 py-4 text-start font-semibold font-medium text-white uppercase">Garantie</th>
+                                                            <th scope="col" class="gap-x-3 px-6 py-4 text-start font-semibold font-medium text-white uppercase">Limites et plafonds</th>
+                                                            <th scope="col" class="gap-x-3 px-6 py-4 text-start font-semibold font-medium text-white uppercase">Franchise</th>
+                                                        </tr>
+                                                        </thead>
+                                                        <tbody class="divide-y divide-gray-200">
+                                                            <tr>
+                                                                <td class="gap-x-3 px-6 py-4 whitespace-nowrap font-semibold font-medium text-gray-800">Décès</td>
+                                                                <td class="gap-x-3 px-6 py-4 whitespace-nowrap font-semibold font-medium text-gray-800">{{ plafond }}</td>
+                                                                <td class="gap-x-3 px-6 py-4 whitespace-nowrap font-semibold text-gray-800">-</td>
+                                                            </tr>
+                                                            <tr class="bg-gray-100">
+                                                                <td class="gap-x-3 px-6 py-4 whitespace-nowrap font-semibold font-medium text-gray-800">Incapacité Permanente Totale / Partielle</td>
+                                                                <td class="gap-x-3 px-6 py-4 whitespace-nowrap font-semibold font-medium text-gray-800">{{ plafond }}</td>
+                                                                <td class="gap-x-3 px-6 py-4 whitespace-nowrap font-semibold text-gray-800">15%</td>
+                                                            </tr>
+                                                            @if(packSelected?.codePack != "V05" && packSelected?.codePack != "V06") {
+                                                                <tr>
+                                                                    <td class="gap-x-3 px-6 py-4 whitespace-nowrap font-semibold font-medium text-gray-800">Assistance</td>
+                                                                    <td class="gap-x-3 px-6 py-4 whitespace-nowrap font-semibold font-medium text-gray-800"></td>
+                                                                    <td class="gap-x-3 px-6 py-4 whitespace-nowrap font-semibold text-gray-800">
+                                                                        <button class="hs-accordion-toggle hs-accordion-active:text-blue-600 py-3 inline-flex items-center gap-x-3 w-full font-semibold text-start text-gray-800 hover:text-gray-500 focus:outline-none focus:text-gray-500 rounded-lg disabled:opacity-50 disabled:pointer-events-none" aria-expanded="true" aria-controls="hs-basic-collapse-assistance">
+                                                                            <svg class="hs-accordion-active:hidden block size-3.5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                                            <path d="M5 12h14"></path>
+                                                                            <path d="M12 5v14"></path>
+                                                                            </svg>
+                                                                            <svg class="hs-accordion-active:block hidden size-3.5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                                            <path d="M5 12h14"></path>
+                                                                            </svg>
+                                                                        </button>
+                                                                    </td>
+                                                                </tr>
+                                                            }
+                                                        </tbody>
+                                                    </table>
+                                                    <div id="hs-basic-collapse-assistance" class="bg-gray-100 hs-accordion-content hidden overflow-hidden transition-[height] duration-300" role="region" aria-labelledby="hs-basic-heading-assistance">
+                                                        <table class="min-w-full divide-y divide-gray-200">
+                                                            <thead class="bg-primary-400">
+                                                                <tr>
+                                                                    <th scope="col" class="gap-x-3 px-6 py-4 text-start font-semibold font-medium text-white uppercase">Garantie</th>
+                                                                    <th scope="col" class="gap-x-3 px-6 py-4 text-start font-semibold font-medium text-white uppercase"></th>
+                                                                    <th scope="col" class="gap-x-3 px-6 py-4 text-start font-semibold font-medium text-white uppercase">Limites</th>
+                                                                </tr>
+                                                                </thead>
+                                                                <tbody class="divide-y divide-gray-200">
+                                                                    <tr>
+                                                                        <td class="gap-x-3 px-6 py-4 whitespace-nowrap font-semibold font-medium text-gray-800">15. Capital Décès / IPP-IPT</td>
+                                                                        <td class="gap-x-3 px-6 py-4 whitespace-nowrap font-semibold text-gray-800"></td>
+                                                                        <td class="gap-x-3 px-6 py-4 whitespace-nowrap font-semibold font-medium text-gray-800">{{ garantie15 }}</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td class="gap-x-3 px-6 py-4 whitespace-nowrap font-semibold font-medium text-gray-800">1. Prise en charge des frais médicaux</td>
+                                                                        <td class="gap-x-3 px-6 py-4 whitespace-nowrap font-semibold text-gray-800"></td>
+                                                                        <td class="gap-x-3 px-6 py-4 whitespace-nowrap font-semibold font-medium text-gray-800">{{ garantie1 }}</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td class="gap-x-3 px-6 py-4 whitespace-nowrap font-semibold font-medium text-gray-800">2. Visite d'un proche parent</td>
+                                                                        <td class="gap-x-3 px-6 py-4 whitespace-nowrap font-semibold text-gray-800"></td>
+                                                                        <td class="gap-x-3 px-6 py-4 whitespace-nowrap font-semibold font-medium text-gray-800">{{ garantie2 }}</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td class="gap-x-3 px-6 py-4 whitespace-nowrap font-semibold font-medium text-gray-800">3. Rapatriement des autres bénéficiaires</td>
+                                                                        <td class="gap-x-3 px-6 py-4 whitespace-nowrap font-semibold text-gray-800"></td>
+                                                                        <td class="gap-x-3 px-6 py-4 whitespace-nowrap font-semibold font-medium text-gray-800">{{ garantie3 }}</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td class="gap-x-3 px-6 py-4 whitespace-nowrap font-semibold font-medium text-gray-800">4. Retour prématuré du Bénéficiaire</td>
+                                                                        <td class="gap-x-3 px-6 py-4 whitespace-nowrap font-semibold text-gray-800"></td>
+                                                                        <td class="gap-x-3 px-6 py-4 whitespace-nowrap font-semibold font-medium text-gray-800">{{ garantie4 }}</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td class="gap-x-3 px-6 py-4 whitespace-nowrap font-semibold font-medium text-gray-800">5. Prise en charge des soins dentaires d'urgence</td>
+                                                                        <td class="gap-x-3 px-6 py-4 whitespace-nowrap font-semibold text-gray-800"></td>
+                                                                        <td class="gap-x-3 px-6 py-4 whitespace-nowrap font-semibold font-medium text-gray-800">{{ garantie5 }}</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td class="gap-x-3 px-6 py-4 whitespace-nowrap font-semibold font-medium text-gray-800">6. Frais de secours et sauvetage</td>
+                                                                        <td class="gap-x-3 px-6 py-4 whitespace-nowrap font-semibold text-gray-800"></td>
+                                                                        <td class="gap-x-3 px-6 py-4 whitespace-nowrap font-semibold font-medium text-gray-800">{{ garantie6 }}</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td class="gap-x-3 px-6 py-4 whitespace-nowrap font-semibold font-medium text-gray-800">7. Prolongation de séjours</td>
+                                                                        <td class="gap-x-3 px-6 py-4 whitespace-nowrap font-semibold text-gray-800"></td>
+                                                                        <td class="gap-x-3 px-6 py-4 whitespace-nowrap font-semibold font-medium text-gray-800">{{ garantie7 }}</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td class="gap-x-3 px-6 py-4 whitespace-nowrap font-semibold font-medium text-gray-800">8. Assistance juridique</td>
+                                                                        <td class="gap-x-3 px-6 py-4 whitespace-nowrap font-semibold text-gray-800"></td>
+                                                                        <td class="gap-x-3 px-6 py-4 whitespace-nowrap font-semibold font-medium text-gray-800">{{ garantie8 }}</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td class="gap-x-3 px-6 py-4 whitespace-nowrap font-semibold font-medium text-gray-800">9. Avance de caution pénale</td>
+                                                                        <td class="gap-x-3 px-6 py-4 whitespace-nowrap font-semibold text-gray-800"></td>
+                                                                        <td class="gap-x-3 px-6 py-4 whitespace-nowrap font-semibold font-medium text-gray-800">{{ garantie9 }}</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td class="gap-x-3 px-6 py-4 whitespace-nowrap font-semibold font-medium text-gray-800">10. Perte de bagage</td>
+                                                                        <td class="gap-x-3 px-6 py-4 whitespace-nowrap font-semibold text-gray-800"></td>
+                                                                        <td class="gap-x-3 px-6 py-4 whitespace-nowrap font-semibold font-medium text-gray-800">{{ garantie10 }}</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td class="gap-x-3 px-6 py-4 whitespace-nowrap font-semibold font-medium text-gray-800">11. Retard de vol de plus de 12Heures</td>
+                                                                        <td class="gap-x-3 px-6 py-4 whitespace-nowrap font-semibold text-gray-800"></td>
+                                                                        <td class="gap-x-3 px-6 py-4 whitespace-nowrap font-semibold font-medium text-gray-800">{{ garantie11 }}</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td class="gap-x-3 px-6 py-4 whitespace-nowrap font-semibold font-medium text-gray-800">12. Transmission de message urgent</td>
+                                                                        <td class="gap-x-3 px-6 py-4 whitespace-nowrap font-semibold text-gray-800"></td>
+                                                                        <td class="gap-x-3 px-6 py-4 whitespace-nowrap font-semibold font-medium text-gray-800">{{ garantie12 }}</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td class="gap-x-3 px-6 py-4 whitespace-nowrap font-semibold font-medium text-gray-800">13. Transort sanitaire</td>
+                                                                        <td class="gap-x-3 px-6 py-4 whitespace-nowrap font-semibold text-gray-800"></td>
+                                                                        <td class="gap-x-3 px-6 py-4 whitespace-nowrap font-semibold font-medium text-gray-800">{{ garantie13 }}</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td class="gap-x-3 px-6 py-4 whitespace-nowrap font-semibold font-medium text-gray-800">14. Rapatriement de corps en cas de décès</td>
+                                                                        <td class="gap-x-3 px-6 py-4 whitespace-nowrap font-semibold text-gray-800"></td>
+                                                                        <td class="gap-x-3 px-6 py-4 whitespace-nowrap font-semibold font-medium text-gray-800">{{ garantie14 }}</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td class="px-6 py-1 whitespace-nowrap font-medium text-gray-800">
+                                                                        (1) Maximum 02 jours, (2) Billet d'avion, (3) Maximum 05 jours, (4) Maximum 07 nuités, (5) Maximum 40kg
+                                                                        </td>
+                                                                    </tr>
+                                                                </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    </div>
+                                </div>
+
+                                <div class="mt-5 flex justify-between items-center gap-x-2">
+                                    <button (click)="back()" class="py-2 px-3 inline-flex items-center gap-x-1 text-sm font-semibold border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 focus:outline-none focus:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none" data-hs-stepper-back-btn="">
+                                        <svg class="shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                            <path d="m15 18-6-6 6-6"></path>
+                                        </svg>
+                                        RETOUR
+                                    </button>
+                                    @if(primeTTC != undefined) {
+                                        <button (click)="goToContrat()" class="py-2 px-3 uppercase inline-flex items-center gap-x-1 text-sm font-semibold border border-transparent bg-primary-400 text-white shadow-sm focus:outline-none disabled:opacity-50 disabled:pointer-events-none">
+                                            Je souscris
+                                            <svg class="shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                <path d="m9 18 6-6-6-6"></path>
+                                            </svg>
+                                        </button>
+                                    }
+                                </div>
+                            </div>
+                            <!-- End 4 Content -->
+                        </div>
+                        <!-- End Stepper Content -->
+                    
+                        <!-- 5 Content -->
+                        <div data-hs-stepper-content-item='{
+                            "index": 5
+                        }' style="display: none;">
+                            <div class="flex flex-col min-h-[25rem] p-4">
+                                <div class="hs-accordion-group">
+                                    <div class="hs-  w-full active bg-white hs-accordion-active:shadow-lg" id="hs-active-bordered-heading-one">
+                                        <button class="uppercase hs-accordion-toggle inline-flex justify-between items-center gap-x-3 w-full bg-gray-200 font-semibold text-start text-primary-400 py-4 px-5 hover:text-gray-500" aria-expanded="false">
+                                            Informations Du Voyage
+                                            <svg class="hs-accordion-active:hidden block size-4.5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                <path d="m6 9 6 6 6-6"/>
+                                            </svg>
+                                            <svg class="hs-accordion-active:block hidden size-4.5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                <path d="m18 15-6-6-6 6"/>
+                                            </svg>
+                                        </button>
+                                        <div class="hs-accordion-content w-full overflow-hidden transition-[height] duration-300" role="region">
+                                            <div class="flex pb-4 px-5">
+                                                <div class="flex py-6 grid grid-cols-1 gap-4">
+                                                    <p>Formule :  {{ devisOutput?.pack?.description }} </p>
+                                                    <p>Destination : {{ destination?.description }} </p> 
+                                                    <p>Date de départ :  {{ dateDepartSelected }} </p>
+                                                    <p>Date de retour :  {{ dateRetourSelected }} </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="hs-accordion-group">
+                                    @for (item of formParamRisqueContrat; track item.value; let idx = $index) {
+                                        @if (idx != 0) {
+                                            <form [formGroup]="item" #formDirective="ngForm">
+                                                <div [class]="idx == 1 ? 'hs-accordion active bg-white hs-accordion-active:shadow-lg mt-4' :'hs-accordion bg-white hs-accordion-active:shadow-lg mt-4'" [id]="'hs-active-bordered-heading-contrat-'+idx">
+                                                    <button (click)="toggleAcc('hs-active-bordered-heading-contrat-'+idx)" class="uppercase hs-accordion-toggle inline-flex justify-between items-center gap-x-3 w-full bg-gray-200 font-semibold text-start text-primary-400 py-4 px-5 hover:text-gray-500" aria-expanded="false" attr.aria-controls="{{ 'hs-basic-active-bordered-collapse-'+idx }}">
+                                                        {{ idx == 1 ? "Informations de l'assuré(e) principal(e)" : "Informations Du " + idx + " assuré" }}
+                                                        <svg class="hs-accordion-active:hidden block size-4.5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                            <path d="m6 9 6 6 6-6"/>
+                                                        </svg>
+                                                        <svg class="hs-accordion-active:block hidden size-4.5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                            <path d="m18 15-6-6-6 6"/>
+                                                        </svg>
+                                                    </button>
+                                                    <div [id]="'hs-basic-active-bordered-collapse-'+idx" [class]="idx == 1 ? 'hs-accordion-content w-full overflow-hidden transition-[height] duration-300' :'hs-accordion-content hidden w-full overflow-hidden transition-[height] duration-300'" role="region" attr.aria-labelledby="{{ 'hs-active-bordered-heading-contrat-'+idx }}">
+                                                        <div class="pb-4 px-5">
+                                                            <div class="flex py-6 justify-around grid grid-cols-2 max-sm:grid-cols-1 gap-4">
+                                                                    @for (assure of tableauxParCategorieAssureContrat; track assure.libelle) {
+                                                                        @if (assure.obligatoire) {
+                                                                            @if (assure.typeChamp.code == "L02" || assure.typeChamp.code == "L03" || assure.typeChamp.code == "L07") {
+                                                                                <div>
+                                                                                    <label [for]="assure.codeParam+idx+'c'" class="block text-sm text-gray-800 font-semibold mb-2">{{ assure.obligatoire ? assure.descriptionChamp + " *" : assure.descriptionChamp }}</label>
+                                                                                    <div class="relative">
+                                                                                        <!-- String -->
+                                                                                        <input (input)="changeInputParam(assure.codeParam+idx+'c', item)" [id]="assure.codeParam+idx+'c'" [formControlName]="assure.codeParam+idx+'c'" type="text" class="shadow-[inset_0_1px 2px rgba(0, 0, 0, 0.075)] peer py-3 px-4 ps-11 block w-full border border-gray-300 focus:border-primary-400 focus:ring-primary-400 text-sm disabled:opacity-50 disabled:pointer-events-none" [placeholder]="assure.descriptionChamp">
+                                                                                        <div class="absolute inset-y-0 start-0 flex items-center pointer-events-none ps-4 peer-disabled:opacity-50 peer-disabled:pointer-events-none">
+                                                                                            @if(assure.codeParam == "P168") { <!-- EMAIL -->
+                                                                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="shrink-0 size-4 text-gray-500">
+                                                                                                    <rect width="20" height="16" x="2" y="4" rx="2"/>
+                                                                                                    <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+                                                                                                </svg>
+                                                                                            }
+                                                                                            @else if(assure.codeParam == "P169") { <!-- Telephone -->
+                                                                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="shrink-0 size-4 text-gray-500"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                                                                                            }
+                                                                                            @else if(assure.codeParam == "P170") { <!-- Adresse -->
+                                                                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="shrink-0 size-4 text-gray-500"><path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"/><path d="M3 10a2 2 0 0 1 .709-1.528l7-5.999a2 2 0 0 1 2.582 0l7 5.999A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>                                                                                            
+                                                                                            }
+                                                                                            @else if(assure.codeParam == "P213") { <!-- Passeport -->
+                                                                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="shrink-0 size-4 text-gray-500"><path d="M16 10h2"/><path d="M16 14h2"/><path d="M6.17 15a3 3 0 0 1 5.66 0"/><circle cx="9" cy="11" r="2"/><rect x="2" y="5" width="20" height="14" rx="2"/></svg>    
+                                                                                            }
+                                                                                            @else {
+                                                                                                <svg class="shrink-0 size-4 text-gray-500" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                                                                <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path>
+                                                                                                <circle cx="12" cy="7" r="4"></circle>
+                                                                                                </svg>
+                                                                                            }
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    @if (item.get(assure.codeParam+idx+'c').errors != null && (item.get(assure.codeParam+idx+'c').dirty || pageFour)) {
+                                                                                        @if(item.get(assure.codeParam+idx+'c').errors?.required) {
+                                                                                            <p class="text-sm text-danger mt-2">Veuillez renseigner tous les champs requis.</p>
+                                                                                        } @else if(item.get(assure.codeParam+idx+'c').errors?.pattern?.requiredPattern == "^[a-zA-Z -']+$") {
+                                                                                            @if(assure.codeParam == "P164") {
+                                                                                                <p class="text-sm text-danger mt-2">Nom invalide.</p>
+                                                                                            } @else {
+                                                                                                <p class="text-sm text-danger mt-2">Prénom invalide.</p>
+                                                                                            }
+                                                                                        } @else if(assure.codeParam == "P168") {
+                                                                                            <p class="text-sm text-danger mt-2">Email invalide.</p>
+                                                                                        } @else if(assure.codeParam == "P169") {
+                                                                                            <p class="text-sm text-danger mt-2">Veuillez indiquer un numero de téléphone mobile valide ( exemple: 0xxxxxxxxx ).</p>
+                                                                                        } @else {
+                                                                                            <p class="text-sm text-danger mt-2">Le nombre de caractère doit être compris entre 6 et 15.</p>
+                                                                                        }
+                                                                                    }
+                                                                                </div>
+                                                                            } @else if (assure.typeChamp.code == "L06"){ 
+                                                                                <div>
+                                                                                    <label [for]="assure.codeParam+idx+'c'" class="block text-sm text-gray-800 font-semibold mb-2">{{ assure.obligatoire ? assure.descriptionChamp + " *" : assure.descriptionChamp }}</label>
+                                                                                    <div class="relative">
+                                                                                        <!-- date -->
+                                                                                        <input max="9999-12-31" (change)="changeInputParam(assure.codeParam+idx+'c', item)" [id]="assure.codeParam+idx+'c'" [formControlName]="assure.codeParam+idx+'c'" type="date" class="shadow-[inset_0_1px 2px rgba(0, 0, 0, 0.075)] peer py-3 px-4 ps-11 block w-full border border-gray-300 focus:border-primary-400 focus:ring-primary-400 text-sm disabled:opacity-50 disabled:pointer-events-none" [placeholder]="assure.descriptionChamp">
+                                                                                        <div class="absolute inset-y-0 start-0 flex items-center pointer-events-none ps-4 peer-disabled:opacity-50 peer-disabled:pointer-events-none">
+                                                                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="shrink-0 size-4 text-gray-500"><path d="M8 2v4"/><path d="M16 2v4"/>
+                                                                                                <rect width="18" height="18" x="3" y="4" rx="2"/>
+                                                                                                <path d="M3 10h18"/><path d="M8 14h.01"/><path d="M12 14h.01"/><path d="M16 14h.01"/><path d="M8 18h.01"/><path d="M12 18h.01"/><path d="M16 18h.01"/>
+                                                                                            </svg>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    @if (item.get(assure.codeParam+idx+'c').errors != null && (item.get(assure.codeParam+idx+'c').dirty || pageFour)) {
+                                                                                        @if(item.get(assure.codeParam+idx+'c').errors?.required) {
+                                                                                            <p class="text-sm text-danger mt-2">Veuillez renseigner tous les champs requis.</p>
+                                                                                        } @else {
+                                                                                            <p class="text-sm text-danger mt-2">{{ item.get(assure.codeParam+idx+'c').errors?.dateInvalid ? item.get(assure.codeParam+idx+'c').errors?.dateInvalid : 'La date d’expiration du passeport est invalide ou expirée.'}}</p>
+                                                                                        }
+                                                                                    }
+                                                                                </div>
+                                                                            } @else if (assure.typeChamp.code == "L01" || assure.typeChamp.code == "L08"){ 
+                                                                                <div>
+                                                                                    <label [for]="assure.codeParam+idx+'c'" class="block text-sm text-gray-800 font-semibold mb-2">{{ assure.obligatoire ? assure.descriptionChamp + " *" : assure.descriptionChamp }}</label>
+                                                                                    <!-- Floating Select -->
+                                                                                    <div class="relative">
+                                                                                        <select [id]="assure.codeParam+idx+'c'" [formControlName]="assure.codeParam+idx+'c'" (change)="getRelation(assure.typeChamp?.code,assure.isParent,assure.idParamRisque,$any($event.target).value,assure.codeParam,46)"
+                                                                                        class="shadow-[inset_0_1px 2px rgba(0, 0, 0, 0.075)] peer p-3 pe-9 ps-11 block w-full border border-gray-300 focus:border-primary-400 focus:ring-primary-400 text-sm disabled:opacity-50 disabled:pointer-events-none">
+                                                                                            @for (response of assure.reponses; track response.codeParam) {
+                                                                                                <option [value]="assure.typeChamp.code == 'L01' ? response.idParam : response.id">
+                                                                                                    {{ assure.codeParam == "P215" ? response.nationalite : response.description }}
+                                                                                                </option>
+                                                                                            }
+                                                                                        </select>
+                                                                                        <div class="absolute inset-y-0 start-0 flex items-center pointer-events-none ps-4 peer-disabled:opacity-50 peer-disabled:pointer-events-none">
+                                                                                            @if(assure.codeParam == "P215") {
+                                                                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="shrink-0 size-4 text-gray-500">
+                                                                                                    <circle cx="12" cy="12" r="10"/>
+                                                                                                    <path d="M2 12h20M12 2c2.5 3 4 7 4 10s-1.5 7-4 10c-2.5-3-4-7-4-10s1.5-7 4-10z"/>
+                                                                                                  </svg>                                                                                                  
+                                                                                            }
+                                                                                            @else if(assure.codeParam == "P172") {
+                                                                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="shrink-0 size-4 text-gray-500"><path d="M10 20h4"/><path d="M12 16v6"/><path d="M17 2h4v4"/><path d="m21 2-5.46 5.46"/><circle cx="12" cy="11" r="5"/></svg>
+                                                                                            }
+                                                                                            @else {
+                                                                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="shrink-0 size-4 text-gray-500">
+                                                                                                    <path d="M12 2c4.418 0 8 3.582 8 8 0 5.25-8 12-8 12s-8-6.75-8-12c0-4.418 3.582-8 8-8z"/>
+                                                                                                    <circle cx="12" cy="10" r="3"/>
+                                                                                                </svg>                                                                                                  
+                                                                                            }
+                                                                                        </div>
+                                                                                    </div> 
+                                                                                    @if (item.get(assure.codeParam+idx+'c').errors != null && (item.get(assure.codeParam+idx+'c').dirty || pageFour)) {
+                                                                                        @if(item.get(assure.codeParam+idx+'c').errors?.required) {
+                                                                                            <p class="text-sm text-danger mt-2">Veuillez renseigner tous les champs requis.</p>
+                                                                                        }
+                                                                                    }
+                                                                                </div>                                           
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        }
+                                    }
+                                    @if(userId == null) {
+                                        <div class="grid space-y-3 py-4 px-5">
+                                            <div class="relative flex items-start">
+                                            <div class="flex items-center h-5">
+                                                <input id="hs-checkbox-delete" name="hs-checkbox-delete" type="checkbox" class="border-gray-400 text-primary-400 focus:ring-primary-400">
+                                            </div>
+                                            <label for="hs-checkbox-delete" class="ms-3">
+                                                <span class="block text-sm text-gray-800">J’accepte les conditions générales du contrat <a href="https://www.axa.dz/wp-content/uploads/2023/10/Conditions-Generales-Assurance-Voyage.pdf" class="font-semibold underline" target="_blank">d’assurance</a> , <a href="https://www.axa.dz/wp-content/uploads/2023/10/Conditions-Generales-Assistance-a-lEtranger.pdf" class="font-semibold underline" target="_blank">d’assistance</a> et de <a href="https://www.axa.dz/wp-content/uploads/2025/01/CONDITIONS-GENERALES-DE-VENTE-EN-LIGNE-AXA.pdf" class="font-semibold underline" target="_blank">vente en ligne</a> </span>
+                                            </label>
+                                            </div>
+                                        
+                                            <div class="relative flex items-start">
+                                            <div class="flex items-center h-5 mt-1">
+                                                <input id="hs-checkbox-archive" name="hs-checkbox-archive" type="checkbox" class="border-gray-400 text-primary-400 focus:ring-primary-400">
+                                            </div>
+                                            <label for="hs-checkbox-archive" class="ms-3">
+                                                <span class="block text-sm text-gray-800">Je déclare avoir donné mon consentement exprès pour l'utilisation par l'assureur de mes données personnelles dans le cadre de l'exécution du contrat d'assurance, conformément aux disposition de la loi N°18-07</span>
+                                            </label>
+                                            </div>
+
+                                        </div>
+                                    }
+                                </div>
+
+                                <form #form="ngForm" class="py-4 px-5">
+                                    @if(userId == null) {
+                                        <div class="relative flex items-start">
+                                            <re-captcha (resolved)="onRecaptchaResponse($event)" id="recaptcha" name="recaptcha" #recaptcha="ngModel" [(ngModel)]="token" required [class.is-invalid]="recaptcha.invalid && (recaptcha.dirty || recaptcha.touched)"></re-captcha>
+                                            @if(recaptcha.invalid && (recaptcha.dirty || recaptcha.touched)) {
+                                                <div class="invalid-feedback">
+                                                    @if (recaptcha.errors?.['required']) {
+                                                        <div>This field is required.</div>
+                                                    }
+                                                </div>
+                                            }
+                                        </div>
+                                    }
+    
+                                    <div class="mt-5 flex justify-between items-center gap-x-2">
+                                        <div class="py-4 px-5 bg-gray-400">
+                                            <div style="font-size: 21px; color: #00008f; font-weight: 600;">
+                                                <span style="font-size: 18px; font-weight: 600; margin-right: 12px;">Montant :</span>
+                                                <span> {{ montant }} DZD</span>
+                                            </div>
+                                        </div>
+                                        @if (userId == null) {
+                                            <button (click)="submitParamRisqueContrat(form)" class="py-2 px-3 uppercase inline-flex items-center gap-x-1 text-sm font-semibold border border-transparent bg-primary-400 text-white shadow-sm focus:outline-none disabled:opacity-50 disabled:pointer-events-none">
+                                                <img class="w-10 h-auto" src="/CIB-Dahabia8.png" alt="Logo" srcset="">
+                                                Procéder au paiement
+                                            </button>
+                                        } @else {
+                                            <button (click)="submitParamRisqueContrat(form)" class="py-2 px-3 uppercase inline-flex items-center gap-x-1 text-sm font-semibold border border-transparent bg-primary-400 text-white shadow-sm focus:outline-none disabled:opacity-50 disabled:pointer-events-none">
+                                                Valider
+                                            </button>
+                                        }
+                                        <button class="hidden py-2 px-3 uppercase inline-flex items-center gap-x-1 text-sm font-semibold border border-transparent bg-secondary-400 text-white shadow-sm hover:bg-gray-50 focus:outline-none focus:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none" data-hs-stepper-next-btn>
+                                            Je souscris
+                                            <svg class="shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                <path d="m15 18-6-6 6-6"></path>
+                                            </svg>
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                            <!-- End 4 Content -->
+                        </div>
+                        <!-- End Stepper Content -->
+                </div>
+                <!-- Stepper -->
+            </div>
+        </div>
+    </div>
+</div>
+<app-footer></app-footer>

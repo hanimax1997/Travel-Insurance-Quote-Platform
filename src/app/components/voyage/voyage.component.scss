@@ -1,0 +1,47 @@
+*:focus {
+    outline: none;
+}
+
+.vertical-line {
+    width: 2px; /* Largeur très petite pour une ligne verticale */
+    height: 60px; /* Hauteur de la ligne verticale */
+    background-color: #E5E5E5; /* Couleur de la ligne */
+    margin: 0 auto; /* Centrer la ligne si nécessaire */
+}
+
+/* file upload button */
+input[type="file"]::file-selector-button {
+    padding: 0 16px;
+    height: 40px;
+    cursor: pointer;
+    background-color: white;
+    color: #00008f ;
+    font-weight: 700 !important;
+    border: 1px solid #00008f;
+  //  box-shadow: 1px 1px 1px #00008f;
+    margin-right: 16px;
+    transition: background-color 200ms;
+    border-radius: 50px;
+}
+.btn-file{
+    border-radius: 4px;
+    padding: 0 16px;
+    height: 40px;
+    cursor: pointer;
+    background-color: white;
+    color: #00008f ;
+    font-weight: 700 !important;
+    border: 1px solid #00008f;
+    margin-right: 16px;
+    transition: background-color 200ms;
+    border-radius: 50px;
+}
+/* file upload button hover state */
+input[type="file"]::file-selector-button:hover {
+    background-color: #f3f4f6;
+}
+
+/* file upload button active state */
+input[type="file"]::file-selector-button:active {
+    background-color: #e5e7eb;
+}

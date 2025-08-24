@@ -1,0 +1,255 @@
+
+<h2 class="heading">Consulter la liste {{ data.garantie?.codeGarantie == "G53" ? "des effectifs" : "de matériel informatique" }}
+    <span style="float: right; font-size: 24px;">
+        <mat-icon aria-hidden="false" aria-label
+            class="material-symbols-outlined"
+            matTooltip matTooltipPosition="right" mat-dialog-close> close
+        </mat-icon>
+    </span>
+</h2>
+<mat-divider></mat-divider>
+<mat-dialog-content class="mat-typography">
+    <form [formGroup]="data.formListParamRisque" class="form-list">
+        <ng-container *ngFor="let rs of data.listParamRisque">
+            <!--select not child-->
+            <mat-form-field
+                appearance="outline"
+                class="col-md-3"
+                *ngIf="rs.typeChamp?.code == 'L01'">
+                <mat-label>{{ rs.libelle }} </mat-label>
+                <mat-select
+                    formControlName="{{ rs.formName }}">
+                    <ng-container
+                        *ngFor="let response of rs.reponses">
+                        <mat-option [value]="response">
+                            {{ response.description }}
+                        </mat-option>
+                    </ng-container>
+                </mat-select>
+                <mat-error
+                    class="invalid-feedback"
+                    *ngIf="data.formListParamRisque.get(rs.formName).errors?.['required']">
+                    ce champs est obligatoire
+                </mat-error>
+                <mat-error
+                    *ngIf="
+                        data.formListParamRisque.get(rs.formName).errors?.bloquant
+                      "
+                    class="invalid-feedback">
+                    {{
+                    data.formListParamRisque.get(rs.formName).errors?.msg
+                    }}
+                </mat-error>
+            </mat-form-field>
+            <!--from table -->
+            <mat-form-field
+                appearance="outline"
+                class="col-md-3"
+                *ngIf="rs.typeChamp?.code == 'L08'">
+                <mat-label>{{ rs.libelle }} </mat-label>
+                <mat-select
+                    formControlName="{{ rs.formName }}">
+                    <ng-container
+                        *ngFor="let response of rs.reponses">
+                        <mat-option [value]="response">
+                            {{ response.description }}
+                        </mat-option>
+                    </ng-container>
+                </mat-select>
+                <mat-error
+                    class="invalid-feedback"
+                    *ngIf="data.formListParamRisque.get(rs.formName).errors?.['required']">
+                    ce champs est obligatoire
+                </mat-error>
+                <mat-error
+                    *ngIf="
+                        data.formListParamRisque.get(rs.formName).errors?.bloquant
+                      "
+                    class="invalid-feedback">
+                    {{
+                    data.formListParamRisque.get(rs.formName).errors?.msg
+                    }}
+                </mat-error>
+            </mat-form-field>
+
+            <!--input Text-->
+            <mat-form-field
+                appearance="outline"
+                class="col-md-3"
+                *ngIf="rs.typeChamp?.description == 'String'">
+                <mat-label>{{ rs.libelle }}</mat-label>
+                <input
+                    matInput
+                    type="text"
+                    formControlName="{{ rs.formName }}" />
+                <mat-error
+                    class="invalid-feedback"
+                    *ngIf="data.formListParamRisque.get(rs.formName).errors?.['required']">
+                    ce champs est obligatoire
+                </mat-error>
+                <mat-error
+                    class="invalid-feedback"
+                    *ngIf="data.formListParamRisque.get(rs.formName).errors?.['pattern']
+                                              ||
+                                              data.formListParamRisque.get(rs.formName).errors?.['maxlength'] || data.formListParamRisque.get(rs.formName).errors?.['minlength'] 
+                                              ">
+                    ce champs n'est pas conforme
+                </mat-error>
+                <mat-error
+                    *ngIf="
+                        data.formListParamRisque.get(rs.formName).errors?.bloquant
+                      "
+                    class="invalid-feedback">
+                    {{
+                    data.formListParamRisque.get(rs.formName).errors?.msg
+                    }}
+                </mat-error>
+                <!-- <mat-error *ngIf="!data.formListParamRisque.get(rs.formName).errors?.bloquant && data.formListParamRisque.get(rs.formName).errors?.msg!='' " class="invalid-feedback warning-field">
+                                              {{data.formListParamRisque.get(rs.formName).errors?.msg}}
+                                          </mat-error> -->
+            </mat-form-field>
+
+            <!--input Number-->
+            <mat-form-field
+                appearance="outline"
+                class="col-md-3"
+                *ngIf="rs.typeChamp?.description == 'Number'">
+                <mat-label>{{ rs.libelle }}</mat-label>
+                <input
+                    matInput
+                    type="number"
+                    pattern="^[1-9]+[0-9]*([.][0-9]*)?$"
+                    formControlName="{{ rs.formName }}" />
+                <mat-error
+                    class="invalid-feedback"
+                    *ngIf="data.formListParamRisque.get(rs.formName).errors?.['required']">
+                    ce champs est obligatoire
+                </mat-error>
+                <mat-error
+                    class="invalid-feedback"
+                    *ngIf="data.formListParamRisque.get(rs.formName).errors?.['pattern']
+                                              ||
+                                              data.formListParamRisque.get(rs.formName).errors?.['maxlength'] || data.formListParamRisque.get(rs.formName).errors?.['minlength'] 
+                                              ">
+                    ce champs n'est pas conforme
+                </mat-error>
+                <mat-error
+                    *ngIf="
+                        data.formListParamRisque.get(rs.formName).errors?.bloquant
+                      "
+                    class="invalid-feedback">
+                    {{
+                    data.formListParamRisque.get(rs.formName).errors?.msg
+                    }}
+                </mat-error>
+                <!-- <mat-error *ngIf="!data.formListParamRisque.get(rs.formName).errors?.bloquant && data.formListParamRisque.get(rs.formName).errors?.msg!='' " class="invalid-feedback warning-field">
+                                              {{data.formListParamRisque.get(rs.formName).errors?.msg}}
+                                          </mat-error> -->
+            </mat-form-field>
+
+            <!--Date-->
+            <mat-form-field
+                class="col-md-3"
+                appearance="outline"
+                *ngIf="rs.typeChamp?.description == 'date'">
+                <mat-label>{{ rs.libelle }}</mat-label>
+                <input
+                    matInput
+                    [matDatepicker]="picker"
+                    formControlName="{{ rs.formName }}" />
+                <mat-datepicker-toggle
+                    matSuffix
+                    [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+                <mat-error
+                    class="invalid-feedback"
+                    *ngIf="data.formListParamRisque.get(rs.formName).errors?.['required']">
+                    ce champs est obligatoire
+                </mat-error>
+                <mat-error
+                    *ngIf="
+                        data.formListParamRisque.get(rs.formName).errors?.bloquant
+                      "
+                    class="invalid-feedback">
+                    {{
+                    data.formListParamRisque.get(rs.formName).errors?.msg
+                    }}
+                </mat-error>
+            </mat-form-field>
+        </ng-container>
+        <button
+            class="btn btn-secondary" type="submit"
+            (click)="ajouterParam()"
+            style="display: flex; width: auto">
+            Ajouter
+        </button>
+    </form>
+
+    <div
+        class="col-md-12"
+        *ngIf="dataSourceListParamRisque.data.length != 0">
+        <table
+            mat-table
+            [dataSource]="dataSourceListParamRisque"
+            class="gestion-table">
+            <!-- <ng-container matColumnDef="header-adresse">
+                <th
+                    mat-header-cell
+                    *matHeaderCellDef
+                    attr.colspan="{{ data.displayedColumnsListParamRisque.length }}">
+                    <div class="header-tab">
+                        <span>Liste des effectifs </span>
+                    </div>
+                </th>
+            </ng-container> -->
+
+            <ng-container
+                [matColumnDef]="dt.formName"
+                *ngFor="let dt of data.listParamRisque">
+                <th mat-header-cell *matHeaderCellDef>
+                    {{ dt.libelle }}
+                </th>
+                <td mat-cell *matCellDef="let element">
+                    {{ dt.typeChamp?.code == 'L08' || dt.typeChamp?.code == 'L01' ? element[dt.formName].description : element[dt.formName] }}
+                </td>
+            </ng-container>
+
+            <!-- Action Column -->
+            <ng-container matColumnDef="action">
+                <th mat-header-cell *matHeaderCellDef> Action </th>
+                <td mat-cell *matCellDef="let element;index as i;">
+                <mat-icon aria-hidden="false" aria-label="Supprimer param" class="material-symbols-outlined" style="margin-left: 4px;" (click)="deleteList(i)"
+                    matTooltip="Supprimer param" matTooltipPosition="right">
+                    delete</mat-icon>
+                </td>
+            </ng-container>
+
+            <!-- The table will render two header rows, one data row per data object, and two footer rows. -->
+            <!-- <tr
+                mat-header-row
+                *matHeaderRowDef="['header-adresse']"
+                class="example-first-header-row"></tr> -->
+            <tr
+                mat-header-row
+                *matHeaderRowDef="data.displayedColumnsListParamRisque"
+                class="example-second-header-row"></tr>
+
+            <tr
+                mat-row
+                *matRowDef="
+                            let row;
+                            columns: data.displayedColumnsListParamRisque
+                          "></tr>
+        </table>
+        <mat-paginator
+            [pageSize]="5"
+            [pageSizeOptions]="[5, 10, 20]"
+            aria-label="Select page  of users"></mat-paginator>
+    </div>
+    <div class="row-button">
+        <button mat-button (click)="submitList()" [class]="dataSourceListParamRisque.data.length == 0 ? 'btn btn-disable':'btn btn-action'" [disabled]="dataSourceListParamRisque.data.length == 0">Enregistré</button>
+        <!-- <button mat-button mat-dialog-close class="btn btn-secondary">Annulé</button> -->
+    </div>
+
+
+</mat-dialog-content>

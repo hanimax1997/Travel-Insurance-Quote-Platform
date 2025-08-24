@@ -1,0 +1,217 @@
+stages:
+  - build
+  - deploy
+
+variables:
+  DOCKER_TLS_CERTDIR: ""
+  DOCKER_IMAGE_NAME: $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG
+
+build_and_push_image:
+  only:
+    - dev
+    - test
+    - preprod
+    - main
+  stage: build
+  image: docker:latest
+  services:
+    - name: docker:dind
+      command: ["--insecure-registry=registry.axa-algerie.com"]
+  before_script:
+    - echo "$CI_REGISTRY_PASSWORD" | docker login -u "$CI_REGISTRY_USER" --password-stdin "$CI_REGISTRY" || true
+    - apk add --no-cache ca-certificates
+    - mkdir -p /etc/docker/certs.d/registry.axa-algerie.com
+    - echo "$REGISTRY_CA_CERT" > /etc/docker/certs.d/registry.axa-algerie.com/ca.crt
+    - update-ca-certificates
+    
+  script: 
+   - |
+     ENV_URL=""
+     if [[ "$CI_COMMIT_BRANCH" == "dev" ]]; then
+        ENV_URL="https://dv-saga"
+     elif [[ "$CI_COMMIT_BRANCH" == "test" ]]; then
+        ENV_URL="https://saga-ts"
+     elif [[ "$CI_COMMIT_BRANCH" == "preprod" ]]; then
+        ENV_URL="https://saga-pp"
+     elif [["$CI_COMMIT_BRANCH" == "main"]]; then
+        ENV_URL="https://saga" # Default URL for other branches or if not matched
+     fi
+      
+     echo "Setting URL to: $ENV_URL for branch: $CI_COMMIT_BRANCH"
+      # Using sed to replace the URL in environment.ts
+      # The 'g' flag ensures all occurrences are replaced if there were multiple (though usually only one for 'url')
+     sed -i "s|url: '.*'|url: '$ENV_URL'|" src/environments/environment.ts
+      
+     echo "Content of src/environments/environment.ts after modification:"
+     cat src/environments/environment.ts
+      
+   - docker build  -t "$DOCKER_IMAGE_NAME" .
+   - docker push "$DOCKER_IMAGE_NAME"
+   - |
+     if [[ "$CI_COMMIT_BRANCH" == "$CI_DEFAULT_BRANCH" ]]; then
+        docker tag "$DOCKER_IMAGE_NAME" "$CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG-$CI_COMMIT_SHORT_SHA"
+        docker push "$CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG-$CI_COMMIT_SHORT_SHA"
+        docker tag "$DOCKER_IMAGE_NAME" "$CI_REGISTRY_IMAGE:latest"
+        docker push "$CI_REGISTRY_IMAGE:latest"
+     fi
+
+deploy_to_dev:
+  stage: deploy
+  only:
+    - dev
+  environment:
+    name: development
+    url: https://dv-saga:8001
+  tags:
+    - docker
+  image: alpine:latest
+  dependencies:
+    - build_and_push_image
+  before_script:
+    - apk add --no-cache openssh-client
+    - echo "Preparing SSH access..."
+    - mkdir -p ~/.ssh
+    - echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
+    - chmod 600 ~/.ssh/id_rsa
+    - ssh-keyscan -p $SSH_PORT $IP_Dev >> ~/.ssh/known_hosts
+  script:
+  - |
+    echo "Connecting to server to deploy container..."
+    ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa -p "$SSH_PORT" "$SSH_USER@$IP_Dev" "
+      echo 'Logging into Docker registry...'
+      docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
+
+      echo 'Navigating to project directory...'
+      cd $Path_Frontend_Public/$CI_PROJECT_NAME
+
+      echo 'Stopping and removing existing container (if any)...'
+      docker compose stop $CI_PROJECT_NAME || true
+      docker compose down $CI_PROJECT_NAME || true
+
+      echo 'Removing old image...'
+      docker rmi "$DOCKER_IMAGE_NAME" || true
+
+      echo 'Starting new container...'
+      docker compose up -d
+    "
+
+deploy_to_test:
+  stage: deploy
+  only:
+    - test
+  environment:
+    name: testing
+    url: https://saga-ts:8001
+  tags:
+    - docker
+  image: alpine:latest
+  dependencies:
+    - build_and_push_image
+  before_script:
+    - apk add --no-cache openssh-client
+    - echo "Preparing SSH access..."
+    - mkdir -p ~/.ssh
+    - echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
+    - chmod 600 ~/.ssh/id_rsa
+    - ssh-keyscan -p $SSH_PORT $IP_Test >> ~/.ssh/known_hosts
+  script:
+  - |
+    echo "Connecting to server to deploy container..."
+    ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa -p "$SSH_PORT" "$SSH_USER@$IP_Test" "
+      echo 'Logging into Docker registry...'
+      docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
+
+      echo 'Navigating to project directory...'
+      cd $Path_Frontend_Public/$CI_PROJECT_NAME
+
+      echo 'Stopping and removing existing container (if any)...'
+      docker compose stop $CI_PROJECT_NAME || true
+      docker compose down $CI_PROJECT_NAME || true
+
+      echo 'Removing old image...'
+      docker rmi "$DOCKER_IMAGE_NAME" || true
+
+      echo 'Starting new container...'
+      docker compose up -d
+    "
+
+deploy_to_PreProd:
+  stage: deploy
+  only:
+    - preprod
+  environment:
+    name: pre-production
+    url: https://saga-pp:8001
+  tags:
+    - docker
+  image: alpine:latest
+  dependencies:
+    - build_and_push_image
+  before_script:
+    - apk add --no-cache openssh-client
+    - echo "Preparing SSH access..."
+    - mkdir -p ~/.ssh
+    - echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
+    - chmod 600 ~/.ssh/id_rsa
+    - ssh-keyscan -p $SSH_PORT $IP_PreProd >> ~/.ssh/known_hosts
+  script:
+  - |
+    echo "Connecting to server to deploy container..."
+    ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa -p "$SSH_PORT" "$SSH_USER@$IP_PreProd" "
+      echo 'Logging into Docker registry...'
+      docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
+
+      echo 'Navigating to project directory...'
+      cd $Path_Frontend_Public/$CI_PROJECT_NAME
+
+      echo 'Stopping and removing existing container (if any)...'
+      docker compose stop $CI_PROJECT_NAME || true
+      docker compose down $CI_PROJECT_NAME || true
+
+      echo 'Removing old image...'
+      docker rmi "$DOCKER_IMAGE_NAME" || true
+
+      echo 'Starting new container...'
+      docker compose up -d
+    "
+
+deploy_to_Prod:
+  stage: deploy
+  only:
+    - prod
+  environment:
+    name: production
+    url: https://voyage.axa.dz
+  tags:
+    - docker
+  image: alpine:latest
+  dependencies:
+    - build_and_push_image
+  before_script:
+    - apk add --no-cache openssh-client
+    - echo "Preparing SSH access..."
+    - mkdir -p ~/.ssh
+    - echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
+    - chmod 600 ~/.ssh/id_rsa
+    - ssh-keyscan -p $SSH_PORT $IP_Prod >> ~/.ssh/known_hosts
+  script:
+  - |
+    echo "Connecting to server to deploy container..."
+    ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa -p "$SSH_PORT" "$SSH_USER@$IP_Prod" "
+      echo 'Logging into Docker registry...'
+      docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
+
+      echo 'Navigating to project directory...'
+      cd $Path_Frontend_Public/$CI_PROJECT_NAME
+
+      echo 'Stopping and removing existing container (if any)...'
+      docker compose stop $CI_PROJECT_NAME || true
+      docker compose down $CI_PROJECT_NAME || true
+
+      echo 'Removing old image...'
+      docker rmi "$DOCKER_IMAGE_NAME" || true
+
+      echo 'Starting new container...'
+      docker compose up -d
+    "
+

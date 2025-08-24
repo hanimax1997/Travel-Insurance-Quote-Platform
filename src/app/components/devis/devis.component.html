@@ -1,0 +1,1775 @@
+<!-- HEADER AXA aligné propre, sans débordement -->
+<app-header></app-header>
+
+<div
+    class="min-h-[40rem] w-full
+           px-4 sm:px-6 lg:px-8
+           py-12
+           max-w-[77rem] mx-auto">
+
+    <div class="min-h-[35rem] grid">
+      <div
+        class="grid gap-6
+               grid-flow-row md:grid-flow-col
+               p-4 md:p-5
+               bg-white">
+
+    <div class="stepper-wrapper">
+
+        <mat-stepper #stepper [(selectedIndex)]="selectedIndex" class="custom-stepper" linear>
+            <!-- wagui 19/09 -->
+            <mat-step [stepControl]="formInfosAssure" [editable]="true">
+                <ng-template matStepLabel>
+                    <div class="step-label">
+                        <img src="assets/PERSON1.png" alt="Assuré" class="step-image w-20 h-auto">
+                        <span class="step-text">Information de l'assuré(e)</span>
+                    </div>
+                </ng-template>
+                <!--Assuré / Conducteur -->
+
+                <h4 class="choose-pack-title">MES INFORMATIONS</h4>
+
+                <div style="display: flex; justify-content: center;">
+                    <form [formGroup]="formInfosAssure" (ngSubmit)="submitInfosAssure()">
+
+                        <div class="flex justify-center gap-x-6 py-8">
+                            <!-- HOMME -->
+                            <div class="flex flex-col items-center">
+                              <label for="hs-radio-group-1" class="flex flex-col items-center text-sm text-gray-800 ms-2">
+                                  <img class="w-10 h-auto" src="assets/homme.png" alt="Logo" srcset="">
+                                  Homme
+                              </label>
+                              <input formControlName="sexe" value="R16" type="radio" class="sexe-radio shrink-0 mt-0.5 border-gray-500 rounded-full text-primary-400 focus:ring-primary-400 disabled:opacity-50 disabled:pointer-events-none" id="hs-radio-group-1">
+                            </div>
+                            <!-- Femme -->
+                            <div class="flex flex-col items-center">
+                              <label for="hs-radio-group-2" class="flex flex-col items-center text-sm text-gray-800 ms-2">
+                                  <img class="w-10 h-auto" src="assets/femme.png" alt="Logo" srcset="">
+                                  Femme
+                              </label>
+                              <input formControlName="sexe" value="R17" type="radio" class="sexe-radio shrink-0 mt-0.5 border-gray-500 rounded-full text-primary-400 focus:ring-primary-400 disabled:opacity-50 disabled:pointer-events-none" id="hs-radio-group-2">
+                            </div>
+                            <!-- <mat-radio-group formControlName="sexe" class="sexe-radio-group" aria-label="Sexe"
+                                style="display: flex; gap: 40px;">
+                                
+                                <div style="display: flex; flex-direction: column; align-items: center;">
+                                    <img src="assets/homme.png" alt="Homme"
+                                        style="width: 56px; height: 56px; margin-bottom: 8px;">
+                                    <div class="label" style="font-weight: 500; margin-bottom: 6px;">Homme</div>
+                                    <mat-radio-button class="sexe-radio" value="R16"></mat-radio-button>
+                                </div>
+                                <div style="display: flex; flex-direction: column; align-items: center;">
+                                    <img src="assets/femme.png" alt="Femme"
+                                        style="width: 56px; height: 56px; margin-bottom: 8px;">
+                                    <div class="label" style="font-weight: 500; margin-bottom: 6px;">Femme</div>
+                                    <mat-radio-button class="sexe-radio" value="R17"></mat-radio-button>
+                                </div>
+                            </mat-radio-group> -->
+                            <!-- <mat-error
+                                *ngIf="formInfosAssure.controls.sexe.errors && formInfosAssure.controls.sexe.touched"
+                                class="invalid-feedback">
+                                <div *ngIf="formInfosAssure.controls.sexe.errors.required">
+                                    Ce champs est obligatoire
+                                </div>
+                            </mat-error> -->
+                        </div>
+
+
+                        <mat-accordion class="example-headers-align" multi>
+                            <!--INFORMATION ASSURE -->
+                            <mat-expansion-panel [expanded]="true">
+                                <mat-expansion-panel-header>
+                                    <mat-panel-title>
+                                        Information de l'assuré(e)
+                                    </mat-panel-title>
+                                </mat-expansion-panel-header>
+                                <!-- body bloc -->
+
+
+
+                                <div class="row " style="flex-direction:
+                                        column;flex-direction: column;">
+
+
+
+                                    <div class="row">
+                                        <div class="div-champ-bleu" class="col-md-5"
+                                            style="display: flex; flex-direction: column;">
+                                            <label for="nom" class="block text-sm text-gray-800 font-semibold mb-2">Nom *</label>
+                                            <div class="relative">
+                                              <input id="nom" formControlName="nom" type="text" class="shadow-[inset_0_1px 2px rgba(0, 0, 0, 0.075)] peer py-3 px-4 ps-11 block w-full border border-gray-300 text-sm focus:border-primary-400 focus:ring-primary-400 disabled:opacity-50 disabled:pointer-events-none" placeholder="Nom">
+                                              <div class="absolute inset-y-0 start-0 flex items-center pointer-events-none ps-4 peer-disabled:opacity-50 peer-disabled:pointer-events-none">
+                                                  <svg class="shrink-0 size-4 text-gray-500" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                  <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path>
+                                                  <circle cx="12" cy="7" r="4"></circle>
+                                                  </svg>
+                                              </div>
+                                            </div>
+                                            <mat-error *ngIf="formInfosAssure.controls.nom.errors != null && formInfosAssure.controls.nom.dirty"
+                                                class="invalid-feedback">
+                                                <div *ngIf="formInfosAssure.controls.nom.errors.required">
+                                                    Ce champs est obligatoire
+                                                </div>
+                                                <div *ngIf="formInfosAssure.controls.nom.errors['pattern']">
+                                                    les caractères spéciaux ne sont pas autorisés
+                                                </div>
+                                            </mat-error>
+                                        </div>
+                                        <div class="col-md-5" style="display: flex; flex-direction: column;"
+                                            *ngIf="typeClient!='personne morale'">
+                                            <label for="prenom" class="block text-sm text-gray-800 font-semibold mb-2">Prénom *</label>
+                                            <div class="relative">
+                                              <input id="prenom" formControlName="prenom" type="text" class="shadow-[inset_0_1px 2px rgba(0, 0, 0, 0.075)] peer py-3 px-4 ps-11 block w-full border border-gray-300 focus:border-primary-400 focus:ring-primary-400 text-sm disabled:opacity-50 disabled:pointer-events-none" placeholder="Prénom">
+                                              <div class="absolute inset-y-0 start-0 flex items-center pointer-events-none ps-4 peer-disabled:opacity-50 peer-disabled:pointer-events-none">
+                                                  <svg class="shrink-0 size-4 text-gray-500" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                  <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path>
+                                                  <circle cx="12" cy="7" r="4"></circle>
+                                                  </svg>
+                                              </div>
+                                            </div>
+                                            <mat-error *ngIf="formInfosAssure.controls.prenom.errors != null && formInfosAssure.controls.prenom.dirty" class="invalid-feedback">
+                                              <div *ngIf="formInfosAssure.controls.prenom.errors.required">
+                                                  Ce champs est obligatoire
+                                              </div>
+                                              <div *ngIf="formInfosAssure.controls.prenom.errors['pattern']">
+                                                  les caractères spéciaux ne sont pas autorisés
+                                              </div>
+                                            </mat-error>
+                                            <!-- <span class="custom-input-text">Prénom *</span>
+                                            <mat-form-field class="firstFormField" appearance="outline">
+                                                <input placeholder="Prénom" type="text" matInput
+                                                    formControlName="prenom">
+                                                
+                                            </mat-form-field> -->
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+
+                                        <!-- Email -->
+                                        <div class="col-md-5" style="display: flex; flex-direction: column;">
+                                            <label for="email" class="block text-sm text-gray-800 font-semibold mb-2">Email *</label>
+                                            <div class="relative">
+                                              <input id="email" formControlName="email" type="email" class="shadow-[inset_0_1px 2px rgba(0, 0, 0, 0.075)] peer py-3 px-4 ps-11 block w-full border border-gray-300 focus:border-primary-400 focus:ring-primary-400 text-sm disabled:opacity-50 disabled:pointer-events-none" placeholder="E-mail">
+                                              <div class="absolute inset-y-0 start-0 flex items-center pointer-events-none ps-4 peer-disabled:opacity-50 peer-disabled:pointer-events-none">
+                                                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="shrink-0 size-4 text-gray-500">
+                                                      <rect width="20" height="16" x="2" y="4" rx="2"/>
+                                                      <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+                                                  </svg>
+                                              </div>
+                                            </div>
+                                            <mat-error *ngIf="formInfosAssure.controls.email.errors != null && formInfosAssure.controls.email.dirty"
+                                                class="invalid-feedback">
+                                                <div *ngIf="formInfosAssure.controls.email.errors.required">
+                                                    Ce champs est obligatoire
+                                                </div>
+                                                <div *ngIf="formInfosAssure.controls.email.errors.pattern">
+                                                    adresse email non conforme
+                                                </div>
+                                            </mat-error>
+                                            <!-- <span class="custom-input-text">Email *</span>
+                                            <mat-form-field class="firstFormField" appearance="outline">
+                                                <input placeholder="Email" type="email" matInput
+                                                    formControlName="email">
+                                                
+                                            </mat-form-field> -->
+                                        </div>
+
+                                        <!-- Date de naissance -->
+                                        <div class="col-md-5" style="display: flex; flex-direction: column;">
+                                            <!-- <div class="form-group">
+                                                <label for="dateNaissance" class="custom-label">Date de
+                                                    naissance *</label>
+                                                <div style="width:100.5%" class="custom-date-wrapper">
+                                                    <input type="date" id="dateNaissance"
+                                                        class="form-control custom-date-input pe-5"
+                                                        formControlName="dateNaissance"
+                                                        [ngClass]="{ 'is-invalid': formInfosAssure.controls.dateNaissance.invalid && formInfosAssure.controls.dateNaissance.touched }"
+                                                        max="{{ todayMinus18 }}" />
+                                                    <i class="bi bi-calendar-date-fill calendar-icon"></i>
+                                                </div>
+                                            </div> -->
+                                            <label for="dateNaissance" class="block text-sm text-gray-800 font-semibold mb-2">Date de naissance *</label>
+                                            <div class="relative">
+                                            <input id="dateNaissance" formControlName="dateNaissance" type="date" class="shadow-[inset_0_1px 2px rgba(0, 0, 0, 0.075)] peer py-3 px-4 ps-11 block w-full border border-gray-300 focus:border-primary-400 focus:ring-primary-400 text-sm disabled:opacity-50 disabled:pointer-events-none" placeholder="Date de naissance">
+                                            <div class="absolute inset-y-0 start-0 flex items-center pointer-events-none ps-4 peer-disabled:opacity-50 peer-disabled:pointer-events-none">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="shrink-0 size-4 text-gray-500"><path d="M8 2v4"/><path d="M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/><path d="M8 14h.01"/><path d="M12 14h.01"/><path d="M16 14h.01"/><path d="M8 18h.01"/><path d="M12 18h.01"/><path d="M16 18h.01"/></svg>
+                                            </div>
+                                            </div>
+                                            <div *ngIf="formInfosAssure.controls.dateNaissance.touched && formInfosAssure.controls.dateNaissance.errors" class="invalid-feedback">
+                                              <div *ngIf="formInfosAssure.controls.dateNaissance.errors['required']; else next1">
+                                                Ce champ est obligatoire
+                                              </div>
+                                              <ng-template #next1>
+                                                <div *ngIf="formInfosAssure.controls.dateNaissance.errors['dateFuture']; else next2">
+                                                  Veuillez saisir une valeur valide
+                                                </div>
+                                              </ng-template>
+                                              <ng-template #next2>
+                                                <div *ngIf="formInfosAssure.controls.dateNaissance.errors['ageInf18']; else next3">
+                                                  La souscription n’est pas autorisée pour les moins de 18 ans
+                                                </div>
+                                              </ng-template>
+                                              <ng-template #next3>
+                                                <div *ngIf="formInfosAssure.controls.dateNaissance.errors['ageSup107']">
+                                                  Veuillez saisir une valeur valide
+                                                </div>
+                                              </ng-template>
+                                            </div>
+                                        </div>
+
+                                        <!-- Téléphone -->
+                                        <div class="col-md-5" style="display: flex; flex-direction: column;">
+                                            <label for="tel" class="block text-sm text-gray-800 font-semibold mb-2">Téléphone *</label>
+                                            <div class="relative">
+                                                <input id="tel" formControlName="tel" type="text" class="shadow-[inset_0_1px 2px rgba(0, 0, 0, 0.075)] peer py-3 px-4 ps-11 block w-full border border-gray-300 focus:border-primary-400 focus:ring-primary-400 text-sm disabled:opacity-50 disabled:pointer-events-none" placeholder="Numero de téléphone">
+                                                <div class="absolute inset-y-0 start-0 flex items-center pointer-events-none ps-4 peer-disabled:opacity-50 peer-disabled:pointer-events-none">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="shrink-0 size-4 text-gray-500"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                                                </div>
+                                            </div>
+                                            <mat-error *ngIf="formInfosAssure.controls.tel.errors != null && formInfosAssure.controls.tel.dirty"
+                                                class="invalid-feedback">
+                                                <div *ngIf="formInfosAssure.controls.tel.errors.required">
+                                                    Ce champs est obligatoire
+                                                </div>
+                                                <div *ngIf="formInfosAssure.controls.tel.errors.pattern">
+                                                    Ce numéro est invalide
+                                                </div>
+                                            </mat-error>
+                                            <!-- <span class="custom-input-text">Téléphone *</span>
+                                            <mat-form-field class="firstFormField" appearance="outline">
+                                                <input placeholder="Téléphone" type="text" matInput
+                                                    formControlName="tel">
+                                            </mat-form-field> -->
+                                        </div>
+
+                                        <!-- Wilaya -->
+                                        <div class="col-md-5" style="display: flex; flex-direction: column;">
+                                            <label for="wilaya" class="block text-sm text-gray-800 font-semibold mb-2">Wilaya *</label>
+                                            <div class="relative">
+                                                <select id="wilaya" formControlName="wilaya"
+                                                class="shadow-[inset_0_1px 2px rgba(0, 0, 0, 0.075)] peer p-3 pe-9 px-4 ps-11 block w-full border border-gray-300 focus:border-primary-400 focus:ring-primary-400 text-sm disabled:opacity-50 disabled:pointer-events-none">
+                                                    @for (wilaya of wilayas; track wilaya.idWilaya) {
+                                                        <option [value]="wilaya.idWilaya">
+                                                            {{ wilaya.idWilaya }} - {{
+                                                            wilaya.description }}
+                                                        </option>
+                                                    }
+                                                </select>
+                                                <div class="absolute inset-y-0 start-0 flex items-center pointer-events-none ps-4 peer-disabled:opacity-50 peer-disabled:pointer-events-none">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="shrink-0 size-4 text-gray-500">
+                                                        <path d="M12 2c4.418 0 8 3.582 8 8 0 5.25-8 12-8 12s-8-6.75-8-12c0-4.418 3.582-8 8-8z"/>
+                                                        <circle cx="12" cy="10" r="3"/>
+                                                    </svg>                                                      
+                                                </div>
+                                            </div> 
+                                            <mat-error *ngIf="formInfosAssure.controls.wilaya.errors != null && formInfosAssure.controls.wilaya.dirty" class="invalid-feedback">
+                                                <div *ngIf="formInfosAssure.controls.wilaya?.errors?.required">Ce champ est obligatoire</div>
+                                            </mat-error>
+                                            <!-- <span class="custom-input-text">Wilaya de résidence *</span>
+                                            <mat-form-field class="firstFormField" appearance="outline">
+                                                <mat-select placeholder="Wilaya" formControlName="wilaya">
+                                                    <ng-container *ngFor="let w of wilayas">
+                                                        <mat-option [value]="w.idWilaya">{{ w.idWilaya }} - {{
+                                                            w.description }}</mat-option>
+                                                    </ng-container>
+                                                </mat-select>
+                                                
+                                            </mat-form-field> -->
+                                        </div>
+
+                                        <!-- Date d’obtention du permis -->
+                                        <div class="col-md-5" style="display: flex; flex-direction: column;">
+                                          <!-- <div class="form-group">
+                                            <label for="dateDelivrance"
+                                              style="display: block; margin-bottom: 8px; font-weight: bold; font-size:15px; color: #000000;">
+                                              Date de délivrance du permis *
+                                            </label>
+                                            
+                                          </div> -->
+                                          <label for="dateDelivrance" class="block text-sm text-gray-800 font-semibold mb-2">Date de délivrance du permis *</label>
+                                          <div class="relative">
+                                            <input id="dateDelivrance" formControlName="dateDelivrance" type="date" class="shadow-[inset_0_1px 2px rgba(0, 0, 0, 0.075)] peer py-3 px-4 ps-11 block w-full border border-gray-300 focus:border-primary-400 focus:ring-primary-400 text-sm disabled:opacity-50 disabled:pointer-events-none" placeholder="Date de délivrance du permis">
+                                            <div class="absolute inset-y-0 start-0 flex items-center pointer-events-none ps-4 peer-disabled:opacity-50 peer-disabled:pointer-events-none">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="shrink-0 size-4 text-gray-500"><path d="M8 2v4"/><path d="M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/><path d="M8 14h.01"/><path d="M12 14h.01"/><path d="M16 14h.01"/><path d="M8 18h.01"/><path d="M12 18h.01"/><path d="M16 18h.01"/></svg>
+                                            </div>
+                                              <!-- Conteneur des deux icônes -->
+                                              <div style="position: absolute; top: 50%; right: 0.5rem; transform: translateY(-55%); display: flex; gap: 8px; align-items: center;">
+                                                <!-- Icône calendrier -->
+                                                <i class="bi bi-calendar-date-fill" style="font-size: 1.2rem; color: #6c757d;"></i>
+                                                <!-- Info icon + tooltip -->
+                                                <span class="info-tooltip" style="position: relative; display: flex; align-items: center;">
+                                                  <span
+                                                    style="background: #00008f;margin-right:2rem; border-radius: 50%; color: white; width: 18px; height: 18px; font-size: 12px; display: flex; align-items: center; justify-content: center; cursor: pointer; margin-left:7px;">
+                                                    i
+                                                  </span>
+                                                  <span class="tooltip-text" style="
+                                                    visibility: hidden;
+                                                    opacity: 0;
+                                                    position: absolute;
+                                                    top: 125%;
+                                                    transform: translateX(-68%);
+                                                    z-index: 10;
+                                                    background: #333;
+                                                    color: white;
+                                                    font-size: 0.85rem;
+                                                    padding: 8px 10px;
+                                                    width: 220px;
+                                                    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+                                                    margin-top: 4px;
+                                                    transition: opacity 0.2s;
+                                                  ">
+                                                    Veuillez saisir la 1ère date d’obtention du permis
+                                                  </span>
+                                                </span>
+                                                <style>
+                                                  .info-tooltip:hover .tooltip-text {
+                                                    visibility: visible !important;
+                                                    opacity: 1 !important;
+                                                  }
+                                                </style>
+                                              </div>
+                                          </div>
+                                          <!-- Erreurs -->
+                                          <div *ngIf="formInfosAssure.controls.dateDelivrance.touched && formInfosAssure.controls.dateDelivrance.errors"
+                                            class="invalid-feedback d-block">
+                                            <div *ngIf="formInfosAssure.controls.dateDelivrance.errors['required'];else next1">
+                                              Ce champ est obligatoire
+                                            </div>
+                                                <ng-template #next1>
+                                                        <div *ngIf="formInfosAssure.controls.dateDelivrance.errors?.dateFuture && formInfosAssure.controls.dateDelivrance.touched;else next2">
+                                              Veuillez saisir une date valide
+                                            </div>
+                                                </ng-template>
+                                          <ng-template #next2>
+                                                <div *ngIf="formInfosAssure.hasError('permisAvant18ans', ['dateDelivrance'])">
+                                              Veuillez saisir une date valide
+                                            </div>
+                                          </ng-template>
+                                          </div>
+                                        </div>
+
+
+                                        <!-- Agence -->
+                                        <div class="col-md-5" style="display: flex; flex-direction: column;">
+                                            <label for="agence" class="block text-sm text-gray-800 font-semibold mb-2">Agence *</label>
+                                            <div class="relative">
+                                                <select id="agence" formControlName="agence"
+                                                class="shadow-[inset_0_1px 2px rgba(0, 0, 0, 0.075)] peer p-3 pe-9 px-4 ps-11 block w-full border border-gray-300 focus:border-primary-400 focus:ring-primary-400 text-sm disabled:opacity-50 disabled:pointer-events-none">
+                                                    @for (agence of agences; track agence.idAgence) {
+                                                        <option [value]="agence.idAgence">
+                                                            {{agence.nomAgence}}
+                                                        </option>
+                                                    }
+                                                </select>
+                                                <div class="absolute inset-y-0 start-0 flex items-center pointer-events-none ps-4 peer-disabled:opacity-50 peer-disabled:pointer-events-none">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="shrink-0 size-4 text-gray-500"><path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z"/><path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2"/>
+                                                        <path d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2"/><path d="M10 6h4"/><path d="M10 10h4"/><path d="M10 14h4"/><path d="M10 18h4"/>
+                                                    </svg>                                                       
+                                                </div>
+                                            </div> 
+                                            <mat-error *ngIf="formInfosAssure.controls.agence.errors != null && formInfosAssure.controls.agence.dirty"
+                                                class="invalid-feedback">
+                                                <div *ngIf="formInfosAssure.controls.agence.errors.required">
+                                                    Ce champ est obligatoire
+                                                </div>
+                                            </mat-error>
+
+                                            <!-- <span class="custom-input-text">Agence *</span>
+                                            <mat-form-field class="firstFormField" appearance="outline">
+                                                <mat-select placeholder="Agence" formControlName="agence">
+                                                    <ng-container *ngFor="let agence of agences">
+                                                        <mat-option [value]="agence.idAgence">
+                                                            {{agence.nomAgence}}
+                                                        </mat-option>
+                                                    </ng-container>
+                                                </mat-select>
+                                            </mat-form-field> -->
+                                        </div>
+
+                                    </div>
+
+
+
+
+
+                                    <div class="row">
+
+                                        <!-- type contrat -->
+                                        <!-- <mat-form-field class="col-md-5" appearance="outline">
+                                            <mat-label>Type contact</mat-label>
+                                            <mat-select formControlName="typeContact"
+                                                (selectionChange)="changeTypeContact($event.value)">
+                                                <ng-container *ngFor="let type of typesContact">
+                                                    <mat-option [value]="type">
+                                                        {{type}}
+                                                    </mat-option>
+                                                </ng-container>
+                                            </mat-select>
+                                            <mat-error *ngIf="formInfosAssure.controls.typeContact.errors"
+                                                class="invalid-feedback">
+                                                <div *ngIf="formInfosAssure.controls.typeContact.errors.required">
+                                                    Ce champ est obligatoire
+                                                </div>
+                                            </mat-error>
+                                        </mat-form-field> -->
+
+
+                                        <!-- <mat-form-field appearance="outline" class="col-md-5">
+                                            <mat-label>Durée</mat-label>
+                                            <mat-select formControlName="duree">
+                                                <ng-container *ngFor="let duree of durees">
+                                                    <mat-option [value]="duree.duree.id_duree">
+                                                        {{duree.duree.description}}
+                                                    </mat-option>
+                                                </ng-container>
+                                            </mat-select>
+                                            <mat-error *ngIf="formInfosAssure.controls.duree.errors"
+                                                class="invalid-feedback">
+                                                <div *ngIf="formInfosAssure.controls.duree.errors.required">
+                                                    Ce champ est obligatoire
+                                                </div>
+                                            </mat-error>
+                                        </mat-form-field> -->
+
+
+
+                                    </div>
+
+                                </div>
+                                <p>* Toutes les informations sont obligatoires </p>
+
+                            </mat-expansion-panel>
+
+                        </mat-accordion>
+
+
+                        <div class="button-container">
+                            <button class="btn btn-action" type="submit">
+                                Suivant
+                            </button>
+                        </div>
+
+
+                    </form>
+                </div>
+
+            </mat-step>
+            <!-- ********** Step 2  ********** -->
+            <!-- ********** Step 2  ********** -->
+            <!-- ********** Step 2  ********** -->
+            <!-- ********** Step 2  ********** -->
+            <!-- ********** Step 2  ********** -->
+            <!-- ********** Step 2  ********** -->
+            <!-- ********** Step 2  ********** -->
+            <!-- ********** Step 2  ********** -->
+            <!-- ********** Step 2  ********** -->
+            <!-- ********** Step 2  ********** -->
+            <!-- ********** Step 2  ********** -->
+
+            <mat-step [stepControl]="formParamRisque" [editable]="true">
+                <ng-template matStepLabel>
+                    <div class="step-label">
+                        <img src="assets/car1.png" alt="Risque" class="step-image">
+                        <span class="step-text">Information du risque</span>
+                    </div>
+                </ng-template>
+
+                <h4 class="choose-pack-title">MON VEHICULE</h4>
+
+                <div class="multiRisque-nombre" *ngIf="(multiRisque && risqueStep==0 )">
+                </div>
+                <!--Véhicule -->
+                <div style="display: flex !important; justify-content: center !important;">
+                    <form [formGroup]="formParamRisque" #formDirective="ngForm"
+                        (ngSubmit)="submitParamRisque(formDirective)" class="custom-form-container"
+                        *ngIf="risqueArrayReady && ((multiRisque && risqueStep==1) || !multiRisque )"
+                        style="width: 120% !important;">
+
+                        <mat-expansion-panel [expanded]="true" class="risque-panel" hideToggle>
+                            <mat-expansion-panel-header>
+                                <mat-panel-title>
+                                    Information du risque
+                                </mat-panel-title>
+                            </mat-expansion-panel-header>
+
+                            <!-- ======== Champs côte à côte ======== -->
+                            <div
+                                style="display: flex !important; flex-wrap: wrap !important; gap: 0px 24px !important; justify-content: flex-start !important;margin-bottom:5rem;">
+
+                                <!-- Boucle pour tous les champs -->
+                                <ng-container *ngFor="let param of paraRisqueProduitCategory">
+                                    <ng-container *ngFor="let rs of param">
+
+                                        <!-- Champs nombre -->
+<ng-container *ngIf="rs.typeChamp?.description !== 'date' && (
+  (rs.sousProduit?.code == null || rs.sousProduit?.code == selectedSousProduit) &&
+  rs.typeChamp?.code == 'L03' && !['P25', 'P26'].includes(rs.codeParam) &&
+  (selectedSousProduit != 'CTH' || !['P281', 'P282', 'P245','P152'].includes(rs.codeParam))
+)">
+  <div class="puissancEtValeurVenal"
+    style="display: flex !important; flex-direction: column !important; align-items: flex-start !important; width: 48% !important; min-width: 300px !important; margin-bottom: 22px ;">
+    <span
+      style="margin-bottom: 6px !important; font-size: 15px !important; color: #000000 !important; font-weight: bold !important; letter-spacing: 0.2px !important;">
+      {{rs.libelle}}
+    </span>
+    <mat-form-field appearance="outline"
+      style="width: 100% !important; position:relative !important;overflow:visible !important;">
+      <input placeholder="{{rs.libelle}}" matInput type="number" [min]="1"
+        formControlName="{{rs.formName}}"
+        [max]="rs.libelle === 'Puissance' ? 25 : null"
+        (ngModelChange)="onInput($event, rs.codeParam)" 
+        [readonly]="rs.codeParam == 'P198' || rs.codeParam == 'P223' || rs.codeParam == 'P224' || 
+          (codeProduit == '97' && selectedSousProduit == 'CTI' && 
+          (rs.codeParam == 'P241' || rs.codeParam == 'P270' || 
+          (rs.codeParam == 'P245' && isBOUser == false)))"
+        [value]="rs.codeParam == 'P223' ? longitude : (rs.codeParam == 'P224' ? latitude : '')">
+      <!-- Erreurs classiques -->
+      <mat-error
+        style="margin-top:0px !important; color:#d32f2f !important;  font-weight:500 !important;"
+        class="invalid-feedback"
+        *ngIf="formParamRisque.get(rs.formName).errors?.['required']">
+        Ce champs est obligatoire
+      </mat-error>
+      <mat-error
+        style="margin-top:0px !important; color:#d32f2f !important;font-weight:500 !important;"
+        class="invalid-feedback"
+        *ngIf="formParamRisque.get(rs.formName).errors?.['max'] && rs.libelle !== 'Puissance'">
+        Ce montant est soumis à condition, Nous vous invitons à vous
+        rendre en agence pour établir un devis
+      </mat-error>
+      <mat-error
+        style="margin-top:0px !important; color:#d32f2f !important; font-weight:500 !important;"
+        class="invalid-feedback"
+        *ngIf="formParamRisque.get(rs.formName).errors?.['min']">
+        ce champs est non conforme
+      </mat-error>
+      <mat-error
+        style="margin-top:0px !important; color:#d32f2f !important; font-weight:500 !important;"
+        class="invalid-feedback" 
+        *ngIf="formParamRisque.get(rs.formName).errors?.['pattern'] ||
+          formParamRisque.get(rs.formName).errors?.['maxlength'] ||
+          formParamRisque.get(rs.formName).errors?.['minlength']">
+        ce champs n'est pas conforme
+      </mat-error>
+      <mat-error
+        style="margin-top:0px !important; color:#d32f2f !important; font-weight:500 !important;"
+        *ngIf="formParamRisque.get(rs.formName).errors?.bloquant"
+        class="invalid-feedback">
+        {{formParamRisque.get(rs.formName).errors?.msg}}
+      </mat-error>
+      <!-- Info bulle hover pour P34 -->
+      <span *ngIf="rs.codeParam === 'P34'" class="info-tooltip"
+        style="position: absolute !important; top: 14px !important; right: -38px !important; display: flex !important; align-items: center !important;">
+        <span class="info-circle"
+          style="background: #00008f;margin-top:5px;margin-right:35px; border-radius: 50%; color: white; width: 18px; height: 18px; font-size: 12px;
+            display: flex; align-items: center; justify-content: center; cursor: pointer;">
+          i
+        </span>
+        <span class="tooltip-text"
+          style="visibility: hidden; opacity: 0; position: absolute; top: 125%; left: 50%; transform: translateX(-90%);
+            z-index: 10; background: #333; color: white; font-size: 0.85rem; padding: 8px 10px; width: 220px; 
+            box-shadow: 0 2px 6px rgba(0,0,0,0.16); margin-top: 4px; transition: opacity 0.2s;">
+          Veuillez vous référer à votre carte grise
+        </span>
+        <style>
+          .info-tooltip:hover .tooltip-text {
+            visibility: visible !important;
+            opacity: 1 !important;
+          }
+        </style>
+      </span>
+      <!-- Info bulle hover pour P40 -->
+      <span *ngIf="rs.codeParam === 'P40'" class="info-tooltip"
+        style="position: absolute !important; top: 14px !important; right: -38px !important; display: flex !important; align-items: center !important;">
+        <span class="info-circle"
+          style="background: #00008f; border-radius: 50%;margin-top:5px;margin-right:35px; color: white; width: 18px; height: 18px; font-size: 12px;
+            display: flex; align-items: center; justify-content: center; cursor: pointer;">
+          i
+        </span>
+        <span class="tooltip-text"
+          style="visibility: hidden; opacity: 0; position: absolute; top: 125%; left: 50%; transform: translateX(-90%);
+            z-index: 10; background: #333; color: white; font-size: 0.85rem; padding: 8px 10px; width: 220px; 
+             box-shadow: 0 2px 6px rgba(0,0,0,0.16); margin-top: 4px; transition: opacity 0.2s;">
+          Veuillez vous référer à la valeur du marché
+        </span>
+        <style>
+          .info-tooltip:hover .tooltip-text {
+            visibility: visible !important;
+            opacity: 1 !important;
+          }
+        </style>
+      </span>
+
+      <!-- Erreur spécifique Puissance max -->
+      <mat-error
+        style="margin-top:0px !important; color:#d32f2f !important; font-weight:500 !important;"
+        class="invalid-feedback"
+        *ngIf="rs.libelle === 'Puissance' && formParamRisque.get(rs.formName).errors?.['max']">
+        La puissance ne peut pas dépasser 25 CV.
+      </mat-error>
+
+
+    </mat-form-field>
+  </div>
+</ng-container>
+
+
+
+                                        <!-- Champs date (inchangé) -->
+                          <ng-container *ngIf="rs.typeChamp?.description === 'date' &&
+  (rs.sousProduit?.code == null || rs.sousProduit?.code == selectedSousProduit) &&
+  rs.typeChamp?.description == 'date' &&
+  rs.codeParam !== 'P54' && rs.codeParam !== 'P55'">
+  <div
+    style="display: flex !important; flex-direction: column !important; margin-top:3px ;align-items: flex-start !important; width: 48% !important; min-width: 300px !important; margin-bottom: 22px !important;">
+    <label [for]="rs.formName"
+      style="display: block !important; margin-bottom: 9px !important; font-weight: bold !important; color: #000000!important;font-size:15px;">
+      {{ rs.libelle }}
+    </label>
+    <div
+      style="display: flex !important; align-items: center !important; position: relative !important; width: 100% !important;margin-left: 5px;">
+      <input type="date" class="form-control pe-5" [id]="rs.formName"
+        [formControlName]="rs.formName"
+        [max]="today | date: 'yyyy-MM-dd'"
+        [attr.placeholder]="'Choisissez une date'" [ngClass]="{
+          'is-invalid': formParamRisque.get(rs.formName)?.invalid &&
+                        formParamRisque.get(rs.formName)?.touched
+        }" style="flex: 1 !important; padding: 10px !important; border-radius: 0px !important;
+              height: 33px !important;font-size:15px !important; background: fixed !important; width:100% !important;" />
+
+      <!-- Icône calendrier -->
+      <div style="position: absolute !important; top: 50% !important; right: 3.5rem !important; transform: translateY(-55%) !important;
+        display: flex !important; align-items: center !important;">
+        <i class="bi bi-calendar-date-fill"
+          style="font-size: 1.2rem !important; color: #6c757d !important;"></i>
+      </div>
+      <!-- Info bulle hover pour P28 -->
+      <span *ngIf="rs.codeParam === 'P28'" class="info-tooltip"
+        style="position: absolute !important; top: 50% !important; right: 35px !important; transform: translateY(-55%) !important; display: flex !important; align-items: center !important;">
+        <span class="info-circle"
+          style="background: #00008f; border-radius: 50%; color: white; width: 18px; height: 18px; font-size: 12px;
+          display: flex; align-items: center; justify-content: center; cursor: pointer;">
+          i
+        </span>
+        <span class="tooltip-text"
+          style="visibility: hidden; opacity: 0; position: absolute; top: 125%; left: 50%; transform: translateX(-77%);
+          z-index: 10; background: #333; color: white; font-size: 0.85rem; padding: 8px 10px; width: 220px;
+           box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1); margin-top: 4px; transition: opacity 0.2s;">
+          Veuillez vous référer à votre carte grise
+        </span>
+        <style>
+          .info-tooltip:hover .tooltip-text {
+            visibility: visible !important;
+            opacity: 1 !important;
+          }
+        </style>
+      </span>
+    </div>
+    <!-- Erreurs -->
+    <div *ngIf="formParamRisque.get(rs.formName)?.touched &&
+      formParamRisque.get(rs.formName)?.errors"
+      style="color:#d32f2f !important; font-weight:500 !important; margin-top:4px !important;">
+      <div *ngIf="formParamRisque.get(rs.formName)?.errors?.['required']">
+        Ce champ est obligatoire
+      </div>
+      <div *ngIf="formParamRisque.get(rs.formName)?.errors?.['bloquant']">
+        {{ formParamRisque.get(rs.formName)?.errors?.msg }}
+      </div>
+    </div>
+  </div>
+</ng-container>
+
+                                    </ng-container>
+                                </ng-container>
+
+                            </div>
+                            <!-- ========================= -->
+
+                            <div style="width:100% !important;margin-top:18px !important;">
+                                <button class="btn btn-action" style="margin:0rem !important" *ngIf="!multiRisque"
+                                    type="submit">Suivant</button>
+                                <button class="btn btn-secondary" *ngIf="multiRisque" type="submit">Ajouter</button>
+                                <button style="margin:0rem !important" class="btn btn-cancel"
+                                    (click)="!multiRisque ? goBack(): risqueStep=0" type="button">Retour </button>
+                            </div>
+                        </mat-expansion-panel>
+                    </form>
+                </div>
+
+
+
+
+
+                <button class="btn btn-action" *ngIf="risqueStep==2" type="button"
+                    (click)="generateCalcul()">Suivant</button>
+                <button class="btn btn-cancel" *ngIf="risqueStep==2" type="button"
+                    (click)="risqueStep=0">Retour</button>
+
+
+                <div class
+                    *ngIf="multiRisque  && risqueStep==1 && (dataSourceRisque.data.length!=0 || codeProduit == '45L')">
+
+                    <button class="btn btn-action" type="button" (click)="checkVehiculeNumber()">Suivant</button>
+                </div>
+            </mat-step>
+
+
+            <!-- fin du step 2  -->
+            <!-- fin du step 2  -->
+            <!-- fin du step 2  -->
+            <!-- fin du step 2  -->
+            <!-- fin du step 2  -->
+            <!-- fin du step 2  -->
+            <!-- fin du step 2  -->
+            <!-- fin du step 2  -->
+            <!-- fin du step 2  -->
+            <!-- fin du step 2  -->
+            <!-- fin du step 2  -->
+            <!-- fin du step 2  -->
+            <!-- fin du step 2  -->
+
+
+            <!-- ********** pack  **********-->
+
+
+            <!-- champs output devis -->
+            <mat-form-field appearance="outline" class="col-md-5">
+
+                <mat-label *ngIf="codeProduit=='97'"> Nombre de pages output </mat-label>
+                <!-- <ng-container *ngIf="codeProduit=='97'"><mat-label>Nombre de site</mat-label></ng-container> -->
+
+                <input matInput type="number" [formControl]="nmbVehicule">
+            </mat-form-field>
+            <!-- champs output devis -->
+
+
+            <mat-step>
+
+                <div class="choose-pack-container" *ngIf="!multiRisque || codeProduit == '97'">
+                    <h4 class="choose-pack-title">JE CHOISIS MON PACK !</h4>
+
+                    <div class="packs-grid">
+                        <ng-container *ngFor="let pack of orderedPacks">
+                            <div class="pack-card" (click)="selectPack(pack)"
+                                [ngClass]="{ 'selected-pack': selectedPack?.idPack0 === pack.idPack0 }">
+                                <div class="pack-card-image" [ngStyle]="{
+                                  'background-image': 'url(' + getImageForPack(getNomPack(pack.idPack0)) + ')'
+                                      }"></div>
+
+                                <div class="pack-card-content">
+                                    <h3>{{ getNomPack(pack.idPack0) }}</h3>
+                                    <p>{{ getDescriptionForPack(getNomPack(pack.idPack0)) }}</p>
+                                    <button mat-raised-button matStepperNext class="discover-button">
+                                        DÉCOUVRIR
+                                    </button>
+                                </div>
+                            </div>
+                        </ng-container>
+
+                    </div>
+
+                    <mat-form-field appearance="outline" class="pages-field"
+                        *ngIf="(codeProduit == '97' && isBOUser && selectedSousProduit == 'CTI')">
+                        <mat-label>Nombre de pages output</mat-label>
+                        <input matInput type="number" [formControl]="nbrPages" />
+                    </mat-form-field>
+                </div>
+
+                <div class="next-step-container">
+                    <button class="btn btn-cancel" (click)="goBack()">Retour</button>
+                </div>
+            </mat-step>
+
+
+
+
+            <mat-step *ngIf="risqueStep!=2">
+
+                <ng-template matStepLabel>
+                    <div class="step-label">
+                        <img src="assets/pack1.png" alt="Assuré" class="step-image">
+                        <span class="step-text">Pack et garanties</span>
+                    </div>
+                </ng-template>
+
+
+
+
+
+
+                <mat-form-field appearance="outline" class="col-md-3"
+                    *ngIf="(codeProduit=='97' &&  isBOUser==true  &&  selectedSousProduit=='CTI') ">
+                    <mat-label>Nombre de pages output</mat-label>
+
+
+                    <input matInput type="number" [formControl]="nbrPages">
+
+                </mat-form-field>
+
+
+
+                <div class="alert alert-danger" *ngIf="errorTarif.error">{{errorTarif.msg}}</div>
+                <div class="alert alert-danger" *ngIf="errorHandler.error">{{errorHandler.msg}}</div>
+                <div class="alert alert-danger" *ngIf="errorPackForm">Veuillez
+                    remplir tous les champs des garanties obligatoires/cochées</div>
+                <!-- la table de pack et garnatie   -->
+                <!-- la table de pack et garnatie   -->
+                <!-- la table de pack et garnatie   -->
+                <!-- la table de pack et garnatie   -->
+                <!-- la table de pack et garnatie   -->
+                <!-- la table de pack et garnatie   -->
+                <!-- la table de pack et garnatie   -->
+                <!-- la table de pack et garnatie   -->
+                <!-- la table de pack et garnatie   -->
+                <!-- la table de pack et garnatie   -->
+                <!-- la table de pack et garnatie   -->
+                <!-- la table de pack et garnatie   -->
+                <!-- la table de pack et garnatie   -->
+                <div class="pack-title-wrapper" *ngIf="selectedPack">
+                    <h5 class="pack-section-title">MA FORMULE AUTO</h5>
+                    <div class="pack-title-box">
+                        {{ selectedPack.description }}
+                    </div>
+                </div>
+
+                <h4 class="choose-pack-title">MES GARANTIES</h4>
+
+<div class="garantie-table" *ngIf="loadTable && (!multiRisque || codeProduit === '97')">
+
+  <div class="garantie-row" *ngFor="let element of garantiefiltre; let i = index">
+
+    <div class="cell-check">
+      <mat-checkbox class="radio-checkbox" color="primary" [formControl]="getControl(i,'checked')"
+        (click)="$event.stopPropagation()" (change)="checkGarantie(element, $event)">
+      </mat-checkbox>
+    </div>
+
+    <div class="libelleGarantie" style="border: 1px solid #cccccc; width:90%;">
+      <div class="cell-libelle">
+        {{ element.description }}
+      </div>
+    </div>
+
+    <div class="cell-champs">
+
+      <!-- === P L A F O N D === -->
+      <ng-container *ngIf="element.plafond?.length">
+        <div class="champ">
+          <label *ngIf="element.plafond[0].descriptionvVal === 'input' || element.plafond[0].valeur > 0">
+            Plafond
+          </label>
+
+          <!-- plusieurs valeurs -->
+          <div *ngIf="element.plafond.length > 1; else plafondUnique"
+               class="custom-select-wrapper"
+               [ngStyle]="!getControl(i,'plafond').disabled ? {'border': '1px solid #00008f'} : {}">
+            <select [formControl]="getControl(i,'plafond')" (change)="tarifReady = false"
+              class="custom-select">
+              <option *ngFor="let p of element.plafond" [ngValue]="p">
+                {{ p.valeur | number:'1.0-0' | money }}
+              </option>
+            </select>
+          </div>
+
+          <!-- valeur unique (input ou statique) -->
+          <ng-template #plafondUnique>
+            <div>
+              <input
+                style="height: 38px;"
+                *ngIf="element.plafond[0].descriptionvVal === 'input'; else plafondStatic"
+                matInput type="number"
+                [formControl]="getControl(i,'plafond')"
+                max="100000"
+                [ngStyle]="!getControl(i,'plafond').disabled ? {'border': '1px solid #00008f'} : {}"
+                (input)="
+                  getControl(i,'plafond').setValue(
+                    +$any($event.target).value > 100000 ? 100000 : $any($event.target).value
+                  )
+                "
+              >
+              <!-- Message d'erreur seulement pour codeGarantie G05 -->
+              <div *ngIf="
+                element.codeGarantie === 'G05' &&
+                getControl(i, 'checked').value &&
+                (!getControl(i, 'plafond').value || getControl(i, 'plafond').value === 0)
+              " style="color: red; font-size: 12px; margin-top: 2px;">
+                Veuillez mettre une valeur
+              </div>
+            </div>
+            <ng-template #plafondStatic>
+              <input style="height: 38px;" *ngIf="element.plafond[0].valeur > 0" matInput
+                disabled [value]="element.plafond[0].valeur | number:'1.0-0' | money">
+            </ng-template>
+          </ng-template>
+        </div>
+      </ng-container>
+
+      <!-- === F R A N C H I S E === -->
+      <ng-container *ngIf="element.franchise?.length">
+        <div class="champ">
+          <label>Formule</label>
+          <div *ngIf="element.franchise.length > 1; else franchiseUnique"
+               class="custom-select-wrapper"
+               [ngStyle]="!getControl(i,'franchise').disabled ? {'border': '1px solid #00008f'} : {}">
+            <select [formControl]="getControl(i, 'franchise')"
+              class="custom-select">
+              <option *ngFor="let f of getFilteredFranchiseByAge(element)" [ngValue]="f">
+                {{ f.valeur | number:'1.0-0' | money }}
+              </option>
+            </select>
+          </div>
+          <ng-template #franchiseUnique>
+            <input
+              style="height: 38px; "
+              *ngIf="element.franchise[0].descriptionvVal === 'input'; else franchiseStatic"
+              matInput type="number"
+              [formControl]="getControl(i,'franchise')"
+              [ngStyle]="!getControl(i,'franchise').disabled ? {'border': '1px solid #00008f'} : {}"
+              (input)="tarifReady = false">
+            <ng-template #franchiseStatic>
+              <input
+                style="height: 38px; "
+                matInput disabled
+                [value]="element.franchise[0].valeur | number:'1.0-0' | money">
+            </ng-template>
+          </ng-template>
+        </div>
+      </ng-container>
+
+      <!-- === A S S I S T A N C E === -->
+      <div class="champ" *ngIf="element.formule?.length">
+        <label>Franchise</label>
+        <ng-container *ngIf="element.formule.length > 1; else formuleUnique">
+          <div class="custom-select-wrapper"
+               [ngStyle]="!getControl(i,'formule').disabled ? {'border': '1px solid #00008f'} : {}">
+            <select [formControl]="getControl(i,'formule')" (change)="tarifReady = false"
+              class="custom-select">
+              <option *ngFor="let f of element.formule" [ngValue]="f">
+                {{ f.valeur | number:'1.0-0' | money }} {{ f?.unite }}
+              </option>
+            </select>
+          </div>
+        </ng-container>
+        <ng-template #formuleUnique>
+          <ng-container *ngIf="element.formule[0].descriptionvVal === 'input'; else formuleStatic">
+            <mat-form-field appearance="fill" class="full-width">
+              <input
+                matInput type="number"
+                [formControl]="getControl(i,'formule')"
+                (input)="tarifReady = false"
+                [ngStyle]="!getControl(i,'formule').disabled ? {'border': '1px solid #00008f'} : {}"
+              >
+            </mat-form-field>
+          </ng-container>
+          <ng-template #formuleStatic>
+            <span class="static-val">
+              {{ element.formule[0].valeur | number:'1.0-0' | money }} {{ element.formule[0]?.unite }}
+            </span>
+          </ng-template>
+        </ng-template>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+                <!-- Responsive Cards (Mobile only) -->
+                <!-- Responsive Cards (Mobile only) -->
+                <!-- Responsive Cards (Mobile only) -->
+                <!-- Responsive Cards (Mobile only) -->
+                <!-- Responsive Cards (Mobile only) -->
+                <!-- Responsive Cards (Mobile only) -->
+                <!-- Responsive Cards (Mobile only) -->
+<div class="garantie-card-container" *ngIf="loadTable && (!multiRisque || codeProduit === '97')">
+  <div class="garantie-card" *ngFor="let element of garantiefiltre; let i = index">
+    <div class="card-header">
+      <mat-checkbox class="radio-checkbox" color="primary" [formControl]="getControl(i,'checked')"
+        (click)="$event.stopPropagation()" (change)="checkGarantie(element, $event)">
+      </mat-checkbox>
+      <div class="garantie-title">{{ element.description }}</div>
+    </div>
+    <div class="card-body">
+
+      <!-- === P L A F O N D === -->
+      <ng-container *ngIf="element.plafond?.length">
+        <div class="champ">
+          <label
+            *ngIf="element.plafond[0].descriptionvVal === 'input' || element.plafond[0].valeur > 0">
+            Plafond
+          </label>
+
+          <!-- Plusieurs plafonds (select) -->
+          <div *ngIf="element.plafond.length > 1; else plafondUnique"
+               class="custom-select-wrapper"
+               [ngStyle]="!getControl(i,'plafond').disabled ? {'border': '1px solid #00008f'} : {}">
+            <select [formControl]="getControl(i,'plafond')" (change)="tarifReady = false"
+              class="custom-select">
+              <option *ngFor="let p of element.plafond" [ngValue]="p">
+                {{ p.valeur | number:'1.0-0' | money }}
+              </option>
+            </select>
+          </div>
+          <!-- Valeur unique (input ou statique) -->
+          <ng-template #plafondUnique>
+            <div style="display: flex; flex-direction: column;">
+              <input style="height: 38px;"
+                *ngIf="element.plafond[0].descriptionvVal === 'input'; else plafondStatic"
+                matInput type="number" [formControl]="getControl(i,'plafond')"
+                max="100000"
+                [ngStyle]="!getControl(i,'plafond').disabled ? {'border': '1px solid #00008f'} : {}"
+                (input)="
+                  getControl(i,'plafond').setValue(
+                    +$any($event.target).value > 100000 ? 100000 : $any($event.target).value
+                  )
+                ">
+              <!-- Message d'erreur seulement pour codeGarantie G05 -->
+              <div *ngIf="
+                element.codeGarantie === 'G05' &&
+                getControl(i, 'checked').value &&
+                (!getControl(i, 'plafond').value || getControl(i, 'plafond').value === 0)
+              " style="color: red; font-size: 12px; margin-top: 2px;">
+                Veuillez mettre une valeur
+              </div>
+            </div>
+            <ng-template #plafondStatic>
+              <input style="height: 38px;" *ngIf="element.plafond[0].valeur > 0" matInput
+                disabled [value]="element.plafond[0].valeur | number:'1.0-0' | money">
+            </ng-template>
+          </ng-template>
+
+        </div>
+      </ng-container>
+
+      <!-- === F R A N C H I S E === -->
+      <ng-container *ngIf="element.franchise?.length">
+        <div class="champ">
+          <label>Formule</label>
+          <div *ngIf="element.franchise.length > 1; else franchiseUnique"
+               class="custom-select-wrapper"
+               [ngStyle]="!getControl(i,'franchise').disabled ? {'border': '1px solid #00008f'} : {}">
+            <select [formControl]="getControl(i, 'franchise')" class="custom-select">
+              <option *ngFor="let f of getFilteredFranchiseByAge(element)" [ngValue]="f">
+                {{ f.valeur | number:'1.0-0' | money }}
+              </option>
+            </select>
+          </div>
+          <ng-template #franchiseUnique>
+            <input style="height: 38px; "
+              *ngIf="element.franchise[0].descriptionvVal === 'input'; else franchiseStatic"
+              matInput type="number" [formControl]="getControl(i,'franchise')"
+              [ngStyle]="!getControl(i,'franchise').disabled ? {'border': '1px solid #00008f'} : {}"
+              (input)="tarifReady = false">
+            <ng-template #franchiseStatic>
+              <input style="height: 38px; "
+                matInput disabled
+                [value]="element.franchise[0].valeur | number:'1.0-0' | money">
+            </ng-template>
+          </ng-template>
+        </div>
+      </ng-container>
+
+      <!-- === F O R M U L E (Franchise) === -->
+      <div class="champ" *ngIf="element.formule?.length">
+        <label>Franchise</label>
+        <ng-container *ngIf="element.formule.length > 1; else formuleUnique">
+          <div class="custom-select-wrapper"
+               [ngStyle]="!getControl(i,'formule').disabled ? {'border': '1px solid #00008f'} : {}">
+            <select [formControl]="getControl(i,'formule')" (change)="tarifReady = false"
+              class="custom-select">
+              <option *ngFor="let f of element.formule" [ngValue]="f">
+                {{ f.valeur | number:'1.0-0' | money }} {{ f?.unite }}
+              </option>
+            </select>
+          </div>
+        </ng-container>
+        <ng-template #formuleUnique>
+          <ng-container
+            *ngIf="element.formule[0].descriptionvVal === 'input'; else formuleStatic">
+            <input style="height: 38px; "
+              matInput type="number" [formControl]="getControl(i,'formule')"
+              [ngStyle]="!getControl(i,'formule').disabled ? {'border': '1px solid #00008f'} : {}"
+              (input)="tarifReady = false">
+          </ng-container>
+          <ng-template #formuleStatic>
+            <span class="static-val">
+              {{ element.formule[0].valeur | number:'1.0-0' | money }} {{ element.formule[0]?.unite }}
+            </span>
+          </ng-template>
+        </ng-template>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+                <div style="margin: 24px 0 10px 0; display: flex; ">
+                    <re-captcha [siteKey]="'6LfEW4MrAAAAAMvdmSK9BYwbXwBrVvynuD8dqeW8'"
+                        (resolved)="onCaptchaResolved($event)">
+                    </re-captcha>
+                </div>
+                <div *ngIf="captchaError" style="color:#d93025; display: flex; ">
+                    Merci de valider le captcha pour continuer.
+                </div>
+
+                <div>
+                    <button class="btn btn-action" (click)="validateStep()" [disabled]="!isStepValid">
+                        Suivant
+                    </button>
+                    <!-- 
+                    <button class="btn btn-action" (click)="generateCalcul(); goToResume();setDonneesResume();"
+                        [disabled]="!isStepValid">
+                        Suivant
+                    </button> -->
+                    <button class="btn btn-cancel"
+                        *ngIf="(codeProduit=='97'&& selectedSousProduit=='CTI' && isBOUser==true)||(codeProduit!='97')"
+                        (click)="goBack()"> Retour</button>
+                </div>
+
+            </mat-step>
+
+
+
+            <!-- la table de pack et garnatie standar se termine la  -->
+            <!-- la table de pack et garnatie standar se termine la  -->
+            <!-- la table de pack et garnatie standar se termine la  -->
+            <!-- la table de pack et garnatie standar se termine la  -->
+            <!-- la table de pack et garnatie standar se termine la  -->
+            <!-- la table de pack et garnatie standar se termine la  -->
+            <!-- la table de pack et garnatie standar se termine la  -->
+            <!-- la table de pack et garnatie standar se termine la  -->
+            <!-- la table de pack et garnatie standar se termine la  -->
+            <!-- la table de pack et garnatie standar se termine la  -->
+            <!-- la table de pack et garnatie standar se termine la  -->
+            <!-- la table de pack et garnatie standar se termine la  -->
+            <!-- la table de pack et garnatie standar se termine la  -->
+            <!-- la table de pack et garnatie standar se termine la  -->
+            <!-- la table de pack et garnatie standar se termine la  -->
+            <!-- la table de pack et garnatie standar se termine la  -->
+            <!-- la table de pack et garnatie standar se termine la  -->
+
+            <!--***************LISTE PARAM -->
+
+            <!--   Résumé : 
+        <mat-step [editable]="true" *ngIf="(codeProduit!='97'&& codeProduit!='45A')">
+            <ng-template matStepLabel>Réduction</ng-template>
+            <p>Veuillez choisir une Convention/Réduction</p>
+            <div class="alert alert-danger" *ngIf="errorHandler.error">{{errorHandler.msg}}</div>
+            <form [formGroup]="formReduction" (ngSubmit)="submitReduction()" class="row">
+
+                <mat-form-field class="col-md-5" appearance="outline">
+                    <mat-label> Convention</mat-label>
+
+                    <mat-select formControlName="convention" [(value)]="defaultConvention"
+                        (selectionChange)="getReductionByConvention($event.value)">
+                        <mat-option [value]="'aucuneConvention'">
+                            Aucune Convention
+                        </mat-option>
+                        <ng-container *ngFor="let convention of conventions">
+
+                            <mat-option [value]="convention.idConvention">
+                                {{convention.nomConvention}}
+                            </mat-option>
+                        </ng-container>
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field class="col-md-5" appearance="outline">
+                    
+
+                    <mat-select formControlName="reduction">
+                        <mat-option [value]="'aucuneReduction'"> Aucune
+                            Reduction </mat-option>
+                        <ng-container *ngFor="let reduction of reductions">
+                            <mat-option [value]="reduction.idReduction">
+                                {{reduction.nomReduction}}
+                            </mat-option>
+                        </ng-container>
+                    </mat-select>
+                </mat-form-field>
+                <div>
+                    <ng-container *ngIf="codeProduit!='97'">
+                        <button class="btn btn-action" type="submit">
+                           
+                            <span>Suivant</span></button>
+                        <button class="btn btn-cancel" (click)="goBack()" type="button">Retour</button>
+                    </ng-container>
+
+
+
+
+
+                </div>
+            </form>
+        </mat-step>
+-->
+            <!-- ********** resumé  **********-->
+            <!-- ********** resumé  **********-->
+            <!-- ********** resumé  **********-->
+            <!-- ********** resumé  **********-->
+            <!-- ********** resumé  **********-->
+            <!-- ********** resumé  **********-->
+            <!-- ********** resumé  **********-->
+            <!-- ********** resumé  **********-->
+            <!-- ********** resumé  **********-->
+            <!-- ********** resumé  **********-->
+            <!-- ********** resumé  **********-->
+            <!-- ********** resumé  **********-->
+            <!-- ********** resumé  **********-->
+            <!-- ********** resumé  **********-->
+            <!-- ********** resumé  **********-->
+            <!-- ********** resumé  **********-->
+            <!-- ********** resumé  **********-->
+            <!-- ********** resumé  **********-->
+            <!-- ********** resumé  **********-->
+            <!-- ********** resumé  **********-->
+            <!-- ********** resumé  **********-->
+            <mat-step>
+
+                <ng-template matStepLabel>
+                    <div class="step-label">
+                        <img src="assets/resume1.png" alt="Assuré" class="step-image">
+                        <span class="step-text">Résumé</span>
+                    </div>
+                </ng-template>
+
+
+                <!-- <div class="alert alert-danger" *ngIf="errorHandler.error">{{errorHandler.msg}}</div>
+                <div class="alert alert-success" *ngIf="successDevis">Le
+                    devis
+                    {{idDevis}} a été créé
+                    avec succès, pour le consulter veuillez <a class="consult-devis"
+                        [routerLink]=" ['/', 'consultation', codeProduit, produit, idDevis]">cliquez
+
+                        ici.</a> </div> -->
+
+
+                <!-- Bandeau résumé sur image -->
+                <div class="resume-banner">
+                    <img src="assets/resultatprime.jpg" alt="banniere" class="banner-img">
+                    <div class="banner-overlay">
+                        <div class="banner-text">Votre couverture {{ getNomPack(returnedTarif.pack) }} s’élève à</div>
+                        <ng-container *ngFor="let element of returnedTarif?.primeList">
+                            <ng-container *ngIf="element.idPrime === 186">
+                                <div class="banner-price">
+                                    {{ element.prime | number: '1.0-0' | money }},00 DA
+                                </div>
+                            </ng-container>
+                        </ng-container>
+                    </div>
+                </div>
+
+                <!-- Tableau Garanties -->
+                <!--tableau des garanties et plafonds  -->
+                <!--tableau des garanties et plafonds  -->
+                <!--tableau des garanties et plafonds  -->
+                <!--tableau des garanties et plafonds  -->
+                <!--tableau des garanties et plafonds  -->
+                <!--tableau des garanties et plafonds  -->
+                <!--tableau des garanties et plafonds  -->
+                <!--tableau des garanties et plafonds  -->
+                <!--tableau des garanties et plafonds  -->
+                <!--tableau des garanties et plafonds  -->
+                <!--tableau des garanties et plafonds  -->
+                <!--tableau des garanties et plafonds  -->
+                <!--tableau des garanties et plafonds  -->
+                <!--tableau des garanties et plafonds  -->
+                <!--tableau des garanties et plafonds  -->
+                <table class="resume-table">
+                    <thead>
+                        <tr>
+                            <th>Garanties</th>
+                            <th>Plafonds</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        <!-- pack 6 classic plus  -->
+                        <!-- pack 6 classic plus  -->
+                        <!-- pack 6 classic plus  -->
+                        <!-- pack 6 classic plus  -->
+                        <!-- pack 6 classic plus  -->
+                        <ng-container *ngIf="returnedTarif.pack === 6">
+
+                            <tr>
+                                <td>Défense et recours</td>
+                                <td>
+                                    -
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Responsabilité Civile</td>
+                                <td>
+                                    -
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Assistance</td>
+                                <td>
+                                    {{
+                                    returnedTarif.groupes[0].groupeList[0].risque.packCompletList[6]?.categorieList[0]?.valeur
+                                    | number : '1.0-0' | money
+                                    }}
+                                    <sup>KM</sup>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Bris de glace</td>
+                                <td>
+                                    {{
+                                    returnedTarif.groupes[0].groupeList[0].risque.packCompletList[5]?.categorieList[0]?.valeur
+                                    | number : '1.0-0' | money
+                                    }}
+                                    <sup>DZD</sup>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Dommage Collision Valeur Vénale</td>
+                                <td>
+                                    {{
+                                    returnedTarif.groupes[0].groupeList[0].risque.paramList[6].reponse.description
+                                    | number : '1.0-0' | money
+                                    }}
+                                    <sup>DZD</sup>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Vol</td>
+                                <td>
+                                    {{
+                                    returnedTarif.groupes[0].groupeList[0].risque.paramList[6].reponse.description
+                                    | number : '1.0-0' | money
+                                    }}
+                                    <sup>DZD</sup>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>Incendie</td>
+                                <td>
+                                    {{
+                                    returnedTarif.groupes[0].groupeList[0].risque.paramList[6].reponse.description
+                                    | number : '1.0-0' | money
+                                    }}
+                                    <sup>DZD</sup>
+                                </td>
+                            </tr>
+
+
+
+
+                            <tr *ngIf="getCategorieValeur(56)">
+                                <td>Protection Famille</td>
+                                <td>{{ getCategorieValeur(56) | number:'1.0-0' | money }} <sup>DZD</sup></td>
+                            </tr>
+
+
+                            <tr *ngIf="getCategorieValeur(57)">
+                                <td>Décès IAD</td>
+                                <td>{{ getCategorieValeur(57) | number:'1.0-0' | money }} <sup>DZD</sup></td>
+                            </tr>
+
+
+
+                            <tr *ngIf="getCategorieValeur(58)">
+                                <td>Incapacité Partielle Permanente</td>
+                                <td>{{ getCategorieValeur(58) | number:'1.0-0' | money }} <sup>DZD</sup></td>
+                            </tr>
+
+                            <tr *ngIf="getCategorieValeur(59)">
+                                <td>Frais Médicaux</td>
+                                <td>{{ getCategorieValeur(59) | number:'1.0-0' | money }} <sup>DZD</sup></td>
+                            </tr>
+
+                            <tr *ngIf="getCategorieValeur(60)">
+                                <td>Vol Auto-Radio</td>
+                                <td>{{ getCategorieValeur(60) | number:'1.0-0' | money }} <sup>DZD</sup></td>
+                            </tr>
+                            <tr *ngIf="getCategorieValeur(61)">
+                                <td>Protection financière</td>
+                                <td>{{ getCategorieValeur(61) | number:'1.0-0' | money }} <sup>DZD</sup></td>
+                            </tr>
+                            <tr *ngIf="getCategorieValeur2(62)">
+                                <td>Protection juridique</td>
+                                <td>-</td>
+                            </tr>
+
+
+
+
+                        </ng-container>
+
+                        <!-- Pack 7  tout en 1 limitée -->
+                        <!-- Pack 7  tout en 1 limitée -->
+                        <!-- Pack 7  tout en 1 limitée -->
+                        <!-- Pack 7  tout en 1 limitée -->
+                        <!-- Pack 7  tout en 1 limitée -->
+                        <ng-container *ngIf="returnedTarif.pack === 7">
+
+                            <tr>
+                                <td>Défense et recours</td>
+                                <td>
+                                    -
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Responsabilité Civile</td>
+                                <td>
+                                    -
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Assistance</td>
+                                <td>
+                                    {{
+                                    returnedTarif.groupes[0].groupeList[0].risque.packCompletList[6]?.categorieList[0]?.valeur
+                                    | number : '1.0-0' | money
+                                    }}
+                                    <sup>KM</sup>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Bris de glace</td>
+                                <td>
+                                    {{
+                                    returnedTarif.groupes[0].groupeList[0].risque.packCompletList[4]?.categorieList[0]?.valeur
+                                    | number : '1.0-0' | money
+                                    }}
+                                    <sup>DZD</sup>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>DTA Limité</td>
+                                <td>
+                                    -
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>Vol</td>
+                                <td>
+                                    {{
+                                    returnedTarif.groupes[0].groupeList[0].risque.paramList[6].reponse.description
+                                    | number : '1.0-0' | money
+                                    }}
+                                    <sup>DZD</sup>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>Incendie</td>
+                                <td>
+                                    {{
+                                    returnedTarif.groupes[0].groupeList[0].risque.paramList[6].reponse.description
+                                    | number : '1.0-0' | money
+                                    }}
+                                    <sup>DZD</sup>
+                                </td>
+                            </tr>
+
+
+                            <tr *ngIf="getCategorieValeur(71)">
+                                <td>Protection Famille</td>
+                                <td>{{ getCategorieValeur(71) | number:'1.0-0' | money }} <sup>DZD</sup></td>
+                            </tr>
+
+
+                            <tr *ngIf="getCategorieValeur(72)">
+                                <td>Décès IAD</td>
+                                <td>{{ getCategorieValeur(72) | number:'1.0-0' | money }} <sup>DZD</sup></td>
+                            </tr>
+
+                            <tr *ngIf="getCategorieValeur(73)">
+                                <td>Incapacité Partielle Permanente</td>
+                                <td>{{ getCategorieValeur(73) | number:'1.0-0' | money }} <sup>DZD</sup></td>
+                            </tr>
+                            <tr *ngIf="getCategorieValeur(74)">
+                                <td>Frais Médicaux</td>
+                                <td>{{ getCategorieValeur(74) | number:'1.0-0' | money }} <sup>DZD</sup></td>
+                            </tr>
+                            <tr *ngIf="getCategorieValeur(75)">
+                                <td>Vol Auto-Radio</td>
+                                <td>{{ getCategorieValeur(75) | number:'1.0-0' | money }} <sup>DZD</sup></td>
+                            </tr>
+                            <tr *ngIf="getCategorieValeur(76)">
+                                <td>Protection financière</td>
+                                <td>{{ getCategorieValeur(76) | number:'1.0-0' | money }} <sup>DZD</sup></td>
+                            </tr>
+                            <tr *ngIf="getCategorieValeur2(77)">
+                                <td>Protection juridique</td>
+                                <td>-</td>
+                            </tr>
+
+                        </ng-container>
+
+
+
+
+
+                        <!-- Pack 8 tout en 1  -->
+                        <!-- Pack 8 tout en 1  -->
+                        <!-- Pack 8 tout en 1  -->
+                        <!-- Pack 8 tout en 1  -->
+                        <!-- Pack 8 tout en 1  -->
+                        <!-- Pack 8 tout en 1  -->
+                        <ng-container *ngIf="returnedTarif.pack === 8">
+
+                            <tr>
+                                <td>Défense et recours</td>
+                                <td>
+                                    -
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Responsabilité Civile</td>
+                                <td>
+                                    -
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Assistance</td>
+                                <td>
+                                    {{
+                                    returnedTarif.groupes[0].groupeList[0].risque.packCompletList[5]?.categorieList[0]?.valeur
+                                    | number : '1.0-0' | money
+                                    }}
+                                    <sup>KM</sup>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Bris de glace</td>
+                                <td>
+                                    {{
+                                    returnedTarif.groupes[0].groupeList[0].risque.packCompletList[4]?.categorieList[0]?.valeur
+                                    | number : '1.0-0' | money
+                                    }}
+                                    <sup>DZD</sup>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Dommage tout accident</td>
+                                <td>
+                                    {{
+                                    returnedTarif.groupes[0].groupeList[0].risque.paramList[6].reponse.description
+                                    | number : '1.0-0' | money
+                                    }}
+                                    <sup>DZD</sup>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Vol</td>
+                                <td>
+                                    {{
+                                    returnedTarif.groupes[0].groupeList[0].risque.paramList[6].reponse.description
+                                    | number : '1.0-0' | money
+                                    }}
+                                    <sup>DZD</sup>
+                                </td>
+                            </tr>
+
+
+                            <tr>
+                                <td>incendie</td>
+                                <td>
+                                    {{
+                                    returnedTarif.groupes[0].groupeList[0].risque.paramList[6].reponse.description
+                                    | number : '1.0-0' | money
+                                    }}
+                                    <sup>DZD</sup>
+                                </td>
+                            </tr>
+
+
+                            <tr *ngIf="getCategorieValeur(86)">
+                                <td>Protection Famille</td>
+                                <td>{{ getCategorieValeur(86) | number:'1.0-0' | money }} <sup>DZD</sup></td>
+                            </tr>
+
+                            <tr *ngIf="getCategorieValeur(87)">
+                                <td>Décès IAD</td>
+                                <td>{{ getCategorieValeur(87) | number:'1.0-0' | money }} <sup>DZD</sup></td>
+                            </tr>
+
+                            <tr *ngIf="getCategorieValeur(88)">
+                                <td>Incapacité Partielle Permanente</td>
+                                <td>{{ getCategorieValeur(88) | number:'1.0-0' | money }} <sup>DZD</sup></td>
+                            </tr>
+
+                            <tr *ngIf="getCategorieValeur(89)">
+                                <td>Frais Médicaux</td>
+                                <td>{{ getCategorieValeur(89) | number:'1.0-0' | money }} <sup>DZD</sup></td>
+                            </tr>
+
+
+                            <tr *ngIf="getCategorieValeur(90)">
+                                <td>Vol Auto-Radio</td>
+                                <td>{{ getCategorieValeur(90) | number:'1.0-0' | money }} <sup>DZD</sup></td>
+                            </tr>
+
+                            <tr *ngIf="getCategorieValeur(91)">
+                                <td>Protection financière</td>
+                                <td>{{ getCategorieValeur(91) | number:'1.0-0' | money }} <sup>DZD</sup></td>
+                            </tr>
+                            <tr *ngIf="getCategorieValeur2(92)">
+                                <td>Protection juridique</td>
+                                -
+                            </tr>
+                            <tr *ngIf="getCategorieValeur2(93)">
+                                <td>Avance sur frais de réparation</td>
+                                -
+                            </tr>
+
+
+                        </ng-container>
+
+
+
+
+
+                        <!-- pack 64 Classic  -->
+                        <!-- pack 64 Classic  -->
+                        <!-- pack 64 Classic  -->
+                        <!-- pack 64 Classic  -->
+                        <!-- pack 64 Classic  -->
+
+                        <ng-container *ngIf="returnedTarif.pack === 64">
+
+                            <tr>
+                                <td>Défense et recours</td>
+                                <td>
+                                    -
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Responsabilité Civile</td>
+                                <td>
+                                    -
+                                </td>
+                            </tr>
+                            <tr
+                                *ngIf="returnedTarif.groupes[0].groupeList[0].risque.packCompletList[4]?.categorieList[0]?.valeur">
+                                <td>Assistance</td>
+                                <td>
+                                    {{
+                                    returnedTarif.groupes[0].groupeList[0].risque.packCompletList[4].categorieList[0].valeur
+                                    | number : '1.0-0' | money
+                                    }} <sup>KM</sup>
+                                </td>
+                            </tr>
+
+                            <tr
+                                *ngIf="returnedTarif.groupes[0].groupeList[0].risque.packCompletList[2]?.categorieList[0]?.valeur">
+                                <td>Bris de glace</td>
+                                <td>
+                                    {{
+                                    returnedTarif.groupes[0].groupeList[0].risque.packCompletList[2].categorieList[0].valeur
+                                    | number : '1.0-0' | money
+                                    }} <sup>DZD</sup>
+                                </td>
+                            </tr>
+
+                            <tr *ngIf="getCategorieValeur(983)">
+                                <td>Dommage Collision</td>
+                                <td>{{ getCategorieValeur(983) | number:'1.0-0' | money }} <sup>DZD</sup></td>
+                            </tr>
+
+                            <tr *ngIf="getCategorieValeur(985)">
+                                <td>Vol</td>
+                                <td>
+                                    {{
+                                    returnedTarif.groupes[0].groupeList[0].risque.paramList[6].reponse.description
+                                    | number : '1.0-0' | money
+                                    }} <sup>DZD</sup>
+                                </td>
+                            </tr>
+
+                            <tr *ngIf="getCategorieValeur(986)">
+                                <td>Incendie</td>
+                                <td>
+                                    {{
+                                    returnedTarif.groupes[0].groupeList[0].risque.paramList[6].reponse.description
+                                    | number : '1.0-0' | money
+                                    }} <sup>DZD</sup>
+                                </td>
+                            </tr>
+
+                            <tr *ngIf="getCategorieValeur2(987)">
+                                <td>Protection juridique</td>
+                                <td>-</td>
+                            </tr>
+
+                            <tr *ngIf="getCategorieValeur(988)">
+                                <td>Protection financière</td>
+                                <td>{{ getCategorieValeur(988) | number:'1.0-0' | money }} <sup>DZD</sup></td>
+                            </tr>
+
+
+                            <tr *ngIf="getCategorieValeur(989)">
+                                <td>Protection Famille</td>
+                                <td>{{ getCategorieValeur(989) | number:'1.0-0' | money }} <sup>DZD</sup></td>
+                            </tr>
+
+                            <tr *ngIf="getCategorieValeur(990)">
+                                <td>Décès IAD</td>
+                                <td>{{ getCategorieValeur(990) | number:'1.0-0' | money }} <sup>DZD</sup></td>
+                            </tr>
+
+                            <tr *ngIf="getCategorieValeur(991)">
+                                <td>Incapacité Partielle Permanente</td>
+                                <td>{{ getCategorieValeur(991) | number:'1.0-0' | money }} <sup>DZD</sup></td>
+                            </tr>
+
+                            <tr *ngIf="getCategorieValeur(992)">
+                                <td>Frais Médicaux</td>
+                                <td>{{ getCategorieValeur(992) | number:'1.0-0' | money }} <sup>DZD</sup></td>
+                            </tr>
+
+                            <tr *ngIf="getCategorieValeur(993)">
+                                <td>Vol Auto-Radio</td>
+                                <td>{{ getCategorieValeur(993) | number:'1.0-0' | money }} <sup>DZD</sup></td>
+                            </tr>
+
+                        </ng-container>
+
+                    </tbody>
+                </table>
+
+                <!-- Boutons -->
+                <div class="resume-actions">
+                    <button mat-button class="btn-filled" (click)="goToStep(2)">JE CHANGE MA FORMULE</button>
+                    <button mat-button class="btn-filled" (click)="resetStepper()">FAIRE UN NOUVEAU DEVIS</button>
+                </div>
+
+
+                <div class="resume-buttons" *ngIf="successDevis">
+                    <!-- <button class="btn btn-download" (click)="downloadDevis(returnedDevis)">
+                        Télécharger devis</button> -->
+                    <!-- <button class="btn btn-download" (click)="convertToContract()">
+                        <mat-icon class="material-symbols-outlined">
+                            source_notes
+                        </mat-icon>Convertir en contrat</button> -->
+                </div>
+                <div>
+                    <button class="btn btn-cancel" (click)="goBackReduc()" type="button">Retour</button>
+                    <!-- <button class="btn btn-action" [ngClass]="{'button--loading':
+                    loaderDevis}" (click)="submitDevis()" *ngIf="saveDevis" [disabled]="loaderDevis">
+                        <span class="button__text">Enregistrer devis</span>
+                    </button> -->
+                </div>
+
+            </mat-step>
+        </mat-stepper>
+        <div class="progress-bar-container">
+            <div class="progress-bar" [style.width.%]="progressPercentage"></div>
+        </div>
+    </div>
+      </div>
+    </div>
+</div>
+
+    
+    
+    
+<app-footer></app-footer>

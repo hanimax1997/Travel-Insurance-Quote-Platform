@@ -1,0 +1,407 @@
+[
+  {
+    "idCategorie": 1,
+    "description": "situation familiale",
+    "code": "C1"
+  },
+  {
+    "idCategorie": 2,
+    "description": "document",
+    "code": "C2"
+  },
+  {
+    "idCategorie": 3,
+    "description": "contact",
+    "code": "C3"
+  },
+  {
+    "idCategorie": 4,
+    "description": "type entreprise",
+    "code": "C4"
+  },
+  {
+    "idCategorie": 5,
+    "description": "modalité",
+    "code": "C5"
+  },
+  {
+    "idCategorie": 6,
+    "description": "sexe",
+    "code": "C6"
+  },
+  {
+    "idCategorie": 7,
+    "description": "plafond",
+    "code": "C7"
+  },
+  {
+    "idCategorie": 8,
+    "description": "type relation",
+    "code": "C8"
+  },
+  {
+    "idCategorie": 10,
+    "description": "titre",
+    "code": "C10"
+  },
+  {
+    "idCategorie": 11,
+    "description": "zone",
+    "code": "C11"
+  },
+  {
+    "idCategorie": 12,
+    "description": "input",
+    "code": "C12"
+  },
+  {
+    "idCategorie": 13,
+    "description": "workflow",
+    "code": "C13"
+  },
+  {
+    "idCategorie": 16,
+    "description": "Reponse Attribut Produit",
+    "code": "C14"
+  },
+  {
+    "idCategorie": 18,
+    "description": "franchise",
+    "code": "C15"
+  },
+  {
+    "idCategorie": 19,
+    "description": "formule",
+    "code": "C16"
+  },
+  {
+    "idCategorie": 20,
+    "description": "type valeur",
+    "code": "C17"
+  },
+  {
+    "idCategorie": 21,
+    "description": "type véhicule",
+    "code": "C18"
+  },
+  {
+    "idCategorie": 22,
+    "description": "usage",
+    "code": "C19"
+  },
+  {
+    "idCategorie": 23,
+    "description": "activité",
+    "code": "C20"
+  },
+  {
+    "idCategorie": 24,
+    "description": "puissance",
+    "code": "C21"
+  },
+  {
+    "idCategorie": 25,
+    "description": "canal",
+    "code": "C22"
+  },
+  {
+    "idCategorie": 26,
+    "description": "type prime ",
+    "code": "C23"
+  },
+  {
+    "idCategorie": 27,
+    "description": "type personne ",
+    "code": "C24"
+  },
+  {
+    "idCategorie": 28,
+    "description": "statut devis",
+    "code": "C25"
+  },
+  {
+    "idCategorie": 48,
+    "description": "taxe",
+    "code": "C26"
+  },
+  {
+    "idCategorie": 70,
+    "description": "classe véhicule",
+    "code": "C27"
+  },
+  {
+    "idCategorie": 72,
+    "description": "categorie risque",
+    "code": "C28"
+  },
+  {
+    "idCategorie": 73,
+    "description": "age",
+    "code": "C29"
+  },
+  {
+    "idCategorie": 76,
+    "description": "sexe conducteur",
+    "code": "C30"
+  },
+  {
+    "idCategorie": 79,
+    "description": "Energie",
+    "code": "C31"
+  },
+  {
+    "idCategorie": 80,
+    "description": "marque",
+    "code": "C32"
+  },
+  {
+    "idCategorie": 81,
+    "description": "role",
+    "code": "C33"
+  },
+  {
+    "idCategorie": 82,
+    "description": "statut contrat",
+    "code": "C34"
+  },
+  {
+    "idCategorie": 83,
+    "description": "statut quittance",
+    "code": "C35"
+  },
+  {
+    "idCategorie": 84,
+    "description": "type réduction",
+    "code": "C9"
+  },
+  {
+    "idCategorie": 85,
+    "description": "Mouvement",
+    "code": "C35"
+  },
+  {
+    "idCategorie": 86,
+    "description": "statut avenant",
+    "code": "C36"
+  },
+  {
+    "idCategorie": 87,
+    "description": null,
+    "code": "C37"
+  },
+  {
+    "idCategorie": 88,
+    "description": "statut expertise",
+    "code": "C38"
+  },
+  {
+    "idCategorie": 89,
+    "description": "mode expertise",
+    "code": "C39"
+  },
+  {
+    "idCategorie": 90,
+    "description": "type expertise",
+    "code": "C40"
+  },
+  {
+    "idCategorie": 91,
+    "description": "Type motif",
+    "code": "C41"
+  },
+  {
+    "idCategorie": 92,
+    "description": "approbation",
+    "code": "C42"
+  },
+  {
+    "idCategorie": 93,
+    "description": "cause sinistre",
+    "code": "C43"
+  },
+  {
+    "idCategorie": 94,
+    "description": "origine sinistre",
+    "code": "C44"
+  },
+  {
+    "idCategorie": 95,
+    "description": "conducteur sinistre",
+    "code": "C45"
+  },
+  {
+    "idCategorie": 96,
+    "description": "adversaire sinistre",
+    "code": "C46"
+  },
+  {
+    "idCategorie": 97,
+    "description": "blessés décés sinistre",
+    "code": "C47"
+  },
+  {
+    "idCategorie": 98,
+    "description": "statut sinistre",
+    "code": "C48"
+  },
+  {
+    "idCategorie": 99,
+    "description": "Type Mission Expertise",
+    "code": "C49"
+  },
+  {
+    "idCategorie": 100,
+    "description": "zone sinistre",
+    "code": "C50"
+  },
+  {
+    "idCategorie": 101,
+    "description": "compagnie adverse sinistre",
+    "code": "C51"
+  },
+  {
+    "idCategorie": 102,
+    "description": "type OP Sinistre",
+    "code": "C52"
+  },
+  {
+    "idCategorie": 103,
+    "description": "statut OP",
+    "code": "C53"
+  },
+  {
+    "idCategorie": 104,
+    "description": "etat sinistre",
+    "code": "C54"
+  },
+  {
+    "idCategorie": 105,
+    "description": "assistance sinistre",
+    "code": "C55"
+  },
+  {
+    "idCategorie": 106,
+    "description": "type recours sinistre",
+    "code": "C56"
+  },
+  {
+    "idCategorie": 107,
+    "description": "type restitution sinistre",
+    "code": "C57"
+  },
+  {
+    "idCategorie": 108,
+    "description": "fraude sinistre",
+    "code": "C58"
+  },
+  {
+    "idCategorie": 109,
+    "description": "piece justificatif sinistre",
+    "code": "C59"
+  },
+  {
+    "idCategorie": 110,
+    "description": "siniste paiement recours",
+    "code": "C60"
+  },
+  {
+    "idCategorie": 111,
+    "description": "Type montant sinistre",
+    "code": "C61"
+  },
+  {
+    "idCategorie": 112,
+    "description": "sinistre type perte",
+    "code": "C62"
+  },
+  {
+    "idCategorie": 113,
+    "description": "sinistre visite risque",
+    "code": "C63"
+  },
+  {
+    "idCategorie": 114,
+    "description": "sinistre calcul ht ttc",
+    "code": "C64"
+  },
+  {
+    "idCategorie": 115,
+    "description": "sinistre avis sur PV",
+    "code": "C65"
+  },
+  {
+    "idCategorie": 116,
+    "description": "sinistre motif decompte",
+    "code": "C66"
+  },
+  {
+    "idCategorie": 117,
+    "description": "sinistre type info decompte",
+    "code": "C67"
+  },
+  {
+    "idCategorie": 118,
+    "description": "sinistre op tva",
+    "code": "C69"
+  },
+  {
+    "idCategorie": 119,
+    "description": "sinistre type instance",
+    "code": "C70"
+  },
+  {
+    "idCategorie": 120,
+    "description": "sinistre instance statut document",
+    "code": "C71"
+  },
+  {
+    "idCategorie": 121,
+    "description": "sinistre paiement",
+    "code": "C72"
+  },
+  {
+    "idCategorie": 122,
+    "description": "fraude contentieux sinistre",
+    "code": "C73"
+  },
+  {
+    "idCategorie": 123,
+    "description": "sinistre instance statut",
+    "code": "C74"
+  },
+  {
+    "idCategorie": 124,
+    "description": "sinistre instance document",
+    "code": "C75"
+  },
+  {
+    "idCategorie": 125,
+    "description": "sinistre motif cloture",
+    "code": "C76"
+  },
+  {
+    "idCategorie": 126,
+    "description": "sinistre sous motif cloture",
+    "code": "C77"
+  },
+  {
+    "idCategorie": 127,
+    "description": "sinistre type bénéficiaire",
+    "code": "C78"
+  },
+  {
+    "idCategorie": 128,
+    "description": "sinistre statut OR",
+    "code": "C79"
+  },
+  {
+    "idCategorie": 129,
+    "description": "seuil BDG",
+    "code": "C68"
+  },
+  {
+    "idCategorie": 130,
+    "description": "type garantie",
+    "code": "C80"
+  }
+]

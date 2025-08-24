@@ -1,0 +1,425 @@
+* {
+  font-family: 'Source Sans Pro', sans-serif;
+}
+
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  border-color: #00008F;
+  box-shadow: 0 0 0 0.3px #00008F;
+}
+
+thead {
+  background-color: #00008f;
+  color: white;
+}
+
+.vertical-line {
+    width: 2px;
+    height: 60px;
+    background-color: #E5E5E5;
+    margin: 0 auto;
+}
+
+/* Bouton d’upload de fichier (inchangé) */
+input[type="file"]::file-selector-button {
+    padding: 0 16px;
+    height: 40px;
+    cursor: pointer;
+    background-color: white;
+    color: #00008f;
+    font-weight: 700 !important;
+    border: 1px solid #00008f;
+    margin-right: 16px;
+    transition: background-color 200ms;
+    border-radius: 10%;
+}
+.btn-file {
+    border-radius: 4px;
+    padding: 0 16px;
+    height: 40px;
+    cursor: pointer;
+    background-color: white;
+    color: #00008f;
+    font-weight: 700 !important;
+    border: 1px solid #00008f;
+    margin-right: 16px;
+    transition: background-color 200ms;
+    border-radius: 10%;
+}
+input[type="file"]::file-selector-button:hover {
+    background-color: #f3f4f6;
+}
+input[type="file"]::file-selector-button:active {
+    background-color: #e5e7eb;
+}
+
+/* ── STEPPER ───────────────────────────────────────────────────────────────── */
+
+/* Conteneur du stepper : les icônes sont alignées en haut, la barre en bas */
+.stepper-navbar {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start; /* Les icônes en haut */
+  margin-top: 36px;
+  margin-bottom: 12px; /* On réduit la marge inférieure pour laisser de la place à la barre */
+  max-width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 24px;  /* Espace au-dessus des icônes */
+  padding-bottom: 24px; /* Espace en-dessous pour la barre de progression */
+}
+
+/* Barre inactive sous les icônes */
+.stepper-progress-bar {
+  position: absolute;
+  bottom: 0;       /* Positionnée tout en bas du .stepper-navbar */
+  left: 0;
+  right: 0;
+  height: 10px;    /* Hauteur de la barre */
+  background: #e5e7eb;
+  border-radius: 10px;
+  z-index: 0;      /* Sous les cercles */
+  /* Suppression de top:50% et translateY, on veut en bas */
+}
+
+/* Barre active (remplissage) sous les icônes */
+.stepper-progress-bar-active {
+  position: absolute;
+  bottom: 0;        /* Alignée en bas comme la barre inactive */
+  left: 0;
+  height: 10px;     /* Même hauteur que .stepper-progress-bar */
+  background: #00008f;
+  border-radius: 10px;
+  z-index: 1;       /* Au-dessus de la barre inactive, sous les cercles */
+  transition: width 0.4s cubic-bezier(0.4,0,0.2,1);
+  /* Suppression de top:50% et translateY */
+}
+
+/* Chaque étape (icône + label) */
+.stepper-step {
+  position: relative;
+  z-index: 2; /* Au-dessus de la barre de progression */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 100px;
+}
+
+/* Label sous chaque cercle */
+.stepper-label {
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-align: center;
+  color: #00008f;
+  transition: color 0.3s;
+}
+
+/* Label inactif (à venir) */
+.stepper-label-inactive {
+  color: #a1a1aa;
+}
+
+/* Espace (diviseur) entre étapes, transparent pour laisser la barre en dessous */
+.stepper-divider {
+  flex: 1;
+  height: 50px;
+}
+
+/* Boutons d’action, secondaire et annulation */
+.btn.btn-action,
+.btn.btn-secondary {
+    margin-top: 2rem;
+    float: right;
+}
+
+.btn.btn-cancel {
+    margin-top: 2rem;
+    float: left;
+}
+
+/* Bouton de téléchargement */
+.btn.btn-download {
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+    transition: box-shadow 0.3s ease-in-out;
+}
+
+.btn.btn-download:hover {
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Texte du bouton (pour l’état loading) */
+.button__text {
+    transition: all 0.2s;
+}
+
+/* Cacher le texte lorsque le bouton est en loading */
+.button--loading .button__text {
+    visibility: hidden;
+    opacity: 0;
+}
+
+/* Conteneur de l’état loading du bouton */
+.button--loading {
+    position: relative;
+}
+
+.button--loading::after {
+    content: "";
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    border: 4px solid transparent;
+    border-top-color: #ffffff;
+    border-radius: 10%;
+    animation: button-loading-spinner 1s ease infinite;
+}
+
+.button--loading:hover {
+    background-color: #00008F;
+}
+
+/* Animation du spinner pour les boutons en loading */
+@keyframes button-loading-spinner {
+    from {
+        transform: rotate(0turn);
+    }
+    to {
+        transform: rotate(1turn);
+    }
+}
+
+/* État hover pour un bouton désactivé */
+.btn-action:disabled:hover {
+    background-color: #00008F;
+    color: white;
+}
+
+/* Bouton à effet “slide” */
+.btn-slide {
+    position: relative;
+    display: inline-block;
+    height: 50px;
+    width: 263px;
+    line-height: 50px;
+    padding: 0;
+    border-radius: 10%;
+    background: #fdfdfd;
+    border: 2px solid #00008f;
+    margin: 10px;
+    transition: .5s;
+}
+
+.btn-slide:hover {
+    background-color: #00008f;
+}
+
+.btn-slide:hover span.circle {
+    left: 100%;
+    margin-left: -45px;
+    background-color: #fdfdfd;
+    color: #00008f;
+}
+
+.btn-slide:hover span.title {
+    left: 40px;
+    opacity: 0;
+}
+
+.btn-slide:hover span.title-hover {
+    opacity: 1;
+    left: 40px;
+}
+
+.btn-file {
+    border-radius: 4px;
+    padding: 0 16px;
+    height: 40px;
+    cursor: pointer;
+    background-color: white;
+    color: #00008f;
+    font-weight: 700 !important;
+    border: 1px solid #00008f;
+    margin-right: 16px;
+    transition: background-color 200ms;
+    border-radius: 10%;
+}
+
+/* file upload button hover state */
+input[type="file"]::file-selector-button:hover {
+    background-color: #f3f4f6;
+}
+
+/* file upload button active state */
+input[type="file"]::file-selector-button:active {
+    background-color: #e5e7eb;
+}
+
+/* Container général (pour le cadre autour de la table) */
+.container {
+    background-color: #ffff;
+    padding: 40px 0px;
+    height: 100%;
+    overflow-x: hidden;
+    box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .15)
+}
+
+/* Table */
+table {
+    width: 100%;
+}
+
+.innertable {
+    background-color: rgb(247, 247, 249);
+}
+
+/* Header et row alternés */
+.mat-header-row,
+.mat-row:nth-child(even) {
+    background-color: rgb(247, 247, 249);
+}
+
+.mat-header-row th {
+    color: #00008F;
+}
+
+/* Colonnes */
+table th {
+    font-size: 20px;
+}
+table td {
+    font-size: 16px;
+}
+
+.mat-header-cell {
+    color: #333333;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    font-size: 15px;
+    width: 165px;
+}
+
+/* Cellules et header spécifiques */
+.mat-cell {
+    padding-top: 10px;
+}
+
+.mat-cell:not(.mat-column-garantie) {
+    font-weight: 600;
+}
+
+.mat-header-cell.mat-icon {
+    color: #ffffff;
+}
+
+/* Expansion */
+.expandButton .mat-icon {
+    font-size: 26px !important;
+}
+
+.cdk-column-expandedDetail,
+.mat-column-expandedDetail {
+    border-bottom-width: 0px;
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+}
+
+/* Ligne expansion Angular */
+.example-element-detail {
+    overflow: hidden;
+    display: flex;
+}
+
+tr.example-detail-row {
+    height: 0;
+}
+
+/* Style de la table imbriquée (sous-garanties) */
+.pack-table .mat-form-field {
+    font-size: 16px;
+}
+
+/* Icônes */
+.mat-icon {
+    height: 100%;
+    font-size: 36px;
+    width: fit-content;
+}
+
+.mat-cell .mat-icon {
+    color: #00008f;
+}
+
+.mat-cell .mat-icon:hover,
+.mat-header-cell .mat-icon:hover {
+    color: #00008f;
+    cursor: pointer;
+}
+
+/* Checkbox désactivé */
+::ng-deep.mat-checkbox-checked.mat-accent.mat-checkbox-disabled .mat-checkbox-background,
+.mat-checkbox-indeterminate.mat-accent .mat-checkbox-background {
+    background-color: #cccccc;
+}
+
+/* Form fields désactivés (pour inline-edit sur table) */
+.mat-input-element:disabled {
+    color: inherit;
+}
+
+/* Pour gérer les paddings spécifiques */
+table {
+    .mat-icon {
+        font-size: 26px;
+    }
+
+    .mat-column-plafond {
+        padding-left: 1rem;
+    }
+}
+
+/* -----------------------------------------------------------------------------
+   CHECKBOX STYLE #26 – version “bleu AXA” (#00008F)
+   --------------------------------------------------------------------------- */
+.checkbox-wrapper-26 * {
+  -webkit-tap-highlight-color: transparent;
+  outline: none;
+}
+
+.checkbox-wrapper-26 input[type='checkbox'] {
+  display: none;              // on masque l’input natif
+}
+
+.checkbox-wrapper-26 label {
+  /* --- variables ---------------------------------------------------------- */
+  --size:     20px;
+  --blue:     #00008f;         // couleur principale
+  --blue-light:#00008f;        // variante plus claire pour les ombres
+
+  /* --- bouton rond -------------------------------------------------------- */
+  position: relative;
+  display: block;
+  width: var(--size);
+  height: var(--size);
+  margin: 0 auto;
+  background-color: var(--blue);
+  border-radius: 50%;
+  box-shadow: 0 var(--shadow) var(--blue-light);
+  cursor: pointer;
+  transition: .2s ease transform, .2s ease background-color, .2s ease box-shadow;
+  overflow: hidden;
+  z-index: 1;
+}
+
+/* Neutralise complètement l’indicateur de focus */
+input[type="checkbox"].axa-blue:focus,
+input[type="checkbox"].axa-blue:focus-visible {
+  outline: none;        /* supprime l’outline natif */
+  box-shadow: none;     /* supprime le ring Tailwind */
+}

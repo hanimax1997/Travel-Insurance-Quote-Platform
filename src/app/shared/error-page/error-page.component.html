@@ -1,0 +1,24 @@
+<app-header></app-header>
+<div class="bg-info">
+    <div class="min-h-[40rem] mx-auto py-24 px-4 sm:px-6 lg:px-8 max-w-[50rem]">
+        <div class="min-h-[35rem]">
+            <div class="flex flex-col text-center justify-center p-4 md:p-5">
+                <h1 class="text-sm font-semibold text-center uppercase text-white">
+                    erreur {{ codeError }}
+                </h1>
+                <h1 class="text-3xl font-semibold text-center text-white mt-2">
+                    {{ message }}
+                </h1>
+                <h1 class="text-xl font-semibold text-center justify-items-center text-white mt-2 ">
+                    En cas de problème de paiement. veuillez contacter le numéro vert de la SATIM <b>3020</b> <img width="120" src="/satim-vert.png">
+                </h1>
+                <div class="mt-5 flex justify-center items-center gap-x-2">
+                    <button (click)="goToDevis()" class="py-2 px-3 items-center gap-x-1 text-sm font-semibold border border-white bg-info text-white hover:bg-white hover:text-info focus:outline-none focus:bg-white focus:text-info">
+                        Nouveau Devis
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<app-footer></app-footer>

@@ -1,0 +1,75 @@
+<img height="1" width="1" style="border-style:none;" alt="" [src]="'https://insight.adsrvr.org/track/pxl/?adv=y8fv869&ct=0:822vies&fmt=3&td1='+ montantPaiement +'&td2='+ orderId"/>
+<app-header></app-header>
+<div>
+    <div class="min-h-[40rem] mx-auto py-12 px-4 sm:px-6 lg:px-8 max-w-[77rem]">
+        <div class="min-h-[35rem] grid">
+            <div class="grid grid-flow-col bg-white">
+                <div class="flex flex-col min-h-[25rem] justify-center">
+                     @if(message != "") {
+                         <div class="flex flex-col items-center ">
+                           <div class="flex flex-col items-center text-lg p-4">
+                             <span class="inline-flex justify-center items-center size-[46px] rounded-full border border-success text-success">
+                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#138636" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check"><path d="M20 6 9 17l-5-5"/></svg>
+                             </span>
+                             <span class="font-bold">{{ message }}</span>
+                           </div>
+                           <div class="flex">
+                               <ul class="list-disc list-inside text-lg text-gray-800">
+                                  @if (this.userId == null) {
+                                    <li>Numero de transaction : </li>
+                                    <li>Numero de la commande : </li>
+                                    <li>Numero d'autorisation : </li>
+                                    <li>Date et heure de transaction : </li>
+                                    <li>Montant de paiement : </li>
+                                    <li>Mode de paiement : </li>
+                                  }
+                                   <li>N° Police : </li>
+                               </ul>
+                               <ul class="list-none list-inside text-lg text-gray-800">
+                                  @if (this.userId == null) {
+                                   <li>{{ orderId }}</li>
+                                   <li>{{ orderNumber }}</li>
+                                   <li>{{ approvalCode }}</li>
+                                   <li>{{ dateOrder | date:'medium' }}</li>
+                                   <li>{{ montantPaiement + " DZD" }}</li>
+                                   <li>{{ modePaiement }}</li>
+                                  }
+                                   <li>{{ idContrat }}</li>
+                               </ul>
+                           </div>
+                           @if (this.userId == null) {
+                              <h1 class="text-xl font-semibold text-center justify-items-center text-gray-800 mt-2 ">
+                                  En cas de problème de paiement. veuillez contacter le numéro vert de la SATIM <b>3020</b> <img width="120" src="/satim-vert.png">
+                              </h1>
+                            }
+                           <div class="mt-5 flex justify-between items-center gap-x-3">
+                            @if (this.userId == null) {
+                             <button (click)="voirRecu()" class="py-2 px-3 uppercase inline-flex items-center gap-x-1 text-sm font-semibold border border-primary-400 bg-white text-primary-400 shadow-sm">
+                                 Voir le reçu
+                                 <svg class="shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                     <path d="m9 18 6-6-6-6"></path>
+                                 </svg>
+                             </button>
+                             <button (click)="voirModel()" class="py-2 px-3 uppercase inline-flex items-center gap-x-1 text-sm font-semibold border border-primary-400 bg-white text-primary-400 shadow-sm">
+                                 Envoyer le reçu par email
+                                 <svg class="shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                     <path d="m9 18 6-6-6-6"></path>
+                                 </svg>
+                             </button>
+                            }
+                             <button (click)="newDevis()" class="py-2 px-3 uppercase inline-flex items-center gap-x-1 text-sm font-semibold border border-transparent bg-primary-400 text-white shadow-sm">
+                                 Nouveau Devis
+                                 <svg class="shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                     <path d="m9 18 6-6-6-6"></path>
+                                 </svg>
+                             </button>
+
+                           </div>
+                         </div>
+                     }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<app-footer></app-footer>
